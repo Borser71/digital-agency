@@ -65,9 +65,7 @@ nav{
 }
 
 .hero{
-    min-height:80vh;
-    display:flex;
-    align-items:center;
+    padding: 40px 0 20px 0;
     text-align:center;
 }
 
@@ -80,6 +78,32 @@ nav{
     font-size:20px;
     color:#cbd5e1;
     margin-bottom:30px;
+}
+
+.hero .btn{
+    margin-bottom: 50px;
+}
+
+/* Стили для баннера в hero-секции */
+.hero-banner {
+    max-width: 900px;
+    margin: 0 auto;
+    width: 90%;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-banner:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.6);
+}
+
+.hero-banner img {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 .features{
@@ -112,33 +136,6 @@ nav{
     max-width:700px;
     margin:auto;
     color:#cbd5e1;
-}
-
-/* Стили для баннера */
-.banner-section {
-    padding: 60px 0;
-    background: #0f172a;
-    text-align: center;
-}
-
-.banner-image {
-    max-width: 100%;
-    height: auto;
-    border-radius: 20px;
-    box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.4);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.banner-image:hover {
-    transform: scale(1.02);
-    box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.5);
-}
-
-/* Контейнер для баннера с ограничением ширины */
-.banner-container {
-    max-width: 900px;
-    margin: 0 auto;
-    width: 90%;
 }
 
 .contact{
@@ -187,12 +184,12 @@ footer{
         justify-content:center;
         text-align:center;
     }
-    
-    .banner-section {
-        padding: 40px 0;
+
+    .hero .btn {
+        margin-bottom: 35px;
     }
-    
-    .banner-container {
+
+    .hero-banner {
         width: 95%;
     }
 }
@@ -237,6 +234,7 @@ footer{
     </nav>
 </header>
 
+<!-- Hero секция с баннером внутри -->
 <section class="hero">
     <div class="container">
         <h1>Создаем сайты, которые продают</h1>
@@ -249,6 +247,15 @@ footer{
         <a href="#contact" class="btn">
             Получить консультацию
         </a>
+
+        <!-- Баннер расположен сразу под кнопкой -->
+        <div class="hero-banner">
+            <img 
+                src="https://github.com/Borser71/my-images/raw/main/website-banner.png.png" 
+                alt="Промо-баннер Digital Agency" 
+                loading="lazy"
+            >
+        </div>
     </div>
 </section>
 
@@ -290,19 +297,6 @@ footer{
 
     </div>
 </section>
-
-<!-- НАЧАЛО СЕКЦИИ С БАННЕРОМ (В ЦЕНТРЕ САЙТА) -->
-<section class="banner-section">
-    <div class="banner-container">
-        <img 
-            src="https://github.com/Borser71/my-images/raw/main/website-banner.png.png" 
-            alt="Промо-баннер Digital Agency" 
-            class="banner-image"
-            loading="lazy"
-        >
-    </div>
-</section>
-<!-- КОНЕЦ СЕКЦИИ С БАННЕРОМ -->
 
 <section class="contact" id="contact">
     <div class="container">
