@@ -67,6 +67,26 @@ nav{
     background:#2563eb;
 }
 
+/* Стиль для кнопки "Показать" */
+.show-btn {
+    background: transparent;
+    border: 2px solid #3b82f6;
+    color: #3b82f6;
+    padding: 10px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: inline-block;
+    transition: .3s;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.show-btn:hover {
+    background: #3b82f6;
+    color: #fff;
+    transform: translateY(-2px);
+}
+
 .hero{
     padding: 40px 0 20px 0;
     text-align:center;
@@ -299,6 +319,7 @@ footer{
     background: #1f2937;
     padding: 30px;
     border-radius: 20px;
+    text-align: center;
 }
 
 .type-card h4 {
@@ -310,6 +331,7 @@ footer{
 .type-card p {
     color: #cbd5e1;
     line-height: 1.6;
+    text-align: left;
 }
 
 /* Иконки для карточек типов сайтов */
@@ -425,26 +447,36 @@ footer{
     </div>
 </section>
 
-<!-- Описание типов сайтов -->
+<!-- Описание типов сайтов с кнопками "Показать" -->
 <section class="site-types">
     <div class="container">
         <h3>Что мы создаем</h3>
         <div class="types-grid">
+            
+            <!-- Лендинг -->
             <div class="type-card">
                 <div class="icon">🎯</div>
                 <h4>Лендинг</h4>
                 <p>Одностраничный сайт, созданный для продажи одного товара или услуги. Вся структура подчинена одной цели — заставить посетителя оставить заявку или совершить покупку. Мощные заголовки, триггеры, призывы к действию и высокая конверсия. Идеален для запуска рекламных кампаний.</p>
+                <button class="show-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">Показать</button>
             </div>
+            
+            <!-- Сайт визитка -->
             <div class="type-card">
                 <div class="icon">🏢</div>
                 <h4>Сайт визитка</h4>
                 <p>Небольшой сайт из 1-5 страниц: главная, услуги, контакты, о компании. Идеальное решение для малого бизнеса, фрилансеров и специалистов, которым нужно быстро представить себя в интернете. Задача — дать клиенту контактные данные и базовую информацию о компании.</p>
+                <button class="show-btn" onclick="window.open('https://barbershop.borser.site/', '_blank');">Показать</button>
             </div>
+            
+            <!-- Сайт портфолио -->
             <div class="type-card">
                 <div class="icon">🖼️</div>
                 <h4>Сайт портфолио</h4>
                 <p>Профессиональный сайт с акцентом на демонстрацию ваших работ и проектов. Идеально подходит для дизайнеров, фотографов, архитекторов, строительных компаний и креативных агентств. Каждый проект оформляется как отдельный кейс с описанием задачи, процесса и результата.</p>
+                <button class="show-btn" onclick="window.open('https://anna.borser.site/', '_blank');">Показать</button>
             </div>
+            
         </div>
     </div>
 </section>
