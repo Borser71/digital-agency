@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Digital Agency</title>
+<title>Digital Agency | Создаем сайты, которые продают</title>
 
 <!-- FAVICON -->
 <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/Borser71/ideal-my-site/main/favicon.ico">
@@ -233,6 +233,33 @@ input{
     font-size:16px;
 }
 
+/* Стили для поля textarea */
+.styled-textarea {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    resize: vertical;
+    background: #fff;
+    color: #333;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.styled-textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+    transform: translateY(-1px);
+}
+
+.styled-textarea::placeholder {
+    color: #94a3b8;
+    font-size: 14px;
+}
+
 #successMessage{
     display:none;
     max-width:500px;
@@ -320,6 +347,11 @@ footer{
     
     .type-card h4 {
         font-size: 1.3rem;
+    }
+    
+    .styled-textarea {
+        padding: 12px;
+        font-size: 14px;
     }
 }
 </style>
@@ -469,6 +501,14 @@ footer{
         <form id="contactForm">
             <input type="text" name="name" placeholder="Ваше имя" required>
             <input type="email" name="email" placeholder="Ваш Email" required>
+            
+            <textarea 
+                name="message" 
+                rows="4" 
+                placeholder="Опишите, какой сайт вам нужен (необязательно)"
+                class="styled-textarea"
+            ></textarea>
+            
             <button class="btn" type="submit">Отправить заявку</button>
         </form>
         <div id="successMessage">
