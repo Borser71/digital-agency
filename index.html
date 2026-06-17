@@ -308,6 +308,24 @@ footer{
     color:#94a3b8;
 }
 
+footer .footer-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #94a3b8;
+    margin-bottom: 8px;
+}
+
+footer .footer-logo img {
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+}
+
 /* Стили для описания типов сайтов */
 .site-types {
     padding: 60px 0;
@@ -580,7 +598,17 @@ footer{
 </section>
 
 <footer>
-    © 2026 Digital Agency. Все права защищены.
+    <div class="container">
+        <div class="footer-logo">
+            <img 
+                src="https://github.com/Borser71/ideal-my-site/raw/main/whale.png" 
+                alt="Digital Agency Logo"
+                loading="lazy"
+            >
+            DIGITAL AGENCY
+        </div>
+        <div>© 2026 Все права защищены.</div>
+    </div>
 </footer>
 
 <script>
