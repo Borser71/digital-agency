@@ -6,7 +6,7 @@
 <title>Digital Agency | Создаем сайты, которые продают</title>
 
 <!-- FAVICON -->
-<link rel="icon" type="image/x-icon" href="https://digital.borser.site/images/inter1.ico">
+<link rel="icon" type="image/x-icon" href="https://github.com/Borser71/ideal-my-site/raw/main/inter.ico">
 
 <style>
 *{
@@ -20,6 +20,7 @@ body{
     background:#0f172a;
     color:#fff;
     line-height:1.6;
+    padding-top: 80px;
 }
 
 .container{
@@ -28,8 +29,17 @@ body{
     margin:auto;
 }
 
+/* ===== ФИКСИРОВАННАЯ ШАПКА ===== */
 header{
-    padding:20px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: #0f172a;
+    padding: 15px 0;
+    transition: box-shadow 0.3s ease;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
 nav{
@@ -40,6 +50,7 @@ nav{
     gap:15px;
 }
 
+/* Левая часть: логотип */
 .logo{
     display:flex;
     align-items:center;
@@ -56,26 +67,28 @@ nav{
     display: block;
 }
 
-.nav-buttons{
+/* Центральная часть: меню */
+.nav-menu {
     display:flex;
-    gap:10px;
-    flex-wrap:wrap;
+    gap:30px;
+    align-items:center;
 }
 
-.btn{
-    background:#3b82f6;
-    color:#fff;
-    padding:12px 24px;
-    border:none;
-    border-radius:8px;
-    text-decoration:none;
-    cursor:pointer;
-    display:inline-block;
-    transition:.3s;
+.nav-menu a {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease;
+    font-weight: 500;
 }
 
-.btn:hover{
-    background:#2563eb;
+.nav-menu a:hover {
+    color: #3b82f6;
+}
+
+/* Правая часть: соцсети - СКРЫТЫ */
+.nav-social {
+    display: none;
 }
 
 /* Стиль для кнопки "Показать" */
@@ -134,6 +147,50 @@ nav{
     width: 100%;
     height: auto;
     display: block;
+}
+
+/* Стили для описания типов сайтов */
+.site-types {
+    padding: 60px 0;
+    background: #111827;
+}
+
+.site-types h3 {
+    font-size: 1.8rem;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.types-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.type-card {
+    background: #1f2937;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.type-card h4 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #3b82f6;
+}
+
+.type-card p {
+    color: #cbd5e1;
+    line-height: 1.6;
+    text-align: left;
+}
+
+/* Иконки для карточек типов сайтов */
+.icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    display: inline-block;
 }
 
 /* Блок "Почему выбирают нас" */
@@ -302,6 +359,50 @@ input{
     font-weight:bold;
 }
 
+/* ===== МАЛЕНЬКАЯ КНОПКА "ОСТАВИТЬ ЗАЯВКУ" (КАК КНОПКИ TELEGRAM И WHATSAPP) ===== */
+.submit-btn {
+    background: #3b82f6;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    display: inline-block;
+    transition: .3s;
+    width: auto;
+}
+
+.submit-btn:hover {
+    background: #2563eb;
+    transform: translateY(-2px);
+}
+
+/* ===== СОЦИАЛЬНЫЕ КНОПКИ ПОД ФОРМОЙ ===== */
+.social-under-form {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.social-under-form .btn {
+    background: #3b82f6;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    display: inline-block;
+    transition: .3s;
+    font-size: 14px;
+}
+
+.social-under-form .btn:hover {
+    background: #2563eb;
+    transform: translateY(-2px);
+}
+
 footer{
     text-align:center;
     padding:30px;
@@ -326,58 +427,25 @@ footer .footer-logo img {
     display: block;
 }
 
-/* Стили для описания типов сайтов */
-.site-types {
-    padding: 60px 0;
-    background: #111827;
-}
-
-.site-types h3 {
-    font-size: 1.8rem;
-    margin-bottom: 40px;
-    text-align: center;
-}
-
-.types-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-}
-
-.type-card {
-    background: #1f2937;
-    padding: 30px;
-    border-radius: 20px;
-    text-align: center;
-}
-
-.type-card h4 {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-    color: #3b82f6;
-}
-
-.type-card p {
-    color: #cbd5e1;
-    line-height: 1.6;
-    text-align: left;
-}
-
-/* Иконки для карточек типов сайтов */
-.icon {
-    font-size: 3rem;
-    margin-bottom: 15px;
-    display: inline-block;
-}
-
 @media(max-width:768px){
     .hero h1{
         font-size:36px;
     }
 
     nav{
-        justify-content:center;
-        text-align:center;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .nav-menu {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .nav-menu a {
+        font-size: 14px;
     }
 
     .hero-banner {
@@ -414,31 +482,56 @@ footer .footer-logo img {
         height: 32px;
         width: 32px;
     }
+
+    body {
+        padding-top: 110px;
+    }
+
+    .social-under-form {
+        gap: 10px;
+    }
+
+    .social-under-form .btn,
+    .submit-btn {
+        padding: 8px 16px;
+        font-size: 13px;
+    }
 }
 </style>
 </head>
 <body>
 
-<header class="container">
-    <nav>
-        <div class="logo">
-            <img 
-                src="https://digital.borser.site/images/whale1.png" 
-                alt="Digital Agency Logo"
-                loading="lazy"
-            >
-            DIGITAL&ensp;AGENCY
-        </div>
-        <div class="nav-buttons">
-            <a href="https://t.me/borisovsergey71" target="_blank" class="btn">✈️ Telegram</a>
-            <a href="https://wa.me/79582319212" target="_blank" class="btn">💬 WhatsApp</a>
-            <a href="#contact" class="btn">Связаться</a>
-        </div>
-    </nav>
+<header>
+    <div class="container">
+        <nav>
+            <!-- Левая часть: Логотип -->
+            <div class="logo">
+                <img 
+                    src="https://github.com/Borser71/ideal-my-site/raw/main/whale.png" 
+                    alt="Digital Agency Logo"
+                    loading="lazy"
+                >
+                DIGITAL AGENCY
+            </div>
+
+            <!-- Центральная часть: Меню -->
+            <div class="nav-menu">
+                <a href="#hero">Главная</a>
+                <a href="#services">Услуги</a>
+                <a href="#pricing">Цены</a>
+                <a href="#contact">Контакты</a>
+            </div>
+
+            <!-- Правая часть: соцсети - СКРЫТЫ -->
+            <div class="nav-social">
+                <!-- Здесь ничего нет -->
+            </div>
+        </nav>
+    </div>
 </header>
 
-<!-- Hero секция с баннером внутри -->
-<section class="hero">
+<!-- Hero секция -->
+<section class="hero" id="hero">
     <div class="container">
         <h1>Создаем сайты, которые продают</h1>
         <p>
@@ -446,10 +539,41 @@ footer .footer-logo img {
         </p>
         <div class="hero-banner">
             <img 
-                src="https://digital.borser.site/images/site1.png"
+                src="https://github.com/Borser71/ideal-my-site/raw/main/site.png" 
                 alt="Промо-баннер Digital Agency" 
                 loading="lazy"
             >
+        </div>
+    </div>
+</section>
+
+<!-- Блок "Что мы делаем" -->
+<section class="site-types" id="services">
+    <div class="container">
+        <h3>Что мы делаем</h3>
+        <div class="types-grid">
+            
+            <div class="type-card">
+                <div class="icon">🎯</div>
+                <h4>Лендинг</h4>
+                <p>Одностраничный сайт, созданный для продажи одного товара или услуги. Вся структура подчинена одной цели — заставить посетителя оставить заявку или совершить покупку. Мощные заголовки, триггеры, призывы к действию и высокая конверсия. Идеален для запуска рекламных кампаний.</p>
+                <button class="show-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">Показать</button>
+            </div>
+            
+            <div class="type-card">
+                <div class="icon">🏢</div>
+                <h4>Сайт визитка</h4>
+                <p>Небольшой сайт из 1-5 страниц: главная, услуги, контакты, о компании. Идеальное решение для малого бизнеса, фрилансеров и специалистов, которым нужно быстро представить себя в интернете. Задача — дать клиенту контактные данные и базовую информацию о компании.</p>
+                <button class="show-btn" onclick="window.open('https://barbershop.borser.site/', '_blank');">Показать</button>
+            </div>
+            
+            <div class="type-card">
+                <div class="icon">🖼️</div>
+                <h4>Сайт портфолио</h4>
+                <p>Профессиональный имиджевый сайт с акцентом на демонстрацию ваших работ и проектов. Идеально подходит для дизайнеров, фотографов, архитекторов, строительных компаний и креативных агентств. Каждый проект оформляется как отдельный кейс с описанием задачи, процесса и результата.</p>
+                <button class="show-btn" onclick="window.open('https://anna.borser.site/', '_blank');">Показать</button>
+            </div>
+            
         </div>
     </div>
 </section>
@@ -467,7 +591,7 @@ footer .footer-logo img {
     </div>
 </section>
 
-<!-- Преимущества (быстрый запуск, покупка домена, адаптивный дизайн, конверсия) -->
+<!-- Преимущества -->
 <section class="features">
     <div class="container">
         <div class="grid">
@@ -491,47 +615,12 @@ footer .footer-logo img {
     </div>
 </section>
 
-<!-- Описание типов сайтов с кнопками "Показать" -->
-<section class="site-types">
-    <div class="container">
-        <h3>Что мы делаем</h3>
-        <div class="types-grid">
-            
-            <!-- Лендинг -->
-            <div class="type-card">
-                <div class="icon">🎯</div>
-                <h4>Лендинг</h4>
-                <p>Одностраничный сайт, созданный для продажи одного товара или услуги. Вся структура подчинена одной цели — заставить посетителя оставить заявку или совершить покупку. Мощные заголовки, триггеры, призывы к действию и высокая конверсия. Идеален для запуска рекламных кампаний.</p>
-                <button class="show-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">Показать</button>
-            </div>
-            
-            <!-- Сайт визитка -->
-            <div class="type-card">
-                <div class="icon">🏢</div>
-                <h4>Сайт визитка</h4>
-                <p>Небольшой сайт из 1-5 страниц: главная, услуги, цены, контакты, о компании. Идеальное решение для малого бизнеса, фрилансеров и специалистов, которым нужно быстро представить себя в интернете. Задача — дать клиенту контактные данные и базовую информацию о компании.</p>
-                <button class="show-btn" onclick="window.open('https://barbershop.borser.site/', '_blank');">Показать</button>
-            </div>
-            
-            <!-- Сайт портфолио -->
-            <div class="type-card">
-                <div class="icon">🖼️</div>
-                <h4>Сайт портфолио</h4>
-                <p>Профессиональный имиджевый сайт с акцентом на демонстрацию ваших работ и проектов. Идеально подходит для дизайнеров, фотографов, архитекторов, строительных компаний и креативных агентств. Каждый проект оформляется как отдельный кейс с описанием задачи, процесса и результата.</p>
-                <button class="show-btn" onclick="window.open('https://anna.borser.site/', '_blank');">Показать</button>
-            </div>
-            
-        </div>
-    </div>
-</section>
-
 <!-- Блок с ценами -->
-<section class="pricing">
+<section class="pricing" id="pricing">
     <div class="container">
         <h2>Выберите подходящий тариф</h2>
         <div class="pricing-grid">
             
-            <!-- Тариф 1: Лендинг -->
             <div class="pricing-card">
                 <h3>Лендинг</h3>
                 <div class="price">от 15 000 ₽</div>
@@ -544,7 +633,6 @@ footer .footer-logo img {
                 <a href="https://interbor.getplatinum.ru/payment/POqRw4l" target="_blank" class="btn price-btn">Заказать</a>
             </div>
 
-            <!-- Тариф 2: Сайт визитка -->
             <div class="pricing-card">
                 <h3>Сайт визитка</h3>
                 <div class="price">от 20 000 ₽</div>
@@ -557,7 +645,6 @@ footer .footer-logo img {
                 <a href="https://interbor.getplatinum.ru/payment/MH38bFZ" target="_blank" class="btn price-btn">Заказать</a>
             </div>
 
-            <!-- Тариф 3: Сайт портфолио -->
             <div class="pricing-card">
                 <h3>Сайт портфолио</h3>
                 <div class="price">от 25 000 ₽</div>
@@ -589,8 +676,18 @@ footer .footer-logo img {
                 class="styled-textarea"
             ></textarea>
             
-            <button class="btn" type="submit">Отправить заявку</button>
+            <!-- ===== МАЛЕНЬКАЯ КНОПКА "ОСТАВИТЬ ЗАЯВКУ" ===== -->
+            <div style="text-align: center;">
+                <button class="submit-btn" type="submit">Оставить заявку</button>
+            </div>
         </form>
+
+        <!-- Социальные кнопки под формой -->
+        <div class="social-under-form">
+            <a href="https://t.me/borisovsergey71" target="_blank" class="btn">✈️ Telegram</a>
+            <a href="https://wa.me/79582319212" target="_blank" class="btn">💬 WhatsApp</a>
+        </div>
+
         <div id="successMessage">
             ✅ Заявка успешно отправлена!
         </div>
@@ -601,7 +698,7 @@ footer .footer-logo img {
     <div class="container">
         <div class="footer-logo">
             <img 
-                src="https://digital.borser.site/images/whale1.png" 
+                src="https://github.com/Borser71/ideal-my-site/raw/main/whale.png" 
                 alt="Digital Agency Logo"
                 loading="lazy"
             >
@@ -612,6 +709,34 @@ footer .footer-logo img {
 </footer>
 
 <script>
+// ===== СКРИПТ ДЛЯ ПОЯВЛЕНИЯ ТЕНИ ПРИ ПРОКРУТКЕ =====
+window.addEventListener('scroll', function() {
+    const header = document.querySelector('header');
+    if (window.scrollY > 50) {
+        header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.4)';
+    } else {
+        header.style.boxShadow = 'none';
+    }
+});
+
+// ===== СКРИПТ ДЛЯ ПЛАВНОЙ ПРОКРУТКИ ПО МЕНЮ =====
+document.querySelectorAll('.nav-menu a').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+            const headerHeight = document.querySelector('header').offsetHeight;
+            const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
+// ===== СКРИПТ ДЛЯ ФОРМЫ =====
 const form = document.getElementById('contactForm');
 const successMessage = document.getElementById('successMessage');
 
@@ -640,5 +765,6 @@ form.addEventListener('submit', async (e) => {
     }
 });
 </script>
+
 </body>
 </html>
