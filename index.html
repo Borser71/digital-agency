@@ -490,6 +490,10 @@ nav{
     color: #cbd5e1;
 }
 
+.form-group label .required {
+    color: #ef4444;
+}
+
 .form-group input {
     width: 100%;
     padding: 12px;
@@ -502,6 +506,35 @@ nav{
 
 .form-group input:focus {
     outline: 2px solid #3b82f6;
+}
+
+/* ===== ГАЛОЧКА СОГЛАСИЯ ===== */
+.checkbox-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin: 15px 0 20px 0;
+    font-size: 14px;
+    color: #cbd5e1;
+    text-align: left;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    min-width: 18px;
+    margin-top: 2px;
+    accent-color: #3b82f6;
+    cursor: pointer;
+}
+
+.checkbox-group a {
+    color: #3b82f6;
+    text-decoration: none;
+}
+
+.checkbox-group a:hover {
+    text-decoration: underline;
 }
 
 .btn-submit {
@@ -520,7 +553,7 @@ nav{
     background: #2563eb;
 }
 
-/* ===== КНОПКА "ДОБАВИТЬ" В МОДАЛЬНОМ ОКНЕ ===== */
+/* ===== КНОПКА "ДОБАВИТЬ" В МОДАЛЬНЫХ ОКНАХ ===== */
 .btn-add {
     background: #3b82f6;
     color: #fff;
@@ -536,7 +569,7 @@ nav{
     background: #2563eb;
 }
 
-/* ===== ФУТЕР С ПЛАТЕЖНЫМИ ИКОНКАМИ ===== */
+/* ===== ФУТЕР ===== */
 footer {
     text-align: center;
     padding: 30px 0;
@@ -545,10 +578,74 @@ footer {
     border-top: 1px solid #1f2937;
 }
 
-.footer-payment {
-    max-width: 500px;
+.footer-grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 40px;
+    max-width: 1100px;
     margin: 0 auto 20px auto;
-    padding: 10px 0;
+    text-align: left;
+}
+
+.footer-col {
+    flex: 1;
+    min-width: 160px;
+}
+
+.footer-col h4,
+.footer-col-docs h4,
+.footer-col-payment h4 {
+    color: #fff;
+    font-size: 16px;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.footer-col ul,
+.footer-col-docs ul,
+.footer-col-payment ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-col ul li,
+.footer-col-docs ul li,
+.footer-col-payment ul li {
+    margin-bottom: 8px;
+}
+
+.footer-col ul li a,
+.footer-col-docs ul li a,
+.footer-col-payment ul li a {
+    color: #94a3b8;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: 14px;
+}
+
+.footer-col ul li a:hover,
+.footer-col-docs ul li a:hover,
+.footer-col-payment ul li a:hover {
+    color: #3b82f6;
+}
+
+.footer-col-docs {
+    flex: 1;
+    min-width: 160px;
+    text-align: center;
+}
+
+.footer-col-payment {
+    flex: 1;
+    min-width: 160px;
+    text-align: right;
+}
+
+.footer-payment {
+    margin: 20px 0;
 }
 
 .payment-grid {
@@ -654,6 +751,21 @@ footer {
     .contact-item {
         width: 80%;
         justify-content: center;
+    }
+
+    .footer-grid {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 25px;
+    }
+
+    .footer-col,
+    .footer-col-docs,
+    .footer-col-payment {
+        min-width: auto;
+        width: 100%;
+        text-align: center;
     }
 
     .payment-grid {
@@ -903,199 +1015,117 @@ footer {
     </div>
 </section>
 
-<!-- ===== МОДАЛЬНОЕ ОКНО ДЛЯ ЛЕНДИНГА (ОБНОВЛЕНО) ===== -->
+<!-- ===== МОДАЛЬНЫЕ ОКНА (ВСЕ) ===== -->
+<!-- Лендинг -->
 <div class="modal" id="landingModal">
     <div class="modal-content">
         <span class="modal-close" id="closeLandingModal">&times;</span>
         <h2>🎯 Выберите услугу для лендинга</h2>
-        
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #334155;">
-            <div>
-                <strong>Лендинг до 2 товаров</strong>
-                <div style="color: #94a3b8;">10 000 ₽</div>
-            </div>
+            <div><strong>Лендинг до 2 товаров</strong><div style="color: #94a3b8;">10 000 ₽</div></div>
             <button class="btn-add" onclick="addToCart({ id: 13, name: 'Лендинг до 2 товаров', price: 10000 })">Купить</button>
         </div>
-
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #334155;">
-            <div>
-                <strong>Еще 2 товара</strong>
-                <div style="color: #94a3b8;">5 000 ₽</div>
-            </div>
+            <div><strong>Еще 2 товара</strong><div style="color: #94a3b8;">5 000 ₽</div></div>
             <button class="btn-add" onclick="addToCart({ id: 14, name: 'Еще 2 товара', price: 5000 })">Купить</button>
         </div>
-
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #334155;">
-            <div>
-                <strong>Оплата через Unitpay.money</strong>
-                <div style="color: #94a3b8;">5 000 ₽</div>
-            </div>
+            <div><strong>Оплата через Unitpay.money</strong><div style="color: #94a3b8;">5 000 ₽</div></div>
             <button class="btn-add" onclick="addToCart({ id: 17, name: 'Оплата через Unitpay.money', price: 5000 })">Купить</button>
         </div>
-
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #334155;">
-            <div>
-                <strong>Страница Договор оферты</strong>
-                <div style="color: #94a3b8;">3 000 ₽</div>
-            </div>
+            <div><strong>Страница Договор оферты</strong><div style="color: #94a3b8;">3 000 ₽</div></div>
             <button class="btn-add" onclick="addToCart({ id: 15, name: 'Страница Договор оферты (лендинг)', price: 3000 })">Купить</button>
         </div>
-
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #334155;">
-            <div>
-                <strong>Страница Политика Конфиденциальности</strong>
-                <div style="color: #94a3b8;">3 000 ₽</div>
-            </div>
+            <div><strong>Страница Политика Конфиденциальности</strong><div style="color: #94a3b8;">3 000 ₽</div></div>
             <button class="btn-add" onclick="addToCart({ id: 16, name: 'Страница Политика Конфиденциальности (лендинг)', price: 3000 })">Купить</button>
         </div>
-
-        <div style="margin-top: 20px; text-align: center;">
-            <button class="btn" onclick="document.getElementById('landingModal').style.display='none'">Закрыть</button>
-        </div>
+        <div style="margin-top: 20px; text-align: center;"><button class="btn" onclick="document.getElementById('landingModal').style.display='none'">Закрыть</button></div>
     </div>
 </div>
 
-<!-- ===== МОДАЛЬНОЕ ОКНО ДЛЯ ИНТЕРНЕТ-МАГАЗИНА ===== -->
+<!-- Интернет-магазин -->
 <div class="modal" id="shopModal">
     <div class="modal-content">
         <span class="modal-close" id="closeShopModal">&times;</span>
         <h2>🛒 Выберите вариант интернет-магазина</h2>
-        
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #334155;">
-            <div>
-                <strong>Интернет-магазин на 6 товаров</strong>
-                <div style="color: #94a3b8;">30 000 ₽</div>
-            </div>
+            <div><strong>Интернет-магазин на 6 товаров</strong><div style="color: #94a3b8;">30 000 ₽</div></div>
             <button class="btn-add" onclick="addToCart({ id: 1, name: 'Интернет-магазин (6 товаров)', price: 30000 })">Купить</button>
         </div>
-
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #334155;">
-            <div>
-                <strong>Еще 6 товаров</strong>
-                <div style="color: #94a3b8;">5 000 ₽</div>
-            </div>
+            <div><strong>Еще 6 товаров</strong><div style="color: #94a3b8;">5 000 ₽</div></div>
             <button class="btn-add" onclick="addToCart({ id: 2, name: 'Дополнительные 6 товаров', price: 5000 })">Купить</button>
         </div>
-
-        <div style="margin-top: 20px; text-align: center;">
-            <button class="btn" onclick="document.getElementById('shopModal').style.display='none'">Закрыть</button>
-        </div>
+        <div style="margin-top: 20px; text-align: center;"><button class="btn" onclick="document.getElementById('shopModal').style.display='none'">Закрыть</button></div>
     </div>
 </div>
 
-<!-- ===== МОДАЛЬНОЕ ОКНО ДЛЯ ПОРТФОЛИО ===== -->
+<!-- Портфолио -->
 <div class="modal" id="portfolioModal">
     <div class="modal-content">
         <span class="modal-close" id="closePortfolioModal">&times;</span>
         <h2>🖼️ Выберите услугу для портфолио</h2>
-        
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #334155;">
-            <div>
-                <strong>Сайт Портфолио</strong>
-                <div style="color: #94a3b8;">25 000 ₽</div>
-            </div>
+            <div><strong>Сайт Портфолио</strong><div style="color: #94a3b8;">25 000 ₽</div></div>
             <button class="btn-add" onclick="addToCart({ id: 3, name: 'Сайт Портфолио', price: 25000 })">Купить</button>
         </div>
-
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #334155;">
-            <div>
-                <strong>Страница Договор оферты</strong>
-                <div style="color: #94a3b8;">3 000 ₽</div>
-            </div>
+            <div><strong>Страница Договор оферты</strong><div style="color: #94a3b8;">3 000 ₽</div></div>
             <button class="btn-add" onclick="addToCart({ id: 4, name: 'Страница Договор оферты', price: 3000 })">Купить</button>
         </div>
-
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #334155;">
-            <div>
-                <strong>Страница Политика Конфиденциальности</strong>
-                <div style="color: #94a3b8;">3 000 ₽</div>
-            </div>
+            <div><strong>Страница Политика Конфиденциальности</strong><div style="color: #94a3b8;">3 000 ₽</div></div>
             <button class="btn-add" onclick="addToCart({ id: 5, name: 'Страница Политика Конфиденциальности', price: 3000 })">Купить</button>
         </div>
-
-        <div style="margin-top: 20px; text-align: center;">
-            <button class="btn" onclick="document.getElementById('portfolioModal').style.display='none'">Закрыть</button>
-        </div>
+        <div style="margin-top: 20px; text-align: center;"><button class="btn" onclick="document.getElementById('portfolioModal').style.display='none'">Закрыть</button></div>
     </div>
 </div>
 
-<!-- ===== МОДАЛЬНОЕ ОКНО ДЛЯ ВИЗИТКИ ===== -->
+<!-- Визитка -->
 <div class="modal" id="vizitkaModal">
     <div class="modal-content">
         <span class="modal-close" id="closeVizitkaModal">&times;</span>
         <h2>🏢 Выберите услугу для визитки</h2>
-        
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #334155;">
-            <div>
-                <strong>Сайт Визитка</strong>
-                <div style="color: #94a3b8;">20 000 ₽</div>
-            </div>
+            <div><strong>Сайт Визитка</strong><div style="color: #94a3b8;">20 000 ₽</div></div>
             <button class="btn-add" onclick="addToCart({ id: 6, name: 'Сайт Визитка', price: 20000 })">Купить</button>
         </div>
-
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #334155;">
-            <div>
-                <strong>Страница Политика конфиденциальности</strong>
-                <div style="color: #94a3b8;">3 000 ₽</div>
-            </div>
+            <div><strong>Страница Политика конфиденциальности</strong><div style="color: #94a3b8;">3 000 ₽</div></div>
             <button class="btn-add" onclick="addToCart({ id: 7, name: 'Страница Политика конфиденциальности', price: 3000 })">Купить</button>
         </div>
-
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #334155;">
-            <div>
-                <strong>Форма обратной связи</strong>
-                <div style="color: #94a3b8;">2 000 ₽</div>
-            </div>
+            <div><strong>Форма обратной связи</strong><div style="color: #94a3b8;">2 000 ₽</div></div>
             <button class="btn-add" onclick="addToCart({ id: 8, name: 'Форма обратной связи', price: 2000 })">Купить</button>
         </div>
-
-        <div style="margin-top: 20px; text-align: center;">
-            <button class="btn" onclick="document.getElementById('vizitkaModal').style.display='none'">Закрыть</button>
-        </div>
+        <div style="margin-top: 20px; text-align: center;"><button class="btn" onclick="document.getElementById('vizitkaModal').style.display='none'">Закрыть</button></div>
     </div>
 </div>
 
-<!-- ===== МОДАЛЬНОЕ ОКНО ДЛЯ ИНФОРМАЦИОННОГО ===== -->
+<!-- Информационный -->
 <div class="modal" id="infoModal">
     <div class="modal-content">
         <span class="modal-close" id="closeInfoModal">&times;</span>
         <h2>📰 Выберите услугу для информационного сайта</h2>
-        
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #334155;">
-            <div>
-                <strong>Информационный сайт</strong>
-                <div style="color: #94a3b8;">15 000 ₽</div>
-            </div>
+            <div><strong>Информационный сайт</strong><div style="color: #94a3b8;">15 000 ₽</div></div>
             <button class="btn-add" onclick="addToCart({ id: 9, name: 'Информационный сайт', price: 15000 })">Купить</button>
         </div>
-
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #334155;">
-            <div>
-                <strong>Страница Договор оферты</strong>
-                <div style="color: #94a3b8;">3 000 ₽</div>
-            </div>
+            <div><strong>Страница Договор оферты</strong><div style="color: #94a3b8;">3 000 ₽</div></div>
             <button class="btn-add" onclick="addToCart({ id: 10, name: 'Страница Договор оферты (инфо)', price: 3000 })">Купить</button>
         </div>
-
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #334155;">
-            <div>
-                <strong>Страница Политика Конфиденциальности</strong>
-                <div style="color: #94a3b8;">3 000 ₽</div>
-            </div>
+            <div><strong>Страница Политика Конфиденциальности</strong><div style="color: #94a3b8;">3 000 ₽</div></div>
             <button class="btn-add" onclick="addToCart({ id: 11, name: 'Страница Политика Конфиденциальности (инфо)', price: 3000 })">Купить</button>
         </div>
-
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #334155;">
-            <div>
-                <strong>Форма обратной связи</strong>
-                <div style="color: #94a3b8;">2 000 ₽</div>
-            </div>
+            <div><strong>Форма обратной связи</strong><div style="color: #94a3b8;">2 000 ₽</div></div>
             <button class="btn-add" onclick="addToCart({ id: 12, name: 'Форма обратной связи (инфо)', price: 2000 })">Купить</button>
         </div>
-
-        <div style="margin-top: 20px; text-align: center;">
-            <button class="btn" onclick="document.getElementById('infoModal').style.display='none'">Закрыть</button>
-        </div>
+        <div style="margin-top: 20px; text-align: center;"><button class="btn" onclick="document.getElementById('infoModal').style.display='none'">Закрыть</button></div>
     </div>
 </div>
 
@@ -1111,25 +1141,64 @@ footer {
 
         <form id="orderForm">
             <div class="form-group">
-                <label for="userName">Имя</label>
+                <label for="userName">Имя <span class="required">*</span></label>
                 <input type="text" id="userName" placeholder="Введите ваше имя" required>
             </div>
             <div class="form-group">
-                <label for="userPhone">Телефон</label>
+                <label for="userPhone">Телефон <span class="required">*</span></label>
                 <input type="tel" id="userPhone" placeholder="+7 (___) ___-__-__" required>
             </div>
             <div class="form-group">
-                <label for="userEmail">Email</label>
+                <label for="userEmail">Email <span class="required">*</span></label>
                 <input type="email" id="userEmail" placeholder="example@mail.ru" required>
             </div>
-            <button type="submit" class="btn-submit">Оформить заказ</button>
+
+            <!-- ===== ГАЛОЧКА СОГЛАСИЯ ===== -->
+            <div class="checkbox-group">
+                <input type="checkbox" id="agreeCheck" required>
+                <label for="agreeCheck">
+                    Я согласен на <a href="https://borisov.store/policy/" target="_blank">обработку персональных данных</a>
+                </label>
+            </div>
+
+            <button type="submit" class="btn-submit" id="submitOrderBtn">Оформить заказ</button>
         </form>
     </div>
 </div>
 
 <footer>
     <div class="container">
-        <!-- ===== ТОЛЬКО ИКОНКИ ПЛАТЕЖНЫХ СИСТЕМ ===== -->
+        <!-- ===== ФУТЕР С ПАРТНЁРКАМИ ===== -->
+        <div class="footer-grid">
+            <!-- Левая колонка: Регистрация домена -->
+            <div class="footer-col">
+                <h4>Регистрация домена</h4>
+                <ul>
+                    <li><a href="https://www.reg.ru/domain/new/?rlink=reflink-31953453" target="_blank">Reg.ru</a></li>
+                    <li><a href="https://jino.ru/" target="_blank">Jino.ru</a></li>
+                </ul>
+            </div>
+
+            <!-- Центральная колонка: Документы -->
+            <div class="footer-col-docs">
+                <h4>Документы</h4>
+                <ul>
+                    <li><a href="https://borisov.store/offer/" target="_blank">Договор оферты</a></li>
+                    <li><a href="https://borisov.store/policy/" target="_blank">Политика конфиденциальности</a></li>
+                </ul>
+            </div>
+
+            <!-- Правая колонка: Платёжные системы -->
+            <div class="footer-col-payment">
+                <h4>Платёжные системы</h4>
+                <ul>
+                    <li><a href="https://getplatinum.ru/auth/register?ref=bothelp&ref2=9019" target="_blank">Getplatinum</a></li>
+                    <li><a href="https://unitpay.money/signup?ref_token=AVpXZx_inter" target="_blank">Unitpay.money</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ===== ПЛАТЕЖНЫЕ ИКОНКИ ===== -->
         <div class="footer-payment">
             <div class="payment-grid">
                 <div class="payment-item">
@@ -1147,6 +1216,7 @@ footer {
             </div>
         </div>
 
+        <!-- ===== ЛОГОТИП И КОПИРАЙТ ===== -->
         <div class="footer-logo">
             <img 
                 src="https://borisov.store/images/whale1.png" 
@@ -1160,7 +1230,7 @@ footer {
 </footer>
 
 <script>
-// ===== СКРИПТ ДЛЯ ПОЯВЛЕНИЯ ТЕНИ ПРИ ПРОКРУТКЕ =====
+// ===== СКРИПТЫ =====
 window.addEventListener('scroll', function() {
     const header = document.querySelector('header');
     if (window.scrollY > 50) {
@@ -1170,7 +1240,7 @@ window.addEventListener('scroll', function() {
     }
 });
 
-// ===== СКРИПТ ДЛЯ ПЛАВНОЙ ПРОКРУТКИ ПО МЕНЮ =====
+// ===== ПЛАВНАЯ ПРОКРУТКА =====
 document.querySelectorAll('.nav-menu a').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault();
@@ -1179,93 +1249,34 @@ document.querySelectorAll('.nav-menu a').forEach(anchor => {
         if (targetElement) {
             const headerHeight = document.querySelector('header').offsetHeight;
             const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-            window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
-            });
+            window.scrollTo({ top: targetPosition, behavior: 'smooth' });
         }
     });
 });
 
-// ===== ФУНКЦИЯ ДЛЯ ОТКРЫТИЯ МОДАЛЬНОГО ОКНА ЛЕНДИНГА =====
-function openLandingModal() {
-    document.getElementById('landingModal').style.display = 'flex';
-}
+// ===== ОТКРЫТИЕ МОДАЛЬНЫХ ОКОН =====
+function openLandingModal() { document.getElementById('landingModal').style.display = 'flex'; }
+function openShopModal() { document.getElementById('shopModal').style.display = 'flex'; }
+function openPortfolioModal() { document.getElementById('portfolioModal').style.display = 'flex'; }
+function openVizitkaModal() { document.getElementById('vizitkaModal').style.display = 'flex'; }
+function openInfoModal() { document.getElementById('infoModal').style.display = 'flex'; }
 
-document.getElementById('closeLandingModal').addEventListener('click', function() {
-    document.getElementById('landingModal').style.display = 'none';
+// ===== ЗАКРЫТИЕ МОДАЛЬНЫХ ОКОН =====
+document.querySelectorAll('.modal-close').forEach(el => {
+    el.addEventListener('click', function() {
+        this.closest('.modal').style.display = 'none';
+    });
 });
 
 window.addEventListener('click', function(e) {
-    if (e.target === document.getElementById('landingModal')) {
-        document.getElementById('landingModal').style.display = 'none';
+    if (e.target.classList.contains('modal')) {
+        e.target.style.display = 'none';
     }
 });
 
-// ===== ФУНКЦИЯ ДЛЯ ОТКРЫТИЯ МОДАЛЬНОГО ОКНА ИНТЕРНЕТ-МАГАЗИНА =====
-function openShopModal() {
-    document.getElementById('shopModal').style.display = 'flex';
-}
-
-document.getElementById('closeShopModal').addEventListener('click', function() {
-    document.getElementById('shopModal').style.display = 'none';
-});
-
-window.addEventListener('click', function(e) {
-    if (e.target === document.getElementById('shopModal')) {
-        document.getElementById('shopModal').style.display = 'none';
-    }
-});
-
-// ===== ФУНКЦИЯ ДЛЯ ОТКРЫТИЯ МОДАЛЬНОГО ОКНА ПОРТФОЛИО =====
-function openPortfolioModal() {
-    document.getElementById('portfolioModal').style.display = 'flex';
-}
-
-document.getElementById('closePortfolioModal').addEventListener('click', function() {
-    document.getElementById('portfolioModal').style.display = 'none';
-});
-
-window.addEventListener('click', function(e) {
-    if (e.target === document.getElementById('portfolioModal')) {
-        document.getElementById('portfolioModal').style.display = 'none';
-    }
-});
-
-// ===== ФУНКЦИЯ ДЛЯ ОТКРЫТИЯ МОДАЛЬНОГО ОКНА ВИЗИТКИ =====
-function openVizitkaModal() {
-    document.getElementById('vizitkaModal').style.display = 'flex';
-}
-
-document.getElementById('closeVizitkaModal').addEventListener('click', function() {
-    document.getElementById('vizitkaModal').style.display = 'none';
-});
-
-window.addEventListener('click', function(e) {
-    if (e.target === document.getElementById('vizitkaModal')) {
-        document.getElementById('vizitkaModal').style.display = 'none';
-    }
-});
-
-// ===== ФУНКЦИЯ ДЛЯ ОТКРЫТИЯ МОДАЛЬНОГО ОКНА ИНФОРМАЦИОННОГО =====
-function openInfoModal() {
-    document.getElementById('infoModal').style.display = 'flex';
-}
-
-document.getElementById('closeInfoModal').addEventListener('click', function() {
-    document.getElementById('infoModal').style.display = 'none';
-});
-
-window.addEventListener('click', function(e) {
-    if (e.target === document.getElementById('infoModal')) {
-        document.getElementById('infoModal').style.display = 'none';
-    }
-});
-
-// ===== КОРЗИНА (хранилище) =====
+// ===== КОРЗИНА =====
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-// ===== ДОБАВЛЕНИЕ В КОРЗИНУ =====
 function addToCart(product) {
     const existing = cart.find(item => item.id === product.id);
     if (existing) {
@@ -1278,7 +1289,6 @@ function addToCart(product) {
     alert(`✅ "${product.name}" добавлен в корзину!`);
 }
 
-// ===== УДАЛЕНИЕ ИЗ КОРЗИНЫ =====
 function removeFromCart(id) {
     cart = cart.filter(item => item.id !== id);
     saveCart();
@@ -1286,30 +1296,23 @@ function removeFromCart(id) {
     renderCartItems();
 }
 
-// ===== СОХРАНЕНИЕ КОРЗИНЫ =====
 function saveCart() {
     localStorage.setItem('cart', JSON.stringify(cart));
 }
 
-// ===== ОБНОВЛЕНИЕ СЧЁТЧИКА =====
 function updateCartUI() {
     const count = cart.reduce((sum, item) => sum + item.quantity, 0);
-    const countEl = document.getElementById('cartCount');
-    if (countEl) countEl.textContent = count;
+    document.getElementById('cartCount').textContent = count;
 }
 
-// ===== ОТРИСОВКА ТОВАРОВ В МОДАЛЬНОМ ОКНЕ КОРЗИНЫ =====
 function renderCartItems() {
     const container = document.getElementById('cartItems');
-    if (!container) return;
     if (cart.length === 0) {
         container.innerHTML = '<p style="color: #94a3b8;">Корзина пуста</p>';
         document.getElementById('cartTotal').textContent = 'Итого: 0 ₽';
         return;
     }
-
-    let html = '';
-    let total = 0;
+    let html = '', total = 0;
     cart.forEach(item => {
         const itemTotal = item.price * item.quantity;
         total += itemTotal;
@@ -1328,80 +1331,72 @@ function renderCartItems() {
 
     document.querySelectorAll('.cart-item-remove').forEach(btn => {
         btn.addEventListener('click', function() {
-            const id = parseInt(this.dataset.id);
-            removeFromCart(id);
+            removeFromCart(parseInt(this.dataset.id));
         });
     });
 }
 
 // ===== ОТКРЫТИЕ / ЗАКРЫТИЕ КОРЗИНЫ =====
-const cartIcon = document.getElementById('cartIcon');
-const cartModal = document.getElementById('cartModal');
-const closeCartModal = document.getElementById('closeModal');
+document.getElementById('cartIcon').addEventListener('click', function() {
+    renderCartItems();
+    document.getElementById('cartModal').style.display = 'flex';
+});
 
-if (cartIcon) {
-    cartIcon.addEventListener('click', function() {
-        renderCartItems();
-        cartModal.style.display = 'flex';
-    });
-}
-
-if (closeCartModal) {
-    closeCartModal.addEventListener('click', function() {
-        cartModal.style.display = 'none';
-    });
-}
+document.getElementById('closeModal').addEventListener('click', function() {
+    document.getElementById('cartModal').style.display = 'none';
+});
 
 window.addEventListener('click', function(e) {
-    if (e.target === cartModal) {
-        cartModal.style.display = 'none';
+    if (e.target === document.getElementById('cartModal')) {
+        document.getElementById('cartModal').style.display = 'none';
     }
 });
 
-// ===== ОТПРАВКА ФОРМЫ ИЗ КОРЗИНЫ =====
-const orderForm = document.getElementById('orderForm');
-if (orderForm) {
-    orderForm.addEventListener('submit', function(e) {
-        e.preventDefault();
+// ===== ОТПРАВКА ФОРМЫ =====
+document.getElementById('orderForm').addEventListener('submit', function(e) {
+    e.preventDefault();
 
-        const name = document.getElementById('userName').value.trim();
-        const phone = document.getElementById('userPhone').value.trim();
-        const email = document.getElementById('userEmail').value.trim();
+    const name = document.getElementById('userName').value.trim();
+    const phone = document.getElementById('userPhone').value.trim();
+    const email = document.getElementById('userEmail').value.trim();
+    const agree = document.getElementById('agreeCheck').checked;
 
-        if (!name || !phone || !email) {
-            alert('Пожалуйста, заполните все поля.');
-            return;
+    if (!name || !phone || !email) {
+        alert('Пожалуйста, заполните все обязательные поля (отмечены *).');
+        return;
+    }
+
+    if (!agree) {
+        alert('Для оформления заказа необходимо согласие на обработку персональных данных.');
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('phone', phone);
+    formData.append('email', email);
+    formData.append('order', JSON.stringify(cart));
+
+    fetch('https://formspree.io/f/xpqejkqv', {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+    })
+    .then(response => {
+        if (response.ok) {
+            alert('✅ Заказ успешно отправлен! Мы свяжемся с вами.');
+            cart = [];
+            saveCart();
+            updateCartUI();
+            renderCartItems();
+            document.getElementById('cartModal').style.display = 'none';
+            this.reset();
+        } else {
+            alert('Ошибка отправки. Попробуйте позже.');
         }
-
-        const formData = new FormData();
-        formData.append('name', name);
-        formData.append('phone', phone);
-        formData.append('email', email);
-        formData.append('order', JSON.stringify(cart));
-
-        fetch('https://formspree.io/f/xpqejkqv', {
-            method: 'POST',
-            body: formData,
-            headers: { 'Accept': 'application/json' }
-        })
-        .then(response => {
-            if (response.ok) {
-                alert('✅ Заказ успешно отправлен! Мы свяжемся с вами.');
-                cart = [];
-                saveCart();
-                updateCartUI();
-                renderCartItems();
-                cartModal.style.display = 'none';
-                orderForm.reset();
-            } else {
-                alert('Ошибка отправки. Попробуйте позже.');
-            }
-        })
-        .catch(error => {
-            alert('Ошибка соединения.');
-        });
-    });
-}
+    })
+    .catch(() => alert('Ошибка соединения.'));
+});
 
 // ===== ИНИЦИАЛИЗАЦИЯ =====
 updateCartUI();
