@@ -1421,6 +1421,35 @@ document.getElementById('orderForm').addEventListener('submit', function(e) {
     .catch(() => alert('Ошибка соединения.'));
 });
 
+// ===== ЗАПРЕТ КОПИРОВАНИЯ ТЕКСТА (С ИСКЛЮЧЕНИЯМИ) =====
+document.addEventListener('selectstart', function(e) {
+    // Разрешаем выделение в полях ввода, текстовых областях и на элементах с классом .contact-item
+    if (e.target.closest('input') || e.target.closest('textarea') || e.target.closest('.contact-item')) {
+        return; // разрешено
+    }
+    e.preventDefault(); // запрет выделения
+});
+
+document.addEventListener('keydown', function(e) {
+    // Разрешаем копирование в полях ввода и текстовых областях
+    if (e.target.closest('input') || e.target.closest('textarea')) {
+        return; // разрешено
+    }
+    // Запрет Ctrl+C на остальных элементах
+    if (e.ctrlKey && (e.key === 'c' || e.key === 'C')) {
+        e.preventDefault();
+        alert('Копирование текста запрещено.');
+    }
+});
+
+// Разрешаем правую кнопку мыши на ссылках, изображениях и контактах
+document.addEventListener('contextmenu', function(e) {
+    if (e.target.closest('a') || e.target.closest('img') || e.target.closest('.contact-item')) {
+        return; // разрешено
+    }
+    e.preventDefault(); // запрет контекстного меню на тексте
+});
+
 // ===== ИНИЦИАЛИЗАЦИЯ =====
 updateCartUI();
 </script>
