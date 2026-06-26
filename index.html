@@ -1050,10 +1050,17 @@ footer {
     <div class="modal-content">
         <span class="modal-close" id="closeLandingModal">&times;</span>
         <h2>🎯 Выберите услугу для лендинга</h2>
+        <!-- Самый дорогой (10000) -->
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #334155;">
             <div><strong>Лендинг до 2 товаров</strong><div style="color: #94a3b8;">10 000 ₽</div></div>
             <button class="btn-add" onclick="addToCart({ id: 13, name: 'Лендинг до 2 товаров', price: 10000 })">Купить</button>
         </div>
+        <!-- Добавление блока Отзывы (3000) -->
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #334155;">
+            <div><strong>Добавление блока Отзывы</strong><div style="color: #94a3b8;">3 000 ₽</div></div>
+            <button class="btn-add" onclick="addToCart({ id: 18, name: 'Добавление блока Отзывы', price: 3000 })">Купить</button>
+        </div>
+        <!-- Остальные товары (5000, 3000, 3000) -->
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #334155;">
             <div><strong>Еще 2 товара</strong><div style="color: #94a3b8;">5 000 ₽</div></div>
             <button class="btn-add" onclick="addToCart({ id: 14, name: 'Еще 2 товара', price: 5000 })">Купить</button>
@@ -1070,13 +1077,9 @@ footer {
             <div><strong>Страница Политика Конфиденциальности</strong><div style="color: #94a3b8;">3 000 ₽</div></div>
             <button class="btn-add" onclick="addToCart({ id: 16, name: 'Страница Политика Конфиденциальности (лендинг)', price: 3000 })">Купить</button>
         </div>
-        <!-- ===== ТОВАР: Установка иконки favicon ===== -->
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #334155;">
-            <div>
-                <strong>Установка иконки favicon</strong>
-                <div style="color: #94a3b8;">20 ₽</div>
-            </div>
-            <button class="btn-add" onclick="addToCart({ id: 99, name: 'Установка иконки favicon', price: 2000 })">Купить</button>
+            <div><strong>Установка иконки favicon</strong><div style="color: #94a3b8;">20 ₽</div></div>
+            <button class="btn-add" onclick="addToCart({ id: 99, name: 'Установка иконки favicon', price: 20 })">Купить</button>
         </div>
         <div style="margin-top: 20px; text-align: center;"><button class="btn" onclick="document.getElementById('landingModal').style.display='none'">Закрыть</button></div>
     </div>
@@ -1087,20 +1090,22 @@ footer {
     <div class="modal-content">
         <span class="modal-close" id="closeShopModal">&times;</span>
         <h2>🛒 Выберите вариант интернет-магазина</h2>
+        <!-- Самый дорогой (30000) -->
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #334155;">
             <div><strong>Интернет-магазин на 6 товаров</strong><div style="color: #94a3b8;">30 000 ₽</div></div>
             <button class="btn-add" onclick="addToCart({ id: 1, name: 'Интернет-магазин (6 товаров)', price: 30000 })">Купить</button>
+        </div>
+        <!-- Добавление блока Отзывы (3000) -->
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #334155;">
+            <div><strong>Добавление блока Отзывы</strong><div style="color: #94a3b8;">3 000 ₽</div></div>
+            <button class="btn-add" onclick="addToCart({ id: 18, name: 'Добавление блока Отзывы', price: 3000 })">Купить</button>
         </div>
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #334155;">
             <div><strong>Еще 6 товаров</strong><div style="color: #94a3b8;">5 000 ₽</div></div>
             <button class="btn-add" onclick="addToCart({ id: 2, name: 'Дополнительные 6 товаров', price: 5000 })">Купить</button>
         </div>
-        <!-- ===== ТОВАР: Установка иконки favicon ===== -->
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #334155;">
-            <div>
-                <strong>Установка иконки favicon</strong>
-                <div style="color: #94a3b8;">20 ₽</div>
-            </div>
+            <div><strong>Установка иконки favicon</strong><div style="color: #94a3b8;">20 ₽</div></div>
             <button class="btn-add" onclick="addToCart({ id: 99, name: 'Установка иконки favicon', price: 20 })">Купить</button>
         </div>
         <div style="margin-top: 20px; text-align: center;"><button class="btn" onclick="document.getElementById('shopModal').style.display='none'">Закрыть</button></div>
@@ -1112,9 +1117,15 @@ footer {
     <div class="modal-content">
         <span class="modal-close" id="closePortfolioModal">&times;</span>
         <h2>🖼️ Выберите услугу для портфолио</h2>
+        <!-- Самый дорогой (25000) -->
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #334155;">
             <div><strong>Сайт Портфолио</strong><div style="color: #94a3b8;">25 000 ₽</div></div>
             <button class="btn-add" onclick="addToCart({ id: 3, name: 'Сайт Портфолио', price: 25000 })">Купить</button>
+        </div>
+        <!-- Добавление блока Отзывы (3000) -->
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #334155;">
+            <div><strong>Добавление блока Отзывы</strong><div style="color: #94a3b8;">3 000 ₽</div></div>
+            <button class="btn-add" onclick="addToCart({ id: 18, name: 'Добавление блока Отзывы', price: 3000 })">Купить</button>
         </div>
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #334155;">
             <div><strong>Страница Договор оферты</strong><div style="color: #94a3b8;">3 000 ₽</div></div>
@@ -1124,12 +1135,8 @@ footer {
             <div><strong>Страница Политика Конфиденциальности</strong><div style="color: #94a3b8;">3 000 ₽</div></div>
             <button class="btn-add" onclick="addToCart({ id: 5, name: 'Страница Политика Конфиденциальности', price: 3000 })">Купить</button>
         </div>
-        <!-- ===== ТОВАР: Установка иконки favicon ===== -->
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #334155;">
-            <div>
-                <strong>Установка иконки favicon</strong>
-                <div style="color: #94a3b8;">20 ₽</div>
-            </div>
+            <div><strong>Установка иконки favicon</strong><div style="color: #94a3b8;">20 ₽</div></div>
             <button class="btn-add" onclick="addToCart({ id: 99, name: 'Установка иконки favicon', price: 20 })">Купить</button>
         </div>
         <div style="margin-top: 20px; text-align: center;"><button class="btn" onclick="document.getElementById('portfolioModal').style.display='none'">Закрыть</button></div>
@@ -1141,9 +1148,15 @@ footer {
     <div class="modal-content">
         <span class="modal-close" id="closeVizitkaModal">&times;</span>
         <h2>🏢 Выберите услугу для визитки</h2>
+        <!-- Самый дорогой (20000) -->
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #334155;">
             <div><strong>Сайт Визитка</strong><div style="color: #94a3b8;">20 000 ₽</div></div>
             <button class="btn-add" onclick="addToCart({ id: 6, name: 'Сайт Визитка', price: 20000 })">Купить</button>
+        </div>
+        <!-- Добавление блока Отзывы (3000) -->
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #334155;">
+            <div><strong>Добавление блока Отзывы</strong><div style="color: #94a3b8;">3 000 ₽</div></div>
+            <button class="btn-add" onclick="addToCart({ id: 18, name: 'Добавление блока Отзывы', price: 3000 })">Купить</button>
         </div>
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #334155;">
             <div><strong>Страница Политика конфиденциальности</strong><div style="color: #94a3b8;">3 000 ₽</div></div>
@@ -1153,12 +1166,8 @@ footer {
             <div><strong>Форма обратной связи</strong><div style="color: #94a3b8;">2 000 ₽</div></div>
             <button class="btn-add" onclick="addToCart({ id: 8, name: 'Форма обратной связи', price: 2000 })">Купить</button>
         </div>
-        <!-- ===== ТОВАР: Установка иконки favicon ===== -->
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #334155;">
-            <div>
-                <strong>Установка иконки favicon</strong>
-                <div style="color: #94a3b8;">20 ₽</div>
-            </div>
+            <div><strong>Установка иконки favicon</strong><div style="color: #94a3b8;">20 ₽</div></div>
             <button class="btn-add" onclick="addToCart({ id: 99, name: 'Установка иконки favicon', price: 20 })">Купить</button>
         </div>
         <div style="margin-top: 20px; text-align: center;"><button class="btn" onclick="document.getElementById('vizitkaModal').style.display='none'">Закрыть</button></div>
@@ -1170,9 +1179,15 @@ footer {
     <div class="modal-content">
         <span class="modal-close" id="closeInfoModal">&times;</span>
         <h2>📰 Выберите услугу для информационного сайта</h2>
+        <!-- Самый дорогой (15000) -->
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #334155;">
             <div><strong>Информационный сайт</strong><div style="color: #94a3b8;">15 000 ₽</div></div>
-            <button class="btn-add" onclick="addToCart({ id: 9, name: 'Информационный сайт', price: 15000 })">Купить</button>
+            <button class="btn-add" onclick="addToCart({ id: 9, name: 'Информационный сай트', price: 15000 })">Купить</button>
+        </div>
+        <!-- Добавление блока Отзывы (3000) -->
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #334155;">
+            <div><strong>Добавление блока Отзывы</strong><div style="color: #94a3b8;">3 000 ₽</div></div>
+            <button class="btn-add" onclick="addToCart({ id: 18, name: 'Добавление блока Отзывы', price: 3000 })">Купить</button>
         </div>
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #334155;">
             <div><strong>Страница Договор оферты</strong><div style="color: #94a3b8;">3 000 ₽</div></div>
@@ -1186,12 +1201,8 @@ footer {
             <div><strong>Форма обратной связи</strong><div style="color: #94a3b8;">2 000 ₽</div></div>
             <button class="btn-add" onclick="addToCart({ id: 12, name: 'Форма обратной связи (инфо)', price: 2000 })">Купить</button>
         </div>
-        <!-- ===== ТОВАР: Установка иконки favicon ===== -->
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #334155;">
-            <div>
-                <strong>Установка иконки favicon</strong>
-                <div style="color: #94a3b8;">20 ₽</div>
-            </div>
+            <div><strong>Установка иконки favicon</strong><div style="color: #94a3b8;">20 ₽</div></div>
             <button class="btn-add" onclick="addToCart({ id: 99, name: 'Установка иконки favicon', price: 20 })">Купить</button>
         </div>
         <div style="margin-top: 20px; text-align: center;"><button class="btn" onclick="document.getElementById('infoModal').style.display='none'">Закрыть</button></div>
@@ -1301,7 +1312,24 @@ footer {
 //  ОСНОВНЫЕ СКРИПТЫ
 // ============================================================
 
-// ===== 1. ТОВАРЫ =====
+// ===== 1. ПЛАВНАЯ ПРОКРУТКА =====
+document.querySelectorAll('.nav-menu a').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+            const headerHeight = document.querySelector('header').offsetHeight;
+            const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
+// ===== 2. ТОВАРЫ =====
 const products = [
     { id: 1, name: 'Интернет-магазин (6 товаров)', price: 30000, icon: '🛍️' },
     { id: 2, name: 'Дополнительные 6 товаров', price: 5000, icon: '🛒' },
@@ -1320,13 +1348,14 @@ const products = [
     { id: 15, name: 'Страница Договор оферты (лендинг)', price: 3000, icon: '📄' },
     { id: 16, name: 'Страница Политика Конфиденциальности (лендинг)', price: 3000, icon: '🔒' },
     { id: 17, name: 'Оплата через Unitpay.money', price: 5000, icon: '💳' },
+    { id: 18, name: 'Добавление блока Отзывы', price: 3000, icon: '⭐' },
     { id: 99, name: 'Установка иконки favicon', price: 20, icon: '⭐' },
 ];
 
-// ===== 2. КОРЗИНА =====
+// ===== 3. КОРЗИНА =====
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-// ===== 3. ДОБАВЛЕНИЕ В КОРЗИНУ =====
+// ===== 4. ДОБАВЛЕНИЕ В КОРЗИНУ =====
 function addToCart(product) {
     const existing = cart.find(item => item.id === product.id);
     if (existing) {
@@ -1385,7 +1414,7 @@ function renderCartItems() {
     });
 }
 
-// ===== 4. ОТКРЫТИЕ / ЗАКРЫТИЕ МОДАЛЬНЫХ ОКОН =====
+// ===== 5. ОТКРЫТИЕ / ЗАКРЫТИЕ МОДАЛЬНЫХ ОКОН =====
 function openLandingModal() { document.getElementById('landingModal').style.display = 'flex'; }
 function openShopModal() { document.getElementById('shopModal').style.display = 'flex'; }
 function openPortfolioModal() { document.getElementById('portfolioModal').style.display = 'flex'; }
@@ -1404,7 +1433,7 @@ window.addEventListener('click', function(e) {
     }
 });
 
-// ===== 5. ОТКРЫТИЕ / ЗАКРЫТИЕ КОРЗИНЫ =====
+// ===== 6. ОТКРЫТИЕ / ЗАКРЫТИЕ КОРЗИНЫ =====
 document.getElementById('cartIcon').addEventListener('click', function() {
     renderCartItems();
     document.getElementById('cartModal').style.display = 'flex';
@@ -1550,7 +1579,7 @@ if (orderForm) {
     });
 }
 
-// ===== 6. ЗАПРЕТ КОПИРОВАНИЯ ТЕКСТА =====
+// ===== 7. ЗАПРЕТ КОПИРОВАНИЯ ТЕКСТА =====
 document.addEventListener('selectstart', function(e) {
     if (e.target.closest('input') || e.target.closest('textarea') || e.target.closest('.contact-item')) {
         return;
@@ -1575,7 +1604,7 @@ document.addEventListener('contextmenu', function(e) {
     e.preventDefault();
 });
 
-// ===== 7. ИНИЦИАЛИЗАЦИЯ =====
+// ===== 8. ИНИЦИАЛИЗАЦИЯ =====
 updateCartUI();
 </script>
 
