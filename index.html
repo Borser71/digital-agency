@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
@@ -1572,184 +1572,462 @@ footer {
     </div>
 </section>
 
-<!-- ================================================================ -->
-<!-- МОДАЛЬНЫЕ ОКНА -->
-<!-- ================================================================ -->
+<!-- ======================================================== -->
+<!-- 1. ЛЕНДИНГ (обновлённые цены)                           -->
+<!-- ======================================================== -->
 <div class="modal" id="landingModal">
     <div class="modal-content">
         <span class="modal-close" id="closeLandingModal">&times;</span>
         <h2>🎯 Выберите услугу для лендинга</h2>
+        
+        <!-- Лендинг до 2 товаров -->
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #334155;">
-            <div><strong>Лендинг до 2 товаров</strong><div style="color: #94a3b8; font-size: 14px;">10 000 ₽</div></div>
-            <button class="btn-add" onclick="addToCart({ id: 13, name: 'Лендинг до 2 товаров', price: 10000 })">Купить</button>
+            <div>
+                <strong>Лендинг до 2 товаров</strong>
+                <div style="color: #94a3b8; font-size: 14px;">
+                    <span style="text-decoration: line-through; text-decoration-color: #ef4444; color: #3b82f6; margin-right: 8px;">10 000 ₽</span>
+                    <span style="color: #3b82f6; font-weight: bold;">5 000 ₽</span>
+                </div>
+            </div>
+            <button class="btn-add" onclick="addToCart({ id: 13, name: 'Лендинг до 2 товаров', price: 5000 })">Купить</button>
         </div>
+
+        <!-- Еще 2 товара -->
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #334155;">
-            <div><strong>Еще 2 товара</strong><div style="color: #94a3b8; font-size: 14px;">5 000 ₽</div></div>
-            <button class="btn-add" onclick="addToCart({ id: 14, name: 'Еще 2 товара', price: 5000 })">Купить</button>
+            <div>
+                <strong>Еще 2 товара</strong>
+                <div style="color: #94a3b8; font-size: 14px;">
+                    <span style="text-decoration: line-through; text-decoration-color: #ef4444; color: #3b82f6; margin-right: 8px;">5 000 ₽</span>
+                    <span style="color: #3b82f6; font-weight: bold;">2 500 ₽</span>
+                </div>
+            </div>
+            <button class="btn-add" onclick="addToCart({ id: 14, name: 'Еще 2 товара', price: 2500 })">Купить</button>
         </div>
+
+        <!-- Добавление блока Отзывы -->
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #334155;">
-            <div><strong>Добавление блока Отзывы</strong><div style="color: #94a3b8; font-size: 14px;">3 000 ₽</div></div>
-            <button class="btn-add" onclick="addToCart({ id: 18, name: 'Добавление блока Отзывы', price: 3000 })">Купить</button>
+            <div>
+                <strong>Добавление блока Отзывы</strong>
+                <div style="color: #94a3b8; font-size: 14px;">
+                    <span style="text-decoration: line-through; text-decoration-color: #ef4444; color: #3b82f6; margin-right: 8px;">3 000 ₽</span>
+                    <span style="color: #3b82f6; font-weight: bold;">1 500 ₽</span>
+                </div>
+            </div>
+            <button class="btn-add" onclick="addToCart({ id: 18, name: 'Добавление блока Отзывы', price: 1500 })">Купить</button>
         </div>
+
+        <!-- Страница Договор оферты -->
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #334155;">
-            <div><strong>Страница Договор оферты</strong><div style="color: #94a3b8; font-size: 14px;">3 000 ₽</div></div>
-            <button class="btn-add" onclick="addToCart({ id: 15, name: 'Страница Договор оферты (лендинг)', price: 3000 })">Купить</button>
+            <div>
+                <strong>Страница Договор оферты</strong>
+                <div style="color: #94a3b8; font-size: 14px;">
+                    <span style="text-decoration: line-through; text-decoration-color: #ef4444; color: #3b82f6; margin-right: 8px;">3 000 ₽</span>
+                    <span style="color: #3b82f6; font-weight: bold;">1 500 ₽</span>
+                </div>
+            </div>
+            <button class="btn-add" onclick="addToCart({ id: 15, name: 'Страница Договор оферты (лендинг)', price: 1500 })">Купить</button>
         </div>
+
+        <!-- Страница Политика Конфиденциальности -->
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #334155;">
-            <div><strong>Страница Политика Конфиденциальности</strong><div style="color: #94a3b8; font-size: 14px;">3 000 ₽</div></div>
-            <button class="btn-add" onclick="addToCart({ id: 16, name: 'Страница Политика Конфиденциальности (лендинг)', price: 3000 })">Купить</button>
+            <div>
+                <strong>Страница Политика Конфиденциальности</strong>
+                <div style="color: #94a3b8; font-size: 14px;">
+                    <span style="text-decoration: line-through; text-decoration-color: #ef4444; color: #3b82f6; margin-right: 8px;">3 000 ₽</span>
+                    <span style="color: #3b82f6; font-weight: bold;">1 500 ₽</span>
+                </div>
+            </div>
+            <button class="btn-add" onclick="addToCart({ id: 16, name: 'Страница Политика Конфиденциальности (лендинг)', price: 1500 })">Купить</button>
         </div>
+
+        <!-- Фавикон (цена 0) -->
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #334155;">
-            <div><strong>Установка иконки favicon</strong> <span style="color: #3b82f6; font-size: 11px; background: #0f172a; padding: 2px 8px; border-radius: 12px;">🎁 в подарок</span><div style="color: #94a3b8; font-size: 14px;">0 ₽</div></div>
+            <div>
+                <strong>Установка иконки favicon</strong>
+                <span style="color: #3b82f6; font-size: 11px; background: #0f172a; padding: 2px 8px; border-radius: 12px;">🎁 в подарок</span>
+                <div style="color: #94a3b8; font-size: 14px;">0 ₽</div>
+            </div>
             <button class="btn-add" onclick="addToCart({ id: 99, name: 'Установка иконки favicon (подарок)', price: 0 })">Купить</button>
         </div>
-        <div style="margin-top: 18px; text-align: center;"><button style="background: #334155; color: #fff; padding: 10px 30px; border: none; border-radius: 8px; cursor: pointer; font-size: 15px;" onclick="document.getElementById('landingModal').style.display='none'">Закрыть</button></div>
+
+        <div style="margin-top: 18px; text-align: center;">
+            <button style="background: #334155; color: #fff; padding: 10px 30px; border: none; border-radius: 8px; cursor: pointer; font-size: 15px;" onclick="document.getElementById('landingModal').style.display='none'">Закрыть</button>
+        </div>
     </div>
 </div>
 
+<!-- ======================================================== -->
+<!-- 2. ИНТЕРНЕТ-МАГАЗИН                                     -->
+<!-- ======================================================== -->
 <div class="modal" id="shopModal">
     <div class="modal-content">
         <span class="modal-close" id="closeShopModal">&times;</span>
         <h2>🛒 Выберите услугу для интернет-магазина</h2>
+        
+        <!-- Интернет-магазин на 6 товаров -->
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #334155;">
-            <div><strong>Интернет-магазин на 6 товаров</strong><div style="color: #94a3b8; font-size: 14px;">30 000 ₽</div></div>
-            <button class="btn-add" onclick="addToCart({ id: 1, name: 'Интернет-магазин (6 товаров)', price: 30000 })">Купить</button>
+            <div>
+                <strong>Интернет-магазин на 6 товаров</strong>
+                <div style="color: #94a3b8; font-size: 14px;">
+                    <span style="text-decoration: line-through; text-decoration-color: #ef4444; color: #3b82f6; margin-right: 8px;">30 000 ₽</span>
+                    <span style="color: #3b82f6; font-weight: bold;">15 000 ₽</span>
+                </div>
+            </div>
+            <button class="btn-add" onclick="addToCart({ id: 1, name: 'Интернет-магазин (6 товаров)', price: 15000 })">Купить</button>
         </div>
+
+        <!-- Еще 6 товаров -->
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #334155;">
-            <div><strong>Еще 6 товаров</strong><div style="color: #94a3b8; font-size: 14px;">5 000 ₽</div></div>
-            <button class="btn-add" onclick="addToCart({ id: 2, name: 'Дополнительные 6 товаров', price: 5000 })">Купить</button>
+            <div>
+                <strong>Еще 6 товаров</strong>
+                <div style="color: #94a3b8; font-size: 14px;">
+                    <span style="text-decoration: line-through; text-decoration-color: #ef4444; color: #3b82f6; margin-right: 8px;">5 000 ₽</span>
+                    <span style="color: #3b82f6; font-weight: bold;">2 500 ₽</span>
+                </div>
+            </div>
+            <button class="btn-add" onclick="addToCart({ id: 2, name: 'Дополнительные 6 товаров', price: 2500 })">Купить</button>
         </div>
+
+        <!-- Добавление блока Отзывы -->
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #334155;">
-            <div><strong>Добавление блока Отзывы</strong><div style="color: #94a3b8; font-size: 14px;">3 000 ₽</div></div>
-            <button class="btn-add" onclick="addToCart({ id: 18, name: 'Добавление блока Отзывы', price: 3000 })">Купить</button>
+            <div>
+                <strong>Добавление блока Отзывы</strong>
+                <div style="color: #94a3b8; font-size: 14px;">
+                    <span style="text-decoration: line-through; text-decoration-color: #ef4444; color: #3b82f6; margin-right: 8px;">3 000 ₽</span>
+                    <span style="color: #3b82f6; font-weight: bold;">1 500 ₽</span>
+                </div>
+            </div>
+            <button class="btn-add" onclick="addToCart({ id: 18, name: 'Добавление блока Отзывы', price: 1500 })">Купить</button>
         </div>
+
+        <!-- Фавикон -->
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #334155;">
-            <div><strong>Установка иконки favicon</strong> <span style="color: #3b82f6; font-size: 11px; background: #0f172a; padding: 2px 8px; border-radius: 12px;">🎁 в подарок</span><div style="color: #94a3b8; font-size: 14px;">0 ₽</div></div>
+            <div>
+                <strong>Установка иконки favicon</strong>
+                <span style="color: #3b82f6; font-size: 11px; background: #0f172a; padding: 2px 8px; border-radius: 12px;">🎁 в подарок</span>
+                <div style="color: #94a3b8; font-size: 14px;">0 ₽</div>
+            </div>
             <button class="btn-add" onclick="addToCart({ id: 99, name: 'Установка иконки favicon (подарок)', price: 0 })">Купить</button>
         </div>
-        <div style="margin-top: 18px; text-align: center;"><button style="background: #334155; color: #fff; padding: 10px 30px; border: none; border-radius: 8px; cursor: pointer; font-size: 15px;" onclick="document.getElementById('shopModal').style.display='none'">Закрыть</button></div>
+
+        <div style="margin-top: 18px; text-align: center;">
+            <button style="background: #334155; color: #fff; padding: 10px 30px; border: none; border-radius: 8px; cursor: pointer; font-size: 15px;" onclick="document.getElementById('shopModal').style.display='none'">Закрыть</button>
+        </div>
     </div>
 </div>
 
+<!-- ======================================================== -->
+<!-- 3. ПОРТФОЛИО                                            -->
+<!-- ======================================================== -->
 <div class="modal" id="portfolioModal">
     <div class="modal-content">
         <span class="modal-close" id="closePortfolioModal">&times;</span>
         <h2>🖼️ Выберите услугу для портфолио</h2>
+        
+        <!-- Сайт Портфолио -->
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #334155;">
-            <div><strong>Сайт Портфолио</strong><div style="color: #94a3b8; font-size: 14px;">25 000 ₽</div></div>
-            <button class="btn-add" onclick="addToCart({ id: 3, name: 'Сайт Портфолио', price: 25000 })">Купить</button>
+            <div>
+                <strong>Сайт Портфолио</strong>
+                <div style="color: #94a3b8; font-size: 14px;">
+                    <span style="text-decoration: line-through; text-decoration-color: #ef4444; color: #3b82f6; margin-right: 8px;">25 000 ₽</span>
+                    <span style="color: #3b82f6; font-weight: bold;">12 500 ₽</span>
+                </div>
+            </div>
+            <button class="btn-add" onclick="addToCart({ id: 3, name: 'Сайт Портфолио', price: 12500 })">Купить</button>
         </div>
+
+        <!-- Добавление блока Отзывы -->
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #334155;">
-            <div><strong>Добавление блока Отзывы</strong><div style="color: #94a3b8; font-size: 14px;">3 000 ₽</div></div>
-            <button class="btn-add" onclick="addToCart({ id: 18, name: 'Добавление блока Отзывы', price: 3000 })">Купить</button>
+            <div>
+                <strong>Добавление блока Отзывы</strong>
+                <div style="color: #94a3b8; font-size: 14px;">
+                    <span style="text-decoration: line-through; text-decoration-color: #ef4444; color: #3b82f6; margin-right: 8px;">3 000 ₽</span>
+                    <span style="color: #3b82f6; font-weight: bold;">1 500 ₽</span>
+                </div>
+            </div>
+            <button class="btn-add" onclick="addToCart({ id: 18, name: 'Добавление блока Отзывы', price: 1500 })">Купить</button>
         </div>
+
+        <!-- Страница Договор оферты -->
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #334155;">
-            <div><strong>Страница Договор оферты</strong><div style="color: #94a3b8; font-size: 14px;">3 000 ₽</div></div>
-            <button class="btn-add" onclick="addToCart({ id: 4, name: 'Страница Договор оферты', price: 3000 })">Купить</button>
+            <div>
+                <strong>Страница Договор оферты</strong>
+                <div style="color: #94a3b8; font-size: 14px;">
+                    <span style="text-decoration: line-through; text-decoration-color: #ef4444; color: #3b82f6; margin-right: 8px;">3 000 ₽</span>
+                    <span style="color: #3b82f6; font-weight: bold;">1 500 ₽</span>
+                </div>
+            </div>
+            <button class="btn-add" onclick="addToCart({ id: 4, name: 'Страница Договор оферты', price: 1500 })">Купить</button>
         </div>
+
+        <!-- Страница Политика Конфиденциальности -->
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #334155;">
-            <div><strong>Страница Политика Конфиденциальности</strong><div style="color: #94a3b8; font-size: 14px;">3 000 ₽</div></div>
-            <button class="btn-add" onclick="addToCart({ id: 5, name: 'Страница Политика Конфиденциальности', price: 3000 })">Купить</button>
+            <div>
+                <strong>Страница Политика Конфиденциальности</strong>
+                <div style="color: #94a3b8; font-size: 14px;">
+                    <span style="text-decoration: line-through; text-decoration-color: #ef4444; color: #3b82f6; margin-right: 8px;">3 000 ₽</span>
+                    <span style="color: #3b82f6; font-weight: bold;">1 500 ₽</span>
+                </div>
+            </div>
+            <button class="btn-add" onclick="addToCart({ id: 5, name: 'Страница Политика Конфиденциальности', price: 1500 })">Купить</button>
         </div>
+
+        <!-- Форма обратной связи -->
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #334155;">
-            <div><strong>Форма обратной связи</strong><div style="color: #94a3b8; font-size: 14px;">2 000 ₽</div></div>
-            <button class="btn-add" onclick="addToCart({ id: 8, name: 'Форма обратной связи', price: 2000 })">Купить</button>
+            <div>
+                <strong>Форма обратной связи</strong>
+                <div style="color: #94a3b8; font-size: 14px;">
+                    <span style="text-decoration: line-through; text-decoration-color: #ef4444; color: #3b82f6; margin-right: 8px;">2 000 ₽</span>
+                    <span style="color: #3b82f6; font-weight: bold;">1 000 ₽</span>
+                </div>
+            </div>
+            <button class="btn-add" onclick="addToCart({ id: 8, name: 'Форма обратной связи', price: 1000 })">Купить</button>
         </div>
+
+        <!-- Фавикон -->
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #334155;">
-            <div><strong>Установка иконки favicon</strong> <span style="color: #3b82f6; font-size: 11px; background: #0f172a; padding: 2px 8px; border-radius: 12px;">🎁 в подарок</span><div style="color: #94a3b8; font-size: 14px;">0 ₽</div></div>
+            <div>
+                <strong>Установка иконки favicon</strong>
+                <span style="color: #3b82f6; font-size: 11px; background: #0f172a; padding: 2px 8px; border-radius: 12px;">🎁 в подарок</span>
+                <div style="color: #94a3b8; font-size: 14px;">0 ₽</div>
+            </div>
             <button class="btn-add" onclick="addToCart({ id: 99, name: 'Установка иконки favicon (подарок)', price: 0 })">Купить</button>
         </div>
-        <div style="margin-top: 18px; text-align: center;"><button style="background: #334155; color: #fff; padding: 10px 30px; border: none; border-radius: 8px; cursor: pointer; font-size: 15px;" onclick="document.getElementById('portfolioModal').style.display='none'">Закрыть</button></div>
+
+        <div style="margin-top: 18px; text-align: center;">
+            <button style="background: #334155; color: #fff; padding: 10px 30px; border: none; border-radius: 8px; cursor: pointer; font-size: 15px;" onclick="document.getElementById('portfolioModal').style.display='none'">Закрыть</button>
+        </div>
     </div>
 </div>
 
+<!-- ======================================================== -->
+<!-- 4. ВИЗИТКА                                               -->
+<!-- ======================================================== -->
 <div class="modal" id="vizitkaModal">
     <div class="modal-content">
         <span class="modal-close" id="closeVizitkaModal">&times;</span>
         <h2>🏢 Выберите услугу для визитки</h2>
+        
+        <!-- Сайт Визитка -->
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #334155;">
-            <div><strong>Сайт Визитка</strong><div style="color: #94a3b8; font-size: 14px;">20 000 ₽</div></div>
-            <button class="btn-add" onclick="addToCart({ id: 6, name: 'Сайт Визитка', price: 20000 })">Купить</button>
+            <div>
+                <strong>Сайт Визитка</strong>
+                <div style="color: #94a3b8; font-size: 14px;">
+                    <span style="text-decoration: line-through; text-decoration-color: #ef4444; color: #3b82f6; margin-right: 8px;">20 000 ₽</span>
+                    <span style="color: #3b82f6; font-weight: bold;">10 000 ₽</span>
+                </div>
+            </div>
+            <button class="btn-add" onclick="addToCart({ id: 6, name: 'Сайт Визитка', price: 10000 })">Купить</button>
         </div>
+
+        <!-- Подключение приема платежей -->
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #334155;">
-            <div><strong>Подключение приема платежей</strong><div style="color: #94a3b8; font-size: 14px;">3 000 ₽</div></div>
-            <button class="btn-add" onclick="addToCart({ id: 20, name: 'Подключение приема платежей', price: 3000 })">Купить</button>
+            <div>
+                <strong>Подключение приема платежей</strong>
+                <div style="color: #94a3b8; font-size: 14px;">
+                    <span style="text-decoration: line-through; text-decoration-color: #ef4444; color: #3b82f6; margin-right: 8px;">3 000 ₽</span>
+                    <span style="color: #3b82f6; font-weight: bold;">1 500 ₽</span>
+                </div>
+            </div>
+            <button class="btn-add" onclick="addToCart({ id: 20, name: 'Подключение приема платежей', price: 1500 })">Купить</button>
         </div>
+
+        <!-- Добавление блока Отзывы -->
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #334155;">
-            <div><strong>Добавление блока Отзывы</strong><div style="color: #94a3b8; font-size: 14px;">3 000 ₽</div></div>
-            <button class="btn-add" onclick="addToCart({ id: 18, name: 'Добавление блока Отзывы', price: 3000 })">Купить</button>
+            <div>
+                <strong>Добавление блока Отзывы</strong>
+                <div style="color: #94a3b8; font-size: 14px;">
+                    <span style="text-decoration: line-through; text-decoration-color: #ef4444; color: #3b82f6; margin-right: 8px;">3 000 ₽</span>
+                    <span style="color: #3b82f6; font-weight: bold;">1 500 ₽</span>
+                </div>
+            </div>
+            <button class="btn-add" onclick="addToCart({ id: 18, name: 'Добавление блока Отзывы', price: 1500 })">Купить</button>
         </div>
+
+        <!-- Страница Политика конфиденциальности -->
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #334155;">
-            <div><strong>Страница Политика конфиденциальности</strong><div style="color: #94a3b8; font-size: 14px;">3 000 ₽</div></div>
-            <button class="btn-add" onclick="addToCart({ id: 7, name: 'Страница Политика конфиденциальности', price: 3000 })">Купить</button>
+            <div>
+                <strong>Страница Политика конфиденциальности</strong>
+                <div style="color: #94a3b8; font-size: 14px;">
+                    <span style="text-decoration: line-through; text-decoration-color: #ef4444; color: #3b82f6; margin-right: 8px;">3 000 ₽</span>
+                    <span style="color: #3b82f6; font-weight: bold;">1 500 ₽</span>
+                </div>
+            </div>
+            <button class="btn-add" onclick="addToCart({ id: 7, name: 'Страница Политика конфиденциальности', price: 1500 })">Купить</button>
         </div>
+
+        <!-- Форма обратной связи -->
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #334155;">
-            <div><strong>Форма обратной связи</strong><div style="color: #94a3b8; font-size: 14px;">2 000 ₽</div></div>
-            <button class="btn-add" onclick="addToCart({ id: 8, name: 'Форма обратной связи', price: 2000 })">Купить</button>
+            <div>
+                <strong>Форма обратной связи</strong>
+                <div style="color: #94a3b8; font-size: 14px;">
+                    <span style="text-decoration: line-through; text-decoration-color: #ef4444; color: #3b82f6; margin-right: 8px;">2 000 ₽</span>
+                    <span style="color: #3b82f6; font-weight: bold;">1 000 ₽</span>
+                </div>
+            </div>
+            <button class="btn-add" onclick="addToCart({ id: 8, name: 'Форма обратной связи', price: 1000 })">Купить</button>
         </div>
+
+        <!-- Фавикон -->
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #334155;">
-            <div><strong>Установка иконки favicon</strong> <span style="color: #3b82f6; font-size: 11px; background: #0f172a; padding: 2px 8px; border-radius: 12px;">🎁 в подарок</span><div style="color: #94a3b8; font-size: 14px;">0 ₽</div></div>
+            <div>
+                <strong>Установка иконки favicon</strong>
+                <span style="color: #3b82f6; font-size: 11px; background: #0f172a; padding: 2px 8px; border-radius: 12px;">🎁 в подарок</span>
+                <div style="color: #94a3b8; font-size: 14px;">0 ₽</div>
+            </div>
             <button class="btn-add" onclick="addToCart({ id: 99, name: 'Установка иконки favicon (подарок)', price: 0 })">Купить</button>
         </div>
-        <div style="margin-top: 18px; text-align: center;"><button style="background: #334155; color: #fff; padding: 10px 30px; border: none; border-radius: 8px; cursor: pointer; font-size: 15px;" onclick="document.getElementById('vizitkaModal').style.display='none'">Закрыть</button></div>
+
+        <div style="margin-top: 18px; text-align: center;">
+            <button style="background: #334155; color: #fff; padding: 10px 30px; border: none; border-radius: 8px; cursor: pointer; font-size: 15px;" onclick="document.getElementById('vizitkaModal').style.display='none'">Закрыть</button>
+        </div>
     </div>
 </div>
 
+<!-- ======================================================== -->
+<!-- 5. ИНФОРМАЦИОННЫЙ                                       -->
+<!-- ======================================================== -->
 <div class="modal" id="infoModal">
     <div class="modal-content">
         <span class="modal-close" id="closeInfoModal">&times;</span>
         <h2>📰 Выберите услугу для информационного сайта</h2>
+        
+        <!-- Информационный сайт -->
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #334155;">
-            <div><strong>Информационный сайт</strong><div style="color: #94a3b8; font-size: 14px;">15 000 ₽</div></div>
-            <button class="btn-add" onclick="addToCart({ id: 9, name: 'Информационный сайт', price: 15000 })">Купить</button>
+            <div>
+                <strong>Информационный сайт</strong>
+                <div style="color: #94a3b8; font-size: 14px;">
+                    <span style="text-decoration: line-through; text-decoration-color: #ef4444; color: #3b82f6; margin-right: 8px;">15 000 ₽</span>
+                    <span style="color: #3b82f6; font-weight: bold;">7 500 ₽</span>
+                </div>
+            </div>
+            <button class="btn-add" onclick="addToCart({ id: 9, name: 'Информационный сайт', price: 7500 })">Купить</button>
         </div>
+
+        <!-- Добавление блока Отзывы -->
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #334155;">
-            <div><strong>Добавление блока Отзывы</strong><div style="color: #94a3b8; font-size: 14px;">3 000 ₽</div></div>
-            <button class="btn-add" onclick="addToCart({ id: 18, name: 'Добавление блока Отзывы', price: 3000 })">Купить</button>
+            <div>
+                <strong>Добавление блока Отзывы</strong>
+                <div style="color: #94a3b8; font-size: 14px;">
+                    <span style="text-decoration: line-through; text-decoration-color: #ef4444; color: #3b82f6; margin-right: 8px;">3 000 ₽</span>
+                    <span style="color: #3b82f6; font-weight: bold;">1 500 ₽</span>
+                </div>
+            </div>
+            <button class="btn-add" onclick="addToCart({ id: 18, name: 'Добавление блока Отзывы', price: 1500 })">Купить</button>
         </div>
+
+        <!-- Страница Договор оферты -->
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #334155;">
-            <div><strong>Страница Договор оферты</strong><div style="color: #94a3b8; font-size: 14px;">3 000 ₽</div></div>
-            <button class="btn-add" onclick="addToCart({ id: 10, name: 'Страница Договор оферты (инфо)', price: 3000 })">Купить</button>
+            <div>
+                <strong>Страница Договор оферты</strong>
+                <div style="color: #94a3b8; font-size: 14px;">
+                    <span style="text-decoration: line-through; text-decoration-color: #ef4444; color: #3b82f6; margin-right: 8px;">3 000 ₽</span>
+                    <span style="color: #3b82f6; font-weight: bold;">1 500 ₽</span>
+                </div>
+            </div>
+            <button class="btn-add" onclick="addToCart({ id: 10, name: 'Страница Договор оферты (инфо)', price: 1500 })">Купить</button>
         </div>
+
+        <!-- Страница Политика Конфиденциальности -->
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #334155;">
-            <div><strong>Страница Политика Конфиденциальности</strong><div style="color: #94a3b8; font-size: 14px;">3 000 ₽</div></div>
-            <button class="btn-add" onclick="addToCart({ id: 11, name: 'Страница Политика Конфиденциальности (инфо)', price: 3000 })">Купить</button>
+            <div>
+                <strong>Страница Политика Конфиденциальности</strong>
+                <div style="color: #94a3b8; font-size: 14px;">
+                    <span style="text-decoration: line-through; text-decoration-color: #ef4444; color: #3b82f6; margin-right: 8px;">3 000 ₽</span>
+                    <span style="color: #3b82f6; font-weight: bold;">1 500 ₽</span>
+                </div>
+            </div>
+            <button class="btn-add" onclick="addToCart({ id: 11, name: 'Страница Политика Конфиденциальности (инфо)', price: 1500 })">Купить</button>
         </div>
+
+        <!-- Форма обратной связи -->
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #334155;">
-            <div><strong>Форма обратной связи</strong><div style="color: #94a3b8; font-size: 14px;">2 000 ₽</div></div>
-            <button class="btn-add" onclick="addToCart({ id: 12, name: 'Форма обратной связи (инфо)', price: 2000 })">Купить</button>
+            <div>
+                <strong>Форма обратной связи</strong>
+                <div style="color: #94a3b8; font-size: 14px;">
+                    <span style="text-decoration: line-through; text-decoration-color: #ef4444; color: #3b82f6; margin-right: 8px;">2 000 ₽</span>
+                    <span style="color: #3b82f6; font-weight: bold;">1 000 ₽</span>
+                </div>
+            </div>
+            <button class="btn-add" onclick="addToCart({ id: 12, name: 'Форма обратной связи (инфо)', price: 1000 })">Купить</button>
         </div>
+
+        <!-- Фавикон -->
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #334155;">
-            <div><strong>Установка иконки favicon</strong> <span style="color: #3b82f6; font-size: 11px; background: #0f172a; padding: 2px 8px; border-radius: 12px;">🎁 в подарок</span><div style="color: #94a3b8; font-size: 14px;">0 ₽</div></div>
+            <div>
+                <strong>Установка иконки favicon</strong>
+                <span style="color: #3b82f6; font-size: 11px; background: #0f172a; padding: 2px 8px; border-radius: 12px;">🎁 в подарок</span>
+                <div style="color: #94a3b8; font-size: 14px;">0 ₽</div>
+            </div>
             <button class="btn-add" onclick="addToCart({ id: 99, name: 'Установка иконки favicon (подарок)', price: 0 })">Купить</button>
         </div>
-        <div style="margin-top: 18px; text-align: center;"><button style="background: #334155; color: #fff; padding: 10px 30px; border: none; border-radius: 8px; cursor: pointer; font-size: 15px;" onclick="document.getElementById('infoModal').style.display='none'">Закрыть</button></div>
+
+        <div style="margin-top: 18px; text-align: center;">
+            <button style="background: #334155; color: #fff; padding: 10px 30px; border: none; border-radius: 8px; cursor: pointer; font-size: 15px;" onclick="document.getElementById('infoModal').style.display='none'">Закрыть</button>
+        </div>
     </div>
 </div>
 
+<!-- ======================================================== -->
+<!-- 6. УНИВЕРСАЛЬНЫЙ (ОБНОВЛЁН)                             -->
+<!-- ======================================================== -->
 <div class="modal" id="universalModal">
     <div class="modal-content">
         <span class="modal-close" id="closeUniversalModal">&times;</span>
         <h2>🌟 Выберите услугу для универсального сайта</h2>
+        
+        <!-- Универсальный сайт -->
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #334155;">
-            <div><strong>Универсальный сайт</strong><div style="color: #94a3b8; font-size: 14px;">60 000 ₽</div></div>
-            <button class="btn-add" onclick="addToCart({ id: 22, name: 'Универсальный сайт', price: 60000 })">Купить</button>
+            <div>
+                <strong>Универсальный сайт</strong>
+                <div style="color: #94a3b8; font-size: 14px;">
+                    <span style="text-decoration: line-through; text-decoration-color: #ef4444; color: #3b82f6; margin-right: 8px;">60 000 ₽</span>
+                    <span style="color: #3b82f6; font-weight: bold;">30 000 ₽</span>
+                </div>
+            </div>
+            <button class="btn-add" onclick="addToCart({ id: 22, name: 'Универсальный сайт', price: 30000 })">Купить</button>
         </div>
+
+        <!-- Добавление блока Отзывы -->
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #334155;">
-            <div><strong>Добавление блока Отзывы</strong><div style="color: #94a3b8; font-size: 14px;">3 000 ₽</div></div>
-            <button class="btn-add" onclick="addToCart({ id: 18, name: 'Добавление блока Отзывы', price: 3000 })">Купить</button>
+            <div>
+                <strong>Добавление блока Отзывы</strong>
+                <div style="color: #94a3b8; font-size: 14px;">
+                    <span style="text-decoration: line-through; text-decoration-color: #ef4444; color: #3b82f6; margin-right: 8px;">3 000 ₽</span>
+                    <span style="color: #3b82f6; font-weight: bold;">1 500 ₽</span>
+                </div>
+            </div>
+            <button class="btn-add" onclick="addToCart({ id: 18, name: 'Добавление блока Отзывы', price: 1500 })">Купить</button>
         </div>
+
+        <!-- Карта проезда -->
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #334155;">
-            <div><strong>Карта проезда</strong><div style="color: #94a3b8; font-size: 14px;">2 000 ₽</div></div>
-            <button class="btn-add" onclick="addToCart({ id: 21, name: 'Карта проезда', price: 2000 })">Купить</button>
+            <div>
+                <strong>Карта проезда</strong>
+                <div style="color: #94a3b8; font-size: 14px;">
+                    <span style="text-decoration: line-through; text-decoration-color: #ef4444; color: #3b82f6; margin-right: 8px;">2 000 ₽</span>
+                    <span style="color: #3b82f6; font-weight: bold;">1 000 ₽</span>
+                </div>
+            </div>
+            <button class="btn-add" onclick="addToCart({ id: 21, name: 'Карта проезда', price: 1000 })">Купить</button>
         </div>
+
+        <!-- Фавикон -->
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #334155;">
-            <div><strong>Установка иконки favicon</strong> <span style="color: #3b82f6; font-size: 11px; background: #0f172a; padding: 2px 8px; border-radius: 12px;">🎁 в подарок</span><div style="color: #94a3b8; font-size: 14px;">0 ₽</div></div>
+            <div>
+                <strong>Установка иконки favicon</strong>
+                <span style="color: #3b82f6; font-size: 11px; background: #0f172a; padding: 2px 8px; border-radius: 12px;">🎁 в подарок</span>
+                <div style="color: #94a3b8; font-size: 14px;">0 ₽</div>
+            </div>
             <button class="btn-add" onclick="addToCart({ id: 99, name: 'Установка иконки favicon (подарок)', price: 0 })">Купить</button>
         </div>
-        <div style="margin-top: 18px; text-align: center;"><button style="background: #334155; color: #fff; padding: 10px 30px; border: none; border-radius: 8px; cursor: pointer; font-size: 15px;" onclick="document.getElementById('universalModal').style.display='none'">Закрыть</button></div>
+
+        <div style="margin-top: 18px; text-align: center;">
+            <button style="background: #334155; color: #fff; padding: 10px 30px; border: none; border-radius: 8px; cursor: pointer; font-size: 15px;" onclick="document.getElementById('universalModal').style.display='none'">Закрыть</button>
+        </div>
     </div>
 </div>
+
 
 <!-- ===== КОРЗИНА ===== -->
 <div class="modal" id="cartModal">
@@ -2159,4 +2437,4 @@ updateCartUI();
 </script>
 
 </body>
-</html>
+</html>        
