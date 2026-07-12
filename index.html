@@ -1410,6 +1410,14 @@ footer {
                 <p>Комбинированное решение, которое объединяет визитку, портфолио и интернет-магазин в одном проекте. Подходит для бизнеса, которому нужен и имиджевый сайт, и каталог услуг, и возможность принимать оплату онлайн. Полноценный бизнес-проект для роста доходов компании.</p>
                 <button class="show-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">Показать</button>
             </div>
+
+            <!-- 7. Telegram-бот (НОВЫЙ) -->
+            <div class="type-card">
+                <div class="icon">🤖</div>
+                <h4>Telegram-бот</h4>
+                <p>Чат-бот с искусственным интеллектом. Он работает 24/7 как робот-консультант, который отвечает на вопросы, принимает заказы, интегрируется с календарём и автоматическими платежами. При этом расходы самого чат-бота составляют 2–7 $ в месяц, в зависимости от количества клиентов.</p>
+                <button class="show-btn" onclick="window.open('https://t.me/Test12398bs_bot', '_blank');">Показать</button>
+            </div>
             
         </div>
     </div>
@@ -1527,6 +1535,19 @@ footer {
                     <li>✓ Индивидуальный дизайн</li>
                 </ul>
                 <button class="price-btn" onclick="openUniversalModal()">Заказать</button>
+            </div>
+
+            <!-- 7. Telegram-бот (НОВЫЙ) -->
+            <div class="pricing-card">
+                <h3>Telegram-бот</h3>
+                <div class="price">от 15 000 ₽</div>
+                <ul class="price-list">
+                    <li>✓ ИИ-консультант</li>
+                    <li>✓ Приём заказов</li>
+                    <li>✓ Интеграция с календарём</li>
+                    <li>✓ Автоматическая оплата</li>
+                </ul>
+                <button class="price-btn" onclick="openBotModal()">Заказать</button>
             </div>
 
         </div>
@@ -2071,11 +2092,72 @@ footer {
             <button class="btn-add" onclick="addToCart({ id: 99, name: 'Установка иконки favicon (подарок)', price: 0 })">Купить</button>
         </div>
 
-
         <div style="margin-top: 18px; text-align: center;">
             <button style="background: #334155; color: #fff; padding: 10px 30px; border: none; border-radius: 8px; cursor: pointer; font-size: 15px;" onclick="document.getElementById('universalModal').style.display='none'">Закрыть</button>
         </div>
     </div>        
+</div>
+
+<!-- ======================================================== -->
+<!-- 7. TELEGRAM-БОТ (НОВЫЙ)                                 -->
+<!-- ======================================================== -->
+<div class="modal" id="botModal">
+    <div class="modal-content">
+        <span class="modal-close" id="closeBotModal">&times;</span>
+        <h2>🤖 Выберите услугу для Telegram-бота</h2>
+        
+        <!-- Бот-консультант с ИИ -->
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #334155;">
+            <div>
+                <strong>Бот-консультант с ИИ</strong>
+                <div style="color: #94a3b8; font-size: 14px;">
+                    <span style="text-decoration: line-through; text-decoration-color: #ef4444; color: #3b82f6; margin-right: 8px;">15 000 ₽</span>
+                    <span style="color: #3b82f6; font-weight: bold;">7 500 ₽</span>
+                </div>
+            </div>
+            <button class="btn-add" onclick="addToCart({ id: 23, name: 'Бот-консультант с ИИ', price: 7500 })">Купить</button>
+        </div>
+
+        <!-- Автоматическая оплата (ЮKassa) -->
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #334155;">
+            <div>
+                <strong>Автоматическая оплата (ЮKassa)</strong>
+                <div style="color: #94a3b8; font-size: 14px;">
+                    <span style="text-decoration: line-through; text-decoration-color: #ef4444; color: #3b82f6; margin-right: 8px;">5 000 ₽</span>
+                    <span style="color: #3b82f6; font-weight: bold;">2 500 ₽</span>
+                </div>
+            </div>
+            <button class="btn-add" onclick="addToCart({ id: 24, name: 'Автоматическая оплата (ЮKassa)', price: 2500 })">Купить</button>
+        </div>
+
+        <!-- Интеграция с календарём -->
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #334155;">
+            <div>
+                <strong>Интеграция с календарём</strong>
+                <div style="color: #94a3b8; font-size: 14px;">
+                    <span style="text-decoration: line-through; text-decoration-color: #ef4444; color: #3b82f6; margin-right: 8px;">5 000 ₽</span>
+                    <span style="color: #3b82f6; font-weight: bold;">2 500 ₽</span>
+                </div>
+            </div>
+            <button class="btn-add" onclick="addToCart({ id: 25, name: 'Интеграция с календарём', price: 2500 })">Купить</button>
+        </div>
+
+        <!-- Приём заказов (Google Таблица) -->
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #334155;">
+            <div>
+                <strong>Приём заказов (Google Таблица)</strong>
+                <div style="color: #94a3b8; font-size: 14px;">
+                    <span style="text-decoration: line-through; text-decoration-color: #ef4444; color: #3b82f6; margin-right: 8px;">3 000 ₽</span>
+                    <span style="color: #3b82f6; font-weight: bold;">1 500 ₽</span>
+                </div>
+            </div>
+            <button class="btn-add" onclick="addToCart({ id: 26, name: 'Приём заказов (Google Таблица)', price: 1500 })">Купить</button>
+        </div>
+
+        <div style="margin-top: 18px; text-align: center;">
+            <button style="background: #334155; color: #fff; padding: 10px 30px; border: none; border-radius: 8px; cursor: pointer; font-size: 15px;" onclick="document.getElementById('botModal').style.display='none'">Закрыть</button>
+        </div>
+    </div>
 </div>
 
 <!-- ===== КОРЗИНА ===== -->
@@ -2231,6 +2313,10 @@ const products = [
     { id: 20, name: 'Подключение приема платежей', price: 3000, icon: '💳' },
     { id: 21, name: 'Карта проезда', price: 2000, icon: '🗺️' },
     { id: 22, name: 'Универсальный сайт', price: 60000, icon: '🌟' },
+    { id: 23, name: 'Бот-консультант с ИИ', price: 7500, icon: '🤖' },
+    { id: 24, name: 'Автоматическая оплата (ЮKassa)', price: 2500, icon: '💳' },
+    { id: 25, name: 'Интеграция с календарём', price: 2500, icon: '📅' },
+    { id: 26, name: 'Приём заказов (Google Таблица)', price: 1500, icon: '📊' },
     { id: 99, name: 'Установка иконки favicon (подарок)', price: 0, icon: '🎁' },
 ];
 
@@ -2306,6 +2392,7 @@ function openPortfolioModal() { document.getElementById('portfolioModal').style.
 function openVizitkaModal() { document.getElementById('vizitkaModal').style.display = 'flex'; }
 function openInfoModal() { document.getElementById('infoModal').style.display = 'flex'; }
 function openUniversalModal() { document.getElementById('universalModal').style.display = 'flex'; }
+function openBotModal() { document.getElementById('botModal').style.display = 'flex'; }
 
 document.querySelectorAll('.modal-close').forEach(el => {
     el.addEventListener('click', function() {
@@ -2488,4 +2575,4 @@ updateCartUI();
 </script>
 
 </body>
-</html>        
+</html>
