@@ -2474,7 +2474,7 @@ window.addEventListener('click', function(e) {
 });
 
 // ============================================================
-//  ОПЛАТА ЧЕРЕЗ ЮKASSA + Google Таблица (с логами)
+//  ОПЛАТА ЧЕРЕЗ ЮKASSA + Google Таблица (исправленный порядок)
 // ============================================================
 const orderForm = document.getElementById('orderForm');
 const submitBtn = document.getElementById('submitOrderBtn');
@@ -2517,10 +2517,11 @@ if (orderForm) {
 
         document.getElementById('orderDetails').value = orderText;
 
+        // ---- БЛОКИРУЕМ КНОПКУ ----
         submitBtn.disabled = true;
         submitBtn.textContent = '⏳ Создание платежа...';
 
-        // ---- 1. Worker (ЮKassa) ----
+        // ---- 1. СНАЧАЛА СОЗДАЁМ ПЛАТЁЖ (ЮKassa) ----
         try {
             const workerUrl = 'https://yookassa.wisebor.workers.dev/';
             const items = cart.map(item => ({
@@ -2555,7 +2556,7 @@ if (orderForm) {
                 return;
             }
 
-            // ---- 2. Отправка в Google Таблицу (асинхронно) ----
+            // ---- 2. ПЛАТЁЖ СОЗДАН — ОТПРАВЛЯЕМ ДАННЫЕ В ТАБЛИЦУ (АСИНХРОННО) ----
             const formData = new FormData(orderForm);
             fetch('https://script.google.com/macros/s/AKfycbwYckP85XFO-4UYfzbPJuJE6205cwVAfDuZLULmSWAnzDyO_WQKZ1131VlxEsrc9AGu1Q/exec', {
                 method: 'POST',
@@ -2566,7 +2567,7 @@ if (orderForm) {
             .then(tableData => console.log('✅ Ответ от Google Таблицы:', tableData))
             .catch(err => console.warn('⚠️ Ошибка отправки в таблицу:', err));
 
-            // ---- 3. Очистка и редирект ----
+            // ---- 3. ОЧИЩАЕМ КОРЗИНУ И ПЕРЕНАПРАВЛЯЕМ ----
             localStorage.removeItem('cart');
             cart = [];
             document.getElementById('userName').value = '';
@@ -2577,7 +2578,8 @@ if (orderForm) {
             renderCartItems();
             document.getElementById('cartModal').style.display = 'none';
 
-        // window.location.href = data.paymentUrl;
+            // Перенаправляем на оплату
+            window.location.href = data.paymentUrl;
 
         } catch (error) {
             alert('Ошибка соединения с платёжным сервисом. Попробуйте позже.');
