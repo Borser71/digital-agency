@@ -2531,9 +2531,7 @@ if (orderForm) {
                     currency: 'RUB'
                 },
                 quantity: item.quantity,
-                vat_code: 6,
-                payment_mode: 'full_payment',
-                payment_subject: 'service'
+                vat_code: 6
             }));
 
             const responseWorker = await fetch(workerUrl, {
