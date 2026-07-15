@@ -2584,6 +2584,242 @@ document.addEventListener('contextmenu', function(e) {
 // ============================================================
 updateCartUI();
 </script>
+    
+ <!-- Виджет AI-агента Borisov Store (подключён к серверу) -->
+<div id="borisov-chat-widget">
+  <!-- КНОПКА-ИКОНКА (100x100) -->
+  <button id="borisov-chat-toggle" style="
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: #4A6B8A;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(74, 107, 138, 0.5);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s;
+    padding: 0;
+    overflow: hidden;
+  " onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'">
+    <img src="https://github.com/Borser71/ai-agent/blob/main/images/agent.png?raw=true" 
+         alt="Чат" 
+         style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+  </button>
+
+  <!-- ОКНО ЧАТА (высота 600px) -->
+  <div id="borisov-chat-window" style="
+    position: fixed;
+    bottom: 150px;
+    right: 20px;
+    width: 440px;
+    max-height: 600px;
+    background: #ffffff;
+    border-radius: 18px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 9998;
+    border: 1px solid #dce4ec;
+    font-family: 'Inter', -apple-system, sans-serif;
+  ">
+    <!-- ШАПКА -->
+    <div style="
+      background: #4A6B8A;
+      color: #fff;
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      font-size: 17px;
+    ">
+      <span style="display: flex; align-items: center; gap: 10px;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+          <circle cx="12" cy="11" r="5"/>
+          <line x1="12" y1="6" x2="12" y2="3"/>
+          <circle cx="12" cy="3" r="1.5" fill="white"/>
+        </svg>
+        Borisov Store
+      </span>
+      <button id="borisov-chat-close" style="
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 24px;
+        cursor: pointer;
+        line-height: 1;
+        opacity: 0.8;
+      ">✕</button>
+    </div>
+
+    <!-- ОБЛАСТЬ СООБЩЕНИЙ -->
+    <div id="borisov-chat-messages" style="
+      padding: 18px 20px;
+      overflow-y: auto;
+      flex: 1;
+      background: #f5f8fa;
+      min-height: 260px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    ">
+      <div style="
+        background: #ffffff;
+        border-radius: 14px;
+        padding: 12px 16px;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+        border-left: 3px solid #4A6B8A;
+        align-self: flex-start;
+        max-width: 85%;
+        font-size: 15px;
+        line-height: 1.6;
+      ">
+        Здравствуйте! 👋<br>Вам нужен сайт или Telegram-бот?
+      </div>
+    </div>
+
+    <!-- ПОЛЕ ВВОДА -->
+    <div style="
+      border-top: 1px solid #dce4ec;
+      display: flex;
+      padding: 12px 16px;
+      background: #fff;
+      gap: 10px;
+      align-items: center;
+    ">
+      <input id="borisov-chat-input" type="text" placeholder="Напишите сообщение..." style="
+        flex: 1;
+        border: 1px solid #ccd6e0;
+        border-radius: 24px;
+        padding: 10px 18px;
+        font-size: 15px;
+        outline: none;
+        font-family: inherit;
+        transition: border 0.2s;
+      " onfocus="this.style.borderColor='#4A6B8A'" onblur="this.style.borderColor='#ccd6e0'">
+      <button id="borisov-chat-send" style="
+        background: #4A6B8A;
+        color: #fff;
+        border: none;
+        border-radius: 24px;
+        padding: 10px 22px;
+        cursor: pointer;
+        font-weight: 500;
+        font-size: 15px;
+        transition: background 0.2s;
+        font-family: inherit;
+      " onmouseover="this.style.background='#3a5a7a'" onmouseout="this.style.background='#4A6B8A'">
+        Отправить
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    const toggle = document.getElementById('borisov-chat-toggle');
+    const chatWindow = document.getElementById('borisov-chat-window');
+    const closeBtn = document.getElementById('borisov-chat-close');
+    const input = document.getElementById('borisov-chat-input');
+    const sendBtn = document.getElementById('borisov-chat-send');
+    const messagesDiv = document.getElementById('borisov-chat-messages');
+
+    toggle.addEventListener('click', () => {
+      const isOpen = chatWindow.style.display === 'flex';
+      chatWindow.style.display = isOpen ? 'none' : 'flex';
+      if (!isOpen) input.focus();
+    });
+
+    closeBtn.addEventListener('click', () => {
+      chatWindow.style.display = 'none';
+    });
+
+    // Функция отправки сообщения (реальный запрос к серверу)
+    function sendMessage() {
+      const text = input.value.trim();
+      if (!text) return;
+
+      // Добавляем сообщение пользователя в чат
+      const userMsg = document.createElement('div');
+      userMsg.style.cssText = `
+        background: #e1e8f0;
+        border-radius: 14px;
+        padding: 12px 16px;
+        align-self: flex-end;
+        max-width: 85%;
+        font-size: 15px;
+        line-height: 1.6;
+        word-wrap: break-word;
+      `;
+      userMsg.textContent = text;
+      messagesDiv.appendChild(userMsg);
+      messagesDiv.scrollTop = messagesDiv.scrollHeight;
+      input.value = '';
+      input.focus();
+
+      // Отправляем запрос на сервер
+      fetch('http://111.88.227.9:8000/ask', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          user_id: 'user_' + Math.random().toString(36).substring(7), // уникальный ID для сессии
+          text: text
+        })
+      })
+      .then(response => {
+        if (!response.ok) throw new Error('Ошибка сервера');
+        return response.json();
+      })
+      .then(data => {
+        const botMsg = document.createElement('div');
+        botMsg.style.cssText = `
+          background: #ffffff;
+          border-radius: 14px;
+          padding: 12px 16px;
+          border-left: 3px solid #4A6B8A;
+          align-self: flex-start;
+          max-width: 85%;
+          font-size: 15px;
+          line-height: 1.6;
+          box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+        `;
+        botMsg.textContent = data.reply || 'Извините, не удалось получить ответ.';
+        messagesDiv.appendChild(botMsg);
+        messagesDiv.scrollTop = messagesDiv.scrollHeight;
+      })
+      .catch(error => {
+        console.error('Ошибка:', error);
+        const errorMsg = document.createElement('div');
+        errorMsg.style.cssText = `
+          background: #ffffff;
+          border-radius: 14px;
+          padding: 12px 16px;
+          border-left: 3px solid #ff6b6b;
+          align-self: flex-start;
+          max-width: 85%;
+          font-size: 15px;
+          line-height: 1.6;
+          color: #c0392b;
+        `;
+        errorMsg.textContent = '⚠️ Сервер временно недоступен. Попробуйте позже или свяжитесь с нами через контакты на сайте.';
+        messagesDiv.appendChild(errorMsg);
+        messagesDiv.scrollTop = messagesDiv.scrollHeight;
+      });
+    }
+
+    sendBtn.addEventListener('click', sendMessage);
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') sendMessage();
+    });
+  })();
+</script>   
 
 </body>
 </html>
