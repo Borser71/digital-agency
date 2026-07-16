@@ -2584,6 +2584,7 @@ document.addEventListener('contextmenu', function(e) {
 // ============================================================
 updateCartUI();
 </script>
+ 
  <!-- Виджет AI-агента Borisov Store -->
 <div id="borisov-chat-widget">
   <!-- КНОПКА-ИКОНКА -->
@@ -2662,6 +2663,16 @@ updateCartUI();
     const sendBtn = document.getElementById('borisov-chat-send');
     const messagesDiv = document.getElementById('borisov-chat-messages');
 
+    // Функция для получения постоянного user_id
+    function getUserId() {
+      let userId = localStorage.getItem('borisov_user_id');
+      if (!userId) {
+        userId = 'user_' + Math.random().toString(36).substring(7);
+        localStorage.setItem('borisov_user_id', userId);
+      }
+      return userId;
+    }
+
     toggle.addEventListener('click', () => {
       const isOpen = chatWindow.style.display === 'flex';
       chatWindow.style.display = isOpen ? 'none' : 'flex';
@@ -2687,11 +2698,14 @@ updateCartUI();
 
       console.log('📤 Отправка сообщения:', text);
 
+      const userId = getUserId();
+      console.log('🆔 user_id:', userId);
+
       fetch('https://ai-agent-bnei.onrender.com/ask', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          user_id: 'user_' + Math.random().toString(36).substring(7),
+          user_id: userId,
           text: text
         })
       })
@@ -2723,8 +2737,7 @@ updateCartUI();
       if (e.key === 'Enter') sendMessage();
     });
   })();
-</script>   
- 
+</script>
 
 </body>
 </html>
