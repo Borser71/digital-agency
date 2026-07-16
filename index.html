@@ -2584,8 +2584,7 @@ document.addEventListener('contextmenu', function(e) {
 // ============================================================
 updateCartUI();
 </script>
- 
- <!-- Виджет AI-агента Borisov Store -->
+ <!-- Виджет AI-агента Borisov Store (исправленный) -->
 <div id="borisov-chat-widget">
   <!-- КНОПКА-ИКОНКА -->
   <button id="borisov-chat-toggle" style="
@@ -2663,15 +2662,8 @@ updateCartUI();
     const sendBtn = document.getElementById('borisov-chat-send');
     const messagesDiv = document.getElementById('borisov-chat-messages');
 
-    // Функция для получения постоянного user_id
-    function getUserId() {
-      let userId = localStorage.getItem('borisov_user_id');
-      if (!userId) {
-        userId = 'user_' + Math.random().toString(36).substring(7);
-        localStorage.setItem('borisov_user_id', userId);
-      }
-      return userId;
-    }
+    // Генерируем постоянный user_id один раз (хранится в замыкании)
+    const userId = 'user_' + Math.random().toString(36).substring(7);
 
     toggle.addEventListener('click', () => {
       const isOpen = chatWindow.style.display === 'flex';
@@ -2687,7 +2679,7 @@ updateCartUI();
       const text = input.value.trim();
       if (!text) return;
 
-      // Показываем сообщение пользователя
+      // Сообщение пользователя
       const userMsg = document.createElement('div');
       userMsg.style.cssText = 'background: #e1e8f0; border-radius: 14px; padding: 12px 16px; align-self: flex-end; max-width: 85%; font-size: 15px; line-height: 1.6; word-wrap: break-word; color: #1a1a1a;';
       userMsg.textContent = text;
@@ -2698,14 +2690,11 @@ updateCartUI();
 
       console.log('📤 Отправка сообщения:', text);
 
-      const userId = getUserId();
-      console.log('🆔 user_id:', userId);
-
       fetch('https://ai-agent-bnei.onrender.com/ask', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          user_id: userId,
+          user_id: userId,  // <--- постоянный ID
           text: text
         })
       })
@@ -2718,7 +2707,8 @@ updateCartUI();
         console.log('✅ Ответ от сервера:', data);
         const botMsg = document.createElement('div');
         botMsg.style.cssText = 'background: #ffffff; border-radius: 14px; padding: 12px 16px; border-left: 3px solid #4A6B8A; align-self: flex-start; max-width: 85%; font-size: 15px; line-height: 1.6; box-shadow: 0 1px 4px rgba(0,0,0,0.04); color: #1a1a1a;';
-        botMsg.textContent = data.reply || 'Ответ не получен';
+        // Используем innerHTML, чтобы ссылки были активными
+        botMsg.innerHTML = data.reply || 'Ответ не получен';
         messagesDiv.appendChild(botMsg);
         messagesDiv.scrollTop = messagesDiv.scrollHeight;
       })
@@ -2738,6 +2728,6 @@ updateCartUI();
     });
   })();
 </script>
-
+ 
 </body>
 </html>
