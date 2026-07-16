@@ -2703,6 +2703,7 @@ updateCartUI();
       })
       .then(data => {
         console.log('✅ Ответ от сервера:', data);
+        alert('Ответ: ' + data.reply);  
         const botMsg = document.createElement('div');
         botMsg.style.cssText = 'background: #ffffff; border-radius: 14px; padding: 12px 16px; border-left: 3px solid #4A6B8A; align-self: flex-start; max-width: 85%; font-size: 15px; line-height: 1.6; box-shadow: 0 1px 4px rgba(0,0,0,0.04);';
         botMsg.textContent = data.reply || 'Ответ не получен';
