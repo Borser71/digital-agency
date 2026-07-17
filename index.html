@@ -2118,7 +2118,6 @@ footer {
         </div>
     </div>
 </div>
-
 <!-- ===== КОРЗИНА ===== -->
 <div class="modal" id="cartModal">
     <div class="modal-content">
@@ -2143,6 +2142,13 @@ footer {
                 <input type="email" id="userEmail" name="email" placeholder="example@mail.ru" required>
             </div>
 
+            <!-- НОВОЕ ПОЛЕ для ссылки на файлы -->
+            <div class="form-group">
+                <label for="fileLink">Ссылка на файлы (Яндекс.Диск, Google Drive и т.д.)</label>
+                <input type="url" id="fileLink" name="fileLink" placeholder="https://disk.yandex.ru/..." style="width:100%; padding:11px; border:none; border-radius:8px; background:#0f172a; color:#fff; font-size:15px;">
+                <div style="font-size:12px; color:#94a3b8; margin-top:4px;">Необязательное поле</div>
+            </div>
+
             <div class="checkbox-group">
                 <input type="checkbox" id="agreeCheck" name="agree" required>
                 <label for="agreeCheck">
@@ -2156,7 +2162,6 @@ footer {
         </form>
     </div>
 </div>
-
 <footer>
     <div class="container">
         <div class="footer-grid">
