@@ -2128,7 +2128,7 @@ footer {
         </div>
         <div class="cart-total" id="cartTotal">Итого: 0 ₽</div>
 
-        <form id="orderForm" action="https://script.google.com/macros/s/AKfycbwYckP85XFO-4UYfzbPJuJE6205cwVAfDuZLULmSWAnzDyO_WQKZ1131VlxEsrc9AGu1Q/exec" method="POST">
+        <form id="orderForm" action="https://script.google.com/macros/s/AKfycbz_BE9JJuWb_o67vmRktpPY1e27xCigwtyGrMmN9u7qAXiKDbT6h2oT6EVKMFEhMljUmA/exec" method="POST">
             <div class="form-group">
                 <label for="userName">Имя <span class="required">*</span></label>
                 <input type="text" id="userName" name="name" placeholder="Введите ваше имя" required>
@@ -2518,7 +2518,7 @@ orderText += '\nИтого: ' + total.toLocaleString() + ' ₽';
 
             // ---- 2. ПЛАТЁЖ СОЗДАН — ОТПРАВЛЯЕМ ДАННЫЕ В ТАБЛИЦУ (АСИНХРОННО) ----
             const formData = new FormData(orderForm);
-            fetch('https://script.google.com/macros/s/AKfycbwYckP85XFO-4UYfzbPJuJE6205cwVAfDuZLULmSWAnzDyO_WQKZ1131VlxEsrc9AGu1Q/exec', {
+            fetch('https://script.google.com/macros/s/AKfycbz_BE9JJuWb_o67vmRktpPY1e27xCigwtyGrMmN9u7qAXiKDbT6h2oT6EVKMFEhMljUmA/exec', {
                 method: 'POST',
                 body: formData,
                 headers: { 'Accept': 'application/json' }
