@@ -2469,15 +2469,11 @@ if (orderForm) {
 
         const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
-        let orderText = 'НОВЫЙ ЗАКАЗ!\n\n';
-        orderText += 'Клиент: ' + name + '\n';
-        orderText += 'Телефон: ' + phone + '\n';
-        orderText += 'Email: ' + email + '\n\n';
-        orderText += 'Состав заказа:\n';
-        cart.forEach(item => {
-            orderText += '• ' + item.name + ' × ' + item.quantity + ' = ' + (item.price * item.quantity).toLocaleString() + ' ₽\n';
-        });
-        orderText += '\nИтого: ' + total.toLocaleString() + ' ₽';
+      let orderText = 'Состав заказа:\n';
+cart.forEach(item => {
+    orderText += '• ' + item.name + ' × ' + item.quantity + ' = ' + (item.price * item.quantity).toLocaleString() + ' ₽\n';
+});
+orderText += '\nИтого: ' + total.toLocaleString() + ' ₽';
 
         document.getElementById('orderDetails').value = orderText;
 
