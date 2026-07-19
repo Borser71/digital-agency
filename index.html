@@ -1369,7 +1369,7 @@ footer {
                 <span></span>
             </button>
 
-            <!-- Центральная часть: Меню -->
+            <!-- Центральная часть: Меню (добавлен пункт "Опции") -->
             <div class="nav-menu" id="navMenu">
                 <a href="#hero">Главная</a>
                 <a href="#services">Услуги</a>
@@ -2350,12 +2350,17 @@ footer {
 
 <script>
 // ============================================================
-//  ПЛАВНАЯ ПРОКРУТКА
+//  ПЛАВНАЯ ПРОКРУТКА (исправленная – внешние ссылки не перехватываются)
 // ============================================================
 document.querySelectorAll('.nav-menu a').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        // Если ссылка внешняя (не начинается с #) — ничего не делаем, браузер перейдёт по ней сам
+        if (!href.startsWith('#')) {
+            return;
+        }
         e.preventDefault();
-        const targetId = this.getAttribute('href');
+        const targetId = href;
         const targetElement = document.querySelector(targetId);
         if (targetElement) {
             const headerHeight = document.querySelector('header').offsetHeight;
@@ -2374,28 +2379,18 @@ document.querySelectorAll('.nav-menu a').forEach(anchor => {
 
 // ============================================================
 //  ВЫРАВНИВАНИЕ ВЫСОТЫ КАРТОЧЕК В GRID-БЛОКАХ
-//  (нужно, т.к. при неполном последнем ряду grid'а, либо при
-//  разной длине текста в разных рядах, CSS align-items:stretch
-//  выравнивает карточки только внутри одного ряда, а не по
-//  всему блоку)
 // ============================================================
 function equalizeCardsHeight(containerSelector, cardSelector) {
     const containers = document.querySelectorAll(containerSelector);
     containers.forEach(container => {
         const cards = container.querySelectorAll(cardSelector);
         if (!cards.length) return;
-
-        // сбрасываем высоту, чтобы заново измерить естественную высоту каждой карточки
         cards.forEach(card => { card.style.height = 'auto'; });
-
-        // находим максимальную высоту среди всех карточек на текущей ширине экрана
         let maxHeight = 0;
         cards.forEach(card => {
             const h = card.offsetHeight;
             if (h > maxHeight) maxHeight = h;
         });
-
-        // применяем максимальную высоту ко всем карточкам
         cards.forEach(card => { card.style.height = maxHeight + 'px'; });
     });
 }
@@ -2405,7 +2400,6 @@ function equalizeAllCardGroups() {
     equalizeCardsHeight('.about-grid', '.about-card');
 }
 
-// debounce, чтобы не пересчитывать высоту на каждый пиксель ресайза
 let cardsResizeTimer;
 function scheduleEqualizeAllCardGroups() {
     clearTimeout(cardsResizeTimer);
@@ -2416,7 +2410,6 @@ window.addEventListener('load', equalizeAllCardGroups);
 window.addEventListener('resize', scheduleEqualizeAllCardGroups);
 window.addEventListener('orientationchange', scheduleEqualizeAllCardGroups);
 
-// на случай если шрифты подгружаются позже и меняют высоту текста
 if (document.fonts && document.fonts.ready) {
     document.fonts.ready.then(equalizeAllCardGroups);
 }
