@@ -23,7 +23,7 @@
     <!-- /Yandex.Metrika counter -->
 
     <style>
-        /* ===== БАЗОВЫЕ СТИЛИ (как на главной) ===== */
+        /* ===== БАЗОВЫЕ СТИЛИ ===== */
         * {
             margin: 0;
             padding: 0;
@@ -260,7 +260,7 @@
             margin-top: 20px;
         }
 
-        /* ===== МОДАЛЬНОЕ ОКНО КОРЗИНЫ (как на главной) ===== */
+        /* ===== МОДАЛЬНОЕ ОКНО КОРЗИНЫ (без формы) ===== */
         .modal {
             display: none;
             position: fixed;
@@ -342,79 +342,6 @@
             font-weight: bold;
             margin: 15px 0;
             text-align: right;
-        }
-
-        .form-group {
-            margin-bottom: 14px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 4px;
-            color: #cbd5e1;
-            font-size: 14px;
-        }
-
-        .form-group label .required {
-            color: #ef4444;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 11px;
-            border: none;
-            border-radius: 8px;
-            background: #0f172a;
-            color: #fff;
-            font-size: 15px;
-        }
-
-        .form-group input:focus {
-            outline: 2px solid #3b82f6;
-        }
-
-        .checkbox-group {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            margin: 12px 0 18px 0;
-            font-size: 13px;
-            color: #cbd5e1;
-            text-align: left;
-        }
-
-        .checkbox-group input[type="checkbox"] {
-            width: 17px;
-            height: 17px;
-            min-width: 17px;
-            margin-top: 2px;
-            accent-color: #3b82f6;
-            cursor: pointer;
-        }
-
-        .checkbox-group a {
-            color: #3b82f6;
-            text-decoration: none;
-        }
-
-        .checkbox-group a:hover {
-            text-decoration: underline;
-        }
-
-        .btn-submit {
-            width: 100%;
-            padding: 13px;
-            background: #3b82f6;
-            color: #fff;
-            border: none;
-            border-radius: 8px;
-            font-size: 17px;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-
-        .btn-submit:hover {
-            background: #2563eb;
         }
 
         /* ===== ФУТЕР ===== */
@@ -731,7 +658,7 @@
     </div>
 </section>
 
-<!-- ===== МОДАЛЬНОЕ ОКНО КОРЗИНЫ ===== -->
+<!-- ===== МОДАЛЬНОЕ ОКНО КОРЗИНЫ (ТОЛЬКО СПИСОК + ИТОГ) ===== -->
 <div class="modal" id="cartModal">
     <div class="modal-content">
         <span class="modal-close" id="closeModal">&times;</span>
@@ -740,32 +667,6 @@
             <p style="color: #94a3b8;">Корзина пуста</p>
         </div>
         <div class="cart-total" id="cartTotal">Итого: 0 ₽</div>
-
-        <form id="orderForm" action="https://script.google.com/macros/s/AKfycbz_BE9JJuWb_o67vmRktpPY1e27xCigwtyGrMmN9u7qAXiKDbT6h2oT6EVKMFEhMljUmA/exec" method="POST">
-            <div class="form-group">
-                <label for="userName">Имя <span class="required">*</span></label>
-                <input type="text" id="userName" name="name" placeholder="Введите ваше имя" required>
-            </div>
-            <div class="form-group">
-                <label for="userPhone">Телефон <span class="required">*</span></label>
-                <input type="tel" id="userPhone" name="phone" placeholder="+7 (___) ___-__-__" required>
-            </div>
-            <div class="form-group">
-                <label for="userEmail">Email <span class="required">*</span></label>
-                <input type="email" id="userEmail" name="email" placeholder="example@mail.ru" required>
-            </div>
-
-            <div class="checkbox-group">
-                <input type="checkbox" id="agreeCheck" name="agree" required>
-                <label for="agreeCheck">
-                    Я согласен на <a href="https://borisov.store/policy/" target="_blank">обработку персональных данных</a>
-                </label>
-            </div>
-
-            <input type="hidden" id="orderDetails" name="order" value="">
-
-            <button type="submit" class="btn-submit" id="submitOrderBtn">Оформить заказ</button>
-        </form>
     </div>
 </div>
 
@@ -817,7 +718,7 @@
     </div>
 </footer>
 
-<!-- ===== СКРИПТЫ (копия с главной) ===== -->
+<!-- ===== СКРИПТЫ ===== -->
 <script>
 // ============================================================
 //  ГАМБУРГЕР-МЕНЮ
@@ -828,7 +729,7 @@ document.getElementById('menuToggle').addEventListener('click', function() {
 });
 
 // ============================================================
-//  ТОВАРЫ (полный массив с главной)
+//  ТОВАРЫ (полный массив с главной – для корзины)
 // ============================================================
 const products = [
     { id: 1, name: 'Интернет-магазин (6 товаров)', price: 30000, icon: '🛍️' },
@@ -873,8 +774,6 @@ function addToCart(product) {
     }
     saveCart();
     updateCartUI();
-    // Показываем уведомление (опционально)
-    // alert('Товар добавлен в корзину!');
 }
 
 function removeFromCart(id) {
@@ -943,123 +842,15 @@ window.addEventListener('click', function(e) {
 });
 
 // ============================================================
-//  ОПЛАТА ЧЕРЕЗ ЮKASSA + Google Таблица (как на главной)
-// ============================================================
-const orderForm = document.getElementById('orderForm');
-const submitBtn = document.getElementById('submitOrderBtn');
-
-if (orderForm) {
-    orderForm.addEventListener('submit', async function(e) {
-        e.preventDefault();
-
-        const name = document.getElementById('userName').value.trim();
-        const phone = document.getElementById('userPhone').value.trim();
-        const email = document.getElementById('userEmail').value.trim();
-        const agree = document.getElementById('agreeCheck').checked;
-
-        if (!name || !phone || !email) {
-            alert('Пожалуйста, заполните все обязательные поля (отмечены *).');
-            return;
-        }
-
-        if (!agree) {
-            alert('Для оформления заказа необходимо согласие на обработку персональных данных.');
-            return;
-        }
-
-        if (cart.length === 0) {
-            alert('Корзина пуста. Добавьте товары перед оформлением заказа.');
-            return;
-        }
-
-        const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-
-        let orderText = 'Состав заказа:\n';
-        cart.forEach(item => {
-            orderText += '• ' + item.name + ' × ' + item.quantity + ' = ' + (item.price * item.quantity).toLocaleString() + ' ₽\n';
-        });
-        orderText += '\nИтого: ' + total.toLocaleString() + ' ₽';
-
-        document.getElementById('orderDetails').value = orderText;
-
-        submitBtn.disabled = true;
-        submitBtn.textContent = '⏳ Создание платежа...';
-
-        try {
-            const workerUrl = 'https://yookassa.wisebor.workers.dev/';
-            const items = cart.map(item => ({
-                description: item.name,
-                amount: {
-                    value: (item.price * item.quantity).toFixed(2),
-                    currency: 'RUB'
-                },
-                quantity: item.quantity,
-                vat_code: 6
-            }));
-
-            const responseWorker = await fetch(workerUrl, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    amount: total,
-                    description: 'Заказ с сайта borisov.store',
-                    returnUrl: 'https://borisov.store/',
-                    email: email,
-                    items: items
-                })
-            });
-
-            const data = await responseWorker.json();
-            console.log('✅ Ответ от Worker (ЮKassa):', data);
-
-            if (!data.success || !data.paymentUrl) {
-                alert('Ошибка при создании платежа: ' + (data.error || 'Неизвестная ошибка'));
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Оформить заказ';
-                return;
-            }
-
-            // Отправка в Google Таблицу (асинхронно)
-            const formData = new FormData(orderForm);
-            fetch('https://script.google.com/macros/s/AKfycbz_BE9JJuWb_o67vmRktpPY1e27xCigwtyGrMmN9u7qAXiKDbT6h2oT6EVKMFEhMljUmA/exec', {
-                method: 'POST',
-                body: formData,
-                headers: { 'Accept': 'application/json' }
-            })
-            .then(response => response.json())
-            .then(tableData => console.log('✅ Ответ от Google Таблицы:', tableData))
-            .catch(err => console.warn('⚠️ Ошибка отправки в таблицу:', err));
-
-            localStorage.removeItem('cart');
-            cart = [];
-            document.getElementById('userName').value = '';
-            document.getElementById('userPhone').value = '';
-            document.getElementById('userEmail').value = '';
-            document.getElementById('agreeCheck').checked = false;
-            updateCartUI();
-            renderCartItems();
-            document.getElementById('cartModal').style.display = 'none';
-
-            window.location.href = data.paymentUrl;
-
-        } catch (error) {
-            alert('Ошибка соединения с платёжным сервисом. Попробуйте позже.');
-            console.error('❌ Ошибка Worker:', error);
-            submitBtn.disabled = false;
-            submitBtn.textContent = 'Оформить заказ';
-        }
-    });
-}
-
-// ============================================================
-//  ГЕНЕРАЦИЯ СПИСКА УСЛУГ
+//  ГЕНЕРАЦИЯ СПИСКА УСЛУГ (без бота и агента)
 // ============================================================
 (function renderServices() {
     const container = document.getElementById('servicesList');
     if (!container) return;
 
-    // Определяем список услуг в нужном порядке (от низкой к высокой цене 50%)
-    // Цена 50% берётся из массива products (price). Сортируем по price.
+    // Список услуг (id, имя, полная цена, цена 50%)
+    // Отсортировано по цене 50% (от низкой к высокой)
+    // Убраны id 23 (бот) и 27 (агент)
     const servicesData = [
         { id: 99, name: 'Установка иконки favicon', fullPrice: 0, price50: 0 },
         { id: 8, name: 'Форма обратной связи', fullPrice: 2000, price50: 1000 },
@@ -1068,16 +859,14 @@ if (orderForm) {
         { id: 4, name: 'Страница Договор оферты', fullPrice: 3000, price50: 1500 },
         { id: 5, name: 'Страница Политика конфиденциальности', fullPrice: 3000, price50: 1500 },
         { id: 20, name: 'Подключение приема платежей', fullPrice: 3000, price50: 1500 },
-        { id: 2, name: 'Еще 6 товаров', fullPrice: 3000, price50: 1500 }, // для интернет-магазина
-        { id: 14, name: 'Еще 2 товара', fullPrice: 5000, price50: 2500 },
+        { id: 2, name: 'Еще 6 товаров (для интернет-магазина)', fullPrice: 3000, price50: 1500 },
+        { id: 14, name: 'Еще 2 товара (для лендинга)', fullPrice: 5000, price50: 2500 },
         { id: 24, name: 'Автоматическая оплата (ЮKassa)', fullPrice: 5000, price50: 2500 },
         { id: 25, name: 'Интеграция с календарём', fullPrice: 5000, price50: 2500 },
         { id: 26, name: 'Приём заказов (Google Таблица)', fullPrice: 5000, price50: 2500 },
-        { id: 23, name: 'Бот-консультант с ИИ', fullPrice: 15000, price50: 7500 },
-        { id: 27, name: 'AI-агент с ИИ', fullPrice: 25000, price50: 12500 },
     ];
 
-    // Сортируем по price50 (от меньшей к большей)
+    // Сортируем по цене 50% (от меньшей к большей)
     servicesData.sort((a, b) => a.price50 - b.price50);
 
     let html = '';
