@@ -295,6 +295,28 @@
             background: #2563eb;
         }
 
+        /* Блок "Индивидуальные услуги" */
+        .custom-services-note {
+            text-align: center;
+            padding: 25px 20px;
+            margin: 20px 0 30px;
+            background: #1f2937;
+            border-radius: 16px;
+            border-left: 4px solid #3b82f6;
+            color: #cbd5e1;
+            font-size: 1.05rem;
+        }
+
+        .custom-services-note a {
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .custom-services-note a:hover {
+            text-decoration: underline;
+        }
+
         .free-note {
             text-align: center;
             padding: 30px 0 20px;
@@ -722,6 +744,12 @@
         <!-- Услуги будут вставлены через JavaScript -->
     </div>
 
+    <!-- ===== БЛОК С ИНДИВИДУАЛЬНЫМИ УСЛУГАМИ ===== -->
+    <div class="custom-services-note">
+        Если вам нужна услуга, которой нет на сайте, мы можем её разработать. Стоимость — <strong>от 2 000 ₽</strong>.<br>
+        Согласовать можно через раздел <a href="https://borisov.store/#contacts">«Контакты»</a> на сайте.
+    </div>
+
     <div class="free-note">
         Логотипы, контакты и готовые ссылки на оплату — устанавливаем бесплатно.
     </div>
@@ -824,7 +852,7 @@ const products = [
     { id: 23, name: 'Бот-консультант с ИИ', price: 15000, icon: '🤖' },
     { id: 24, name: 'Автоматическая оплата (ЮKassa)', price: 5000, icon: '💳' },
     { id: 25, name: 'Интеграция с календарём', price: 5000, icon: '📅' },
-    { id: 26, name: 'Приём заказов (Google Таблица)', price: 5000, icon: '📊' },
+    { id: 26, name: 'Приём заказов (Google Таблица), без лимитов', price: 5000, icon: '📊' },
     { id: 27, name: 'AI-агент с ИИ', price: 25000, icon: '⚡' },
     { id: 99, name: 'Установка иконки favicon (подарок)', price: 0, icon: '🎁' },
 ];
@@ -930,7 +958,7 @@ window.addEventListener('click', function(e) {
         { id: 14, name: 'Еще 2 товара (для лендинга)', fullPrice: 5000, price50: 2500 },
         { id: 24, name: 'Автоматическая оплата (ЮKassa)', fullPrice: 5000, price50: 2500 },
         { id: 25, name: 'Интеграция с календарём', fullPrice: 5000, price50: 2500 },
-        { id: 26, name: 'Приём заказов (Google Таблица)', fullPrice: 5000, price50: 2500 },
+        { id: 26, name: 'Приём заказов (Google Таблица), без лимитов', fullPrice: 5000, price50: 2500 },
     ];
 
     // Сортировка по цене 50% (от низкой к высокой)
