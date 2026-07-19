@@ -175,6 +175,50 @@
             color: #cbd5e1;
         }
 
+        /* Блок "Что заложено в цену каждого проекта" */
+        .included-block {
+            margin: 30px 0 40px;
+            background: #1f2937;
+            padding: 30px 30px 20px;
+            border-radius: 20px;
+        }
+
+        .included-block h2 {
+            font-size: 1.8rem;
+            color: #3b82f6;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .included-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px 40px;
+            list-style: none;
+            padding: 0;
+        }
+
+        .included-list li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+            color: #cbd5e1;
+            font-size: 0.95rem;
+        }
+
+        .included-list li::before {
+            content: "•";
+            color: #3b82f6;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .included-list li strong {
+            color: #fff;
+        }
+
+        /* Список дополнительных услуг */
         .services-list {
             display: flex;
             flex-direction: column;
@@ -511,6 +555,11 @@
                 font-size: 2rem;
             }
 
+            .included-list {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
             .service-item {
                 flex-direction: column;
                 align-items: stretch;
@@ -583,6 +632,10 @@
                 font-size: 1.6rem;
             }
 
+            .included-block {
+                padding: 20px 16px;
+            }
+
             .service-item {
                 padding: 14px;
             }
@@ -644,11 +697,27 @@
 <section class="page-title">
     <div class="container">
         <h1>Дополнительные услуги</h1>
-        <p>Выберите нужные опции для вашего проекта</p>
+        <p>Что уже входит в каждый проект и что можно добавить</p>
     </div>
 </section>
 
+<!-- ===== БЛОК "ЧТО ЗАЛОЖЕНО В ЦЕНУ КАЖДОГО ПРОЕКТА" ===== -->
 <section class="container">
+    <div class="included-block">
+        <h2>Что заложено в цену каждого проекта</h2>
+        <ul class="included-list">
+            <li><strong>1. Лендинг</strong> — Готовая страница с характеристиками до 2 товаров, форма обратной связи для приема заказа (интеграция с Formspree, до 50 заказов бесплатно).</li>
+            <li><strong>2. Информационный</strong> — Готовая страница с важной информацией и фото.</li>
+            <li><strong>3. Визитка</strong> — Готовая страница с контактами, блоками «Услуги» и «Преимущества», карта проезда, страница Договор оферты.</li>
+            <li><strong>4. Портфолио</strong> — Готовая страница с демонстрацией проектов, форма обратной связи для приема заказа (интеграция с Formspree, до 50 заказов бесплатно).</li>
+            <li><strong>5. Интернет-магазин</strong> — Готовая страница с каталогом до 6 товаров и фильтром поиска, страница Договор оферты, страница Политика конфиденциальности, автоматическая оплата (ЮKassa), форма обратной связи для приема заказа (интеграция с Formspree, до 50 заказов бесплатно).</li>
+            <li><strong>6. Универсальный</strong> — Готовая страница с блоками: Услуги, Преимущества, Цены, Контакты. Страница Договор оферты, страница Политика конфиденциальности, автоматическая оплата (ЮKassa), приём заказов (Google Таблица), без лимитов.</li>
+            <li><strong>7. Telegram-бот</strong> — Бот-консультант с ИИ, который отвечает на вопросы клиента (база данных).</li>
+            <li><strong>8. AI-агент</strong> — Умный агент-помощник, который автоматически ведёт клиента по воронке продаж.</li>
+        </ul>
+    </div>
+
+    <!-- ===== СПИСОК ДОПОЛНИТЕЛЬНЫХ УСЛУГ ===== -->
     <div class="services-list" id="servicesList">
         <!-- Услуги будут вставлены через JavaScript -->
     </div>
@@ -842,15 +911,13 @@ window.addEventListener('click', function(e) {
 });
 
 // ============================================================
-//  ГЕНЕРАЦИЯ СПИСКА УСЛУГ (без бота и агента)
+//  ГЕНЕРАЦИЯ СПИСКА ДОПОЛНИТЕЛЬНЫХ УСЛУГ (без бота и агента)
 // ============================================================
 (function renderServices() {
     const container = document.getElementById('servicesList');
     if (!container) return;
 
-    // Список услуг (id, имя, полная цена, цена 50%)
-    // Отсортировано по цене 50% (от низкой к высокой)
-    // Убраны id 23 (бот) и 27 (агент)
+    // Список доп. услуг (отсортирован по цене 50%)
     const servicesData = [
         { id: 99, name: 'Установка иконки favicon', fullPrice: 0, price50: 0 },
         { id: 8, name: 'Форма обратной связи', fullPrice: 2000, price50: 1000 },
@@ -866,7 +933,7 @@ window.addEventListener('click', function(e) {
         { id: 26, name: 'Приём заказов (Google Таблица)', fullPrice: 5000, price50: 2500 },
     ];
 
-    // Сортируем по цене 50% (от меньшей к большей)
+    // Сортировка по цене 50% (от низкой к высокой)
     servicesData.sort((a, b) => a.price50 - b.price50);
 
     let html = '';
