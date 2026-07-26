@@ -2862,7 +2862,7 @@ updateCartUI();
       const userId = getUserId();
       console.log('🆔 user_id:', userId);
 
-      fetch('https://ai-agent-bnei.onrender.com/ask', {
+      fetch('https://ai-agent-proxy.wisebor.workers.dev/ask', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
