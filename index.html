@@ -2988,8 +2988,8 @@ updateCartUI();
     });
   })();
 </script>
-    
- <!-- Виджет "Оставьте ваш номер" -->
+
+  <!-- Виджет "Оставьте ваш номер" (с отправкой в Google Таблицу) -->
 <div id="callback-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 9999; justify-content: center; align-items: center;">
     <div id="callback-widget" style="background: #1f2937; padding: 32px 28px; border-radius: 24px; max-width: 420px; width: 92%; position: relative; box-shadow: 0 20px 60px rgba(0,0,0,0.5); color: #fff; text-align: center; animation: fadeIn 0.4s ease;">
         
@@ -3004,6 +3004,7 @@ updateCartUI();
         <button id="callback-submit" style="width: 100%; padding: 14px; background: #3b82f6; color: #fff; font-size: 18px; font-weight: bold; border: none; border-radius: 12px; cursor: pointer; transition: background 0.3s; box-shadow: 0 4px 14px rgba(59,130,246,0.3);" onmouseover="this.style.background='#2563eb'" onmouseout="this.style.background='#3b82f6'">Отправить</button>
         
         <div id="callback-success" style="display: none; margin-top: 16px; color: #22c55e; font-size: 1rem;">✅ Спасибо! Мы перезвоним вам в ближайшее время.</div>
+        <div id="callback-error" style="display: none; margin-top: 16px; color: #ef4444; font-size: 1rem;">❌ Ошибка отправки. Попробуйте позже.</div>
     </div>
 </div>
 
@@ -3026,6 +3027,7 @@ updateCartUI();
     const phoneInput = document.getElementById('callback-phone');
     const submitBtn = document.getElementById('callback-submit');
     const successMsg = document.getElementById('callback-success');
+    const errorMsg = document.getElementById('callback-error');
 
     // Маска ввода телефона
     phoneInput.addEventListener('input', function(e) {
@@ -3078,24 +3080,51 @@ updateCartUI();
     // Отправка формы
     submitBtn.addEventListener('click', function() {
         const phone = phoneInput.value.trim();
-        if (!phone || phone === '+7 (___ ___ __-__)') {
+        if (!phone || phone === '+7 (___) ___-__-__') {
             alert('Пожалуйста, введите номер телефона.');
             return;
         }
-        // Пока просто показываем успех и закрываем
-        successMsg.style.display = 'block';
+
+        // Блокируем кнопку
         submitBtn.disabled = true;
-        submitBtn.textContent = 'Отправлено ✅';
-        setTimeout(function() {
-            closeWidget();
-            // Здесь позже будет отправка в Google Таблицу
-            console.log('Номер для звонка:', phone);
-        }, 1500);
+        submitBtn.textContent = '⏳ Отправка...';
+
+        // Отправляем данные в Google Таблицу
+        const scriptUrl = 'https://script.google.com/macros/s/AKfycbzep4Pdlugn2TJ53ngNjPU9DEzBzYkfFpUTJa4jwJTOSgsLV75ZtvLhFjh-KWFzbZYf/exec'; // ЗАМЕНИТЕ НА РЕАЛЬНЫЙ URL
+        const formData = new FormData();
+        formData.append('phone', phone);
+
+        fetch(scriptUrl, {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.result === 'success') {
+                successMsg.style.display = 'block';
+                submitBtn.textContent = 'Отправлено ✅';
+                setTimeout(function() {
+                    closeWidget();
+                }, 1500);
+            } else {
+                throw new Error(data.error || 'Неизвестная ошибка');
+            }
+        })
+        .catch(function(error) {
+            console.error('Ошибка:', error);
+            errorMsg.style.display = 'block';
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Отправить';
+            setTimeout(function() {
+                errorMsg.style.display = 'none';
+            }, 4000);
+        });
     });
 
     // Показываем виджет через 30 секунд
     setTimeout(showWidget, 30000);
 })();
-</script>
+</script>  
+
 </body>
 </html>
