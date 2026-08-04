@@ -1475,7 +1475,7 @@ footer {
                 <button class="show-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">Показать</button>
             </div>
 
-            <!-- 7. Бот для сбора заявок (НОВЫЙ) -->
+            <!-- 7. Бот для сбора заявок -->
             <div class="type-card">
                 <div class="type-icon-badge"><i class="ti ti-clipboard-list"></i></div>
                 <h4>Бот для сбора заявок</h4>
@@ -1483,7 +1483,7 @@ footer {
                 <button class="show-btn" onclick="window.open('https://t.me/LeadSergeyBot', '_blank');">Показать</button>
             </div>
 
-            <!-- 8. Telegram-бот (НОВЫЙ) -->
+            <!-- 8. Telegram-бот -->
             <div class="type-card">
                 <div class="type-icon-badge"><i class="ti ti-message-2-bolt"></i></div>
                 <h4>Telegram-бот</h4>
@@ -1491,7 +1491,7 @@ footer {
                 <button class="show-btn" onclick="window.open('https://t.me/Test12398bs_bot', '_blank');">Показать</button>
             </div>
 
-            <!-- 9. AI-агент (НОВЫЙ) -->
+            <!-- 9. AI-агент -->
             <div class="type-card">
                 <div class="type-icon-badge"><i class="ti ti-cpu"></i></div>
                 <h4>AI-агент</h4>
@@ -1503,7 +1503,7 @@ footer {
     </div>
 </section>
 
-<!-- ===== БЛОК "ПОЧЕМУ ВЫБИРАЮТ НАС" (ИСПРАВЛЕННЫЙ) ===== -->
+<!-- ===== БЛОК "ПОЧЕМУ ВЫБИРАЮТ НАС" ===== -->
 <section class="about" id="about">
     <div class="container">
         <h2>Почему выбирают нас</h2>
@@ -1537,12 +1537,12 @@ footer {
 <section class="pricing" id="pricing">
     <div class="container">
         <h2><span>Выберите подходящий тариф <span style="color:#3B82F6;">(предоплата 50%)</span></span></h2>
-      <a href="https://borisov.store/services/" target="_blank"
-   style="display:block; text-align:center; margin-top:-20px; margin-bottom:35px; color:#3b82f6; font-size:1.1rem; text-decoration:underline;"
-   onmouseover="this.style.color='#60a5fa'" 
-   onmouseout="this.style.color='#3b82f6'">
-   Дополнительные опции →
-</a>
+        <a href="https://borisov.store/services/" target="_blank"
+           style="display:block; text-align:center; margin-top:-20px; margin-bottom:35px; color:#3b82f6; font-size:1.1rem; text-decoration:underline;"
+           onmouseover="this.style.color='#60a5fa'" 
+           onmouseout="this.style.color='#3b82f6'">
+           Дополнительные опции →
+        </a>
         <div class="pricing-grid">     
                     
             <!-- 1. Лендинг -->
@@ -1623,8 +1623,7 @@ footer {
                 <button class="price-btn" onclick="openUniversalModal()">Заказать</button>
             </div>
 
-            <!-- 7. Telegram-бот (НОВЫЙ) -->
-            <!-- 7. Бот для сбора заявок (НОВЫЙ) -->
+            <!-- 7. Бот для сбора заявок -->
             <div class="pricing-card">
                 <h3>Бот для сбора заявок</h3>
                 <div class="price">от 10 000 ₽</div>
@@ -1650,7 +1649,7 @@ footer {
                 <button class="price-btn" onclick="openBotModal()">Заказать</button>
             </div>
 
-            <!-- 9. AI-агент (НОВЫЙ) -->
+            <!-- 9. AI-агент -->
             <div class="pricing-card">
                 <h3>AI-агент</h3>
                 <div class="price">от 25 000 ₽</div>
@@ -1667,7 +1666,7 @@ footer {
     </div>
 </section>
 
-<!-- ===== КОНТАКТЫ (исправленный, компактный) ===== -->
+<!-- ===== КОНТАКТЫ ===== -->
 <section class="contacts" id="contacts">
     <div class="container">
         <h2>Наши контакты</h2>
@@ -1717,7 +1716,7 @@ footer {
 </section>
 
 <!-- ======================================================== -->
-<!-- 1. ЛЕНДИНГ (обновлённые цены)                           -->
+<!-- 1. ЛЕНДИНГ (с исправленными id) -->
 <!-- ======================================================== -->
 <div class="modal" id="landingModal">
     <div class="modal-content">
@@ -1760,7 +1759,7 @@ footer {
             <button class="btn-add" onclick="addToCart({ id: 18, name: 'Добавление блока Отзывы', price: 1500 })">Купить</button>
         </div>
 
-        <!-- Страница Договор оферты -->
+        <!-- Страница Договор оферты (было id 15 → заменяем на 4) -->
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #334155;">
             <div>
                 <strong>Страница Договор оферты</strong>
@@ -1769,10 +1768,10 @@ footer {
                     <span style="color: #3b82f6; font-weight: bold;">1 500 ₽</span>
                 </div>
             </div>
-            <button class="btn-add" onclick="addToCart({ id: 15, name: 'Страница Договор оферты (лендинг)', price: 1500 })">Купить</button>
+            <button class="btn-add" onclick="addToCart({ id: 4, name: 'Страница Договор оферты', price: 1500 })">Купить</button>
         </div>
 
-        <!-- Страница Политика Конфиденциальности -->
+        <!-- Страница Политика Конфиденциальности (было id 16 → заменяем на 5) -->
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #334155;">
             <div>
                 <strong>Страница Политика Конфиденциальности</strong>
@@ -1781,7 +1780,7 @@ footer {
                     <span style="color: #3b82f6; font-weight: bold;">1 500 ₽</span>
                 </div>
             </div>
-            <button class="btn-add" onclick="addToCart({ id: 16, name: 'Страница Политика Конфиденциальности (лендинг)', price: 1500 })">Купить</button>
+            <button class="btn-add" onclick="addToCart({ id: 5, name: 'Страница Политика Конфиденциальности', price: 1500 })">Купить</button>
         </div>
 
         <!-- Фавикон (цена 0) -->
@@ -1801,7 +1800,7 @@ footer {
 </div>
 
 <!-- ======================================================== -->
-<!-- 2. ИНТЕРНЕТ-МАГАЗИН                                     -->
+<!-- 2. ИНТЕРНЕТ-МАГАЗИН -->
 <!-- ======================================================== -->
 <div class="modal" id="shopModal">
     <div class="modal-content">
@@ -1861,7 +1860,7 @@ footer {
 </div>
 
 <!-- ======================================================== -->
-<!-- 3. ПОРТФОЛИО                                            -->
+<!-- 3. ПОРТФОЛИО -->
 <!-- ======================================================== -->
 <div class="modal" id="portfolioModal">
     <div class="modal-content">
@@ -1933,7 +1932,7 @@ footer {
 </div>
 
 <!-- ======================================================== -->
-<!-- 4. ВИЗИТКА                                               -->
+<!-- 4. ВИЗИТКА (исправлены id: 7 → 5) -->
 <!-- ======================================================== -->
 <div class="modal" id="vizitkaModal">
     <div class="modal-content">
@@ -1976,7 +1975,7 @@ footer {
             <button class="btn-add" onclick="addToCart({ id: 18, name: 'Добавление блока Отзывы', price: 1500 })">Купить</button>
         </div>
 
-        <!-- Страница Политика конфиденциальности -->
+        <!-- Страница Политика конфиденциальности (было id 7 → заменяем на 5) -->
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #334155;">
             <div>
                 <strong>Страница Политика конфиденциальности</strong>
@@ -1985,7 +1984,7 @@ footer {
                     <span style="color: #3b82f6; font-weight: bold;">1 500 ₽</span>
                 </div>
             </div>
-            <button class="btn-add" onclick="addToCart({ id: 7, name: 'Страница Политика конфиденциальности', price: 1500 })">Купить</button>
+            <button class="btn-add" onclick="addToCart({ id: 5, name: 'Страница Политика конфиденциальности', price: 1500 })">Купить</button>
         </div>
 
         <!-- Форма обратной связи -->
@@ -2017,7 +2016,7 @@ footer {
 </div>
 
 <!-- ======================================================== -->
-<!-- 5. ИНФОРМАЦИОННЫЙ                                       -->
+<!-- 5. ИНФОРМАЦИОННЫЙ (исправлены id: 10→4, 11→5, 12→8) -->
 <!-- ======================================================== -->
 <div class="modal" id="infoModal">
     <div class="modal-content">
@@ -2048,7 +2047,7 @@ footer {
             <button class="btn-add" onclick="addToCart({ id: 18, name: 'Добавление блока Отзывы', price: 1500 })">Купить</button>
         </div>
 
-        <!-- Страница Договор оферты -->
+        <!-- Страница Договор оферты (было id 10 → 4) -->
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #334155;">
             <div>
                 <strong>Страница Договор оферты</strong>
@@ -2057,10 +2056,10 @@ footer {
                     <span style="color: #3b82f6; font-weight: bold;">1 500 ₽</span>
                 </div>
             </div>
-            <button class="btn-add" onclick="addToCart({ id: 10, name: 'Страница Договор оферты (инфо)', price: 1500 })">Купить</button>
+            <button class="btn-add" onclick="addToCart({ id: 4, name: 'Страница Договор оферты', price: 1500 })">Купить</button>
         </div>
 
-        <!-- Страница Политика Конфиденциальности -->
+        <!-- Страница Политика Конфиденциальности (было id 11 → 5) -->
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #334155;">
             <div>
                 <strong>Страница Политика Конфиденциальности</strong>
@@ -2069,10 +2068,10 @@ footer {
                     <span style="color: #3b82f6; font-weight: bold;">1 500 ₽</span>
                 </div>
             </div>
-            <button class="btn-add" onclick="addToCart({ id: 11, name: 'Страница Политика Конфиденциальности (инфо)', price: 1500 })">Купить</button>
+            <button class="btn-add" onclick="addToCart({ id: 5, name: 'Страница Политика Конфиденциальности', price: 1500 })">Купить</button>
         </div>
 
-        <!-- Форма обратной связи -->
+        <!-- Форма обратной связи (было id 12 → 8) -->
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #334155;">
             <div>
                 <strong>Форма обратной связи (Formspree)</strong>
@@ -2081,7 +2080,7 @@ footer {
                     <span style="color: #3b82f6; font-weight: bold;">1 000 ₽</span>
                 </div>
             </div>
-            <button class="btn-add" onclick="addToCart({ id: 12, name: 'Форма обратной связи (Formspree)', price: 1000 })">Купить</button>
+            <button class="btn-add" onclick="addToCart({ id: 8, name: 'Форма обратной связи (Formspree)', price: 1000 })">Купить</button>
         </div>
 
         <!-- Фавикон -->
@@ -2101,7 +2100,7 @@ footer {
 </div>
 
 <!-- ======================================================== -->
-<!-- 6. УНИВЕРСАЛЬНЫЙ (ОБНОВЛЁН)                             -->
+<!-- 6. УНИВЕРСАЛЬНЫЙ -->
 <!-- ======================================================== -->
 <div class="modal" id="universalModal">
     <div class="modal-content">
@@ -2161,7 +2160,7 @@ footer {
 </div>
 
 <!-- ======================================================== -->
-<!-- 7. TELEGRAM-БОТ (НОВЫЙ)                                 -->
+<!-- 7. TELEGRAM-БОТ -->
 <!-- ======================================================== -->
 <div class="modal" id="botModal">
     <div class="modal-content">
@@ -2223,7 +2222,7 @@ footer {
 </div>
 
 <!-- ======================================================== -->
-<!-- 9. БОТ ДЛЯ СБОРА ЗАЯВОК (с опциями)                     -->
+<!-- 8. БОТ ДЛЯ СБОРА ЗАЯВОК -->
 <!-- ======================================================== -->
 <div class="modal" id="botLeadModal">
     <div class="modal-content">
@@ -2241,6 +2240,7 @@ footer {
             </div>
             <button class="btn-add" onclick="addToCart({ id: 29, name: 'Бот для сбора заявок', price: 5000 })">Купить</button>
         </div>
+
         <!-- Интеграция с календарём -->
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #334155;">
             <div>
@@ -2252,6 +2252,7 @@ footer {
             </div>
             <button class="btn-add" onclick="addToCart({ id: 25, name: 'Интеграция с календарём', price: 2500 })">Купить</button>
         </div>
+
         <!-- Автоматическая оплата (ЮKassa) -->
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #334155;">
             <div>
@@ -2263,6 +2264,7 @@ footer {
             </div>
             <button class="btn-add" onclick="addToCart({ id: 24, name: 'Автоматическая оплата (ЮKassa)', price: 2500 })">Купить</button>
         </div>
+
         <div style="margin-top: 18px; text-align: center;">
             <button style="background: #334155; color: #fff; padding: 10px 30px; border: none; border-radius: 8px; cursor: pointer; font-size: 15px;" onclick="document.getElementById('botLeadModal').style.display='none'">Закрыть</button>
         </div>
@@ -2270,7 +2272,7 @@ footer {
 </div>
 
 <!-- ======================================================== -->
-<!-- 8. AI-АГЕНТ (НОВЫЙ)                                     -->
+<!-- 9. AI-АГЕНТ -->
 <!-- ======================================================== -->
 <div class="modal" id="aiAgentModal">
     <div class="modal-content">
@@ -2355,7 +2357,7 @@ footer {
                 <input type="email" id="userEmail" name="email" placeholder="example@mail.ru" required>
             </div>
 
-            <!-- НОВОЕ ПОЛЕ для ссылки на файлы -->
+            <!-- Поле для ссылки на файлы -->
             <div class="form-group">
                 <label for="fileLink">Ссылка на файлы (Яндекс.Диск, Google Drive и т.д.)</label>
                 <input type="url" id="fileLink" name="fileLink" placeholder="https://disk.yandex.ru/..." style="width:100%; padding:11px; border:none; border-radius:8px; background:#0f172a; color:#fff; font-size:15px;">
@@ -2435,20 +2437,19 @@ footer {
            Borisov&ensp;Store
         </div>
         <div class="footer-inn">
-    ИНН: <a href="https://npd.nalog.ru/check-status/" target="_blank" rel="noopener noreferrer" style="color:#3b82f6; text-decoration:underline;">665200001260</a> Борисов Сергей
-</div>
+            ИНН: <a href="https://npd.nalog.ru/check-status/" target="_blank" rel="noopener noreferrer" style="color:#3b82f6; text-decoration:underline;">665200001260</a> Борисов Сергей
+        </div>
         <div>© 2026 Все права защищены.</div>
     </div>
 </footer>
 
 <script>
 // ============================================================
-//  ПЛАВНАЯ ПРОКРУТКА (исправленная – внешние ссылки не перехватываются)
+//  ПЛАВНАЯ ПРОКРУТКА (исправленная)
 // ============================================================
 document.querySelectorAll('.nav-menu a').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         const href = this.getAttribute('href');
-        // Если ссылка внешняя (не начинается с #) — ничего не делаем, браузер перейдёт по ней сам
         if (!href.startsWith('#')) {
             return;
         }
@@ -2471,7 +2472,7 @@ document.querySelectorAll('.nav-menu a').forEach(anchor => {
 });
 
 // ============================================================
-//  ВЫРАВНИВАНИЕ ВЫСОТЫ КАРТОЧЕК В GRID-БЛОКАХ
+//  ВЫРАВНИВАНИЕ ВЫСОТЫ КАРТОЧЕК
 // ============================================================
 function equalizeCardsHeight(containerSelector, cardSelector) {
     const containers = document.querySelectorAll(containerSelector);
@@ -2516,29 +2517,23 @@ document.getElementById('menuToggle').addEventListener('click', function() {
 });
 
 // ============================================================
-//  ТОВАРЫ
+//  ТОВАРЫ (БЕЗ ДУБЛЕЙ)
 // ============================================================
 const products = [
-    { id: 1, name: 'Интернет-магазин (6 товаров)', price: 30000, icon: '🛍️' },
-    { id: 2, name: 'Дополнительные 6 товаров', price: 5000, icon: '🛒' },
-    { id: 3, name: 'Сайт Портфолио', price: 25000, icon: '🖼️' },
-    { id: 4, name: 'Страница Договор оферты', price: 3000, icon: '📄' },
-    { id: 5, name: 'Страница Политика Конфиденциальности', price: 3000, icon: '🔒' },
-    { id: 6, name: 'Сайт Визитка', price: 20000, icon: '🏢' },
-    { id: 7, name: 'Страница Политика конфиденциальности', price: 3000, icon: '🔒' },
-    { id: 8, name: 'Форма обратной связи (Formspree)', price: 2000, icon: '📧' },
-    { id: 9, name: 'Информационный сайт', price: 15000, icon: '📰' },
-    { id: 10, name: 'Страница Договор оферты (инфо)', price: 3000, icon: '📄' },
-    { id: 11, name: 'Страница Политика Конфиденциальности (инфо)', price: 3000, icon: '🔒' },
-    { id: 12, name: 'Форма обратной связи (Formspree)', price: 2000, icon: '📧' },
-    { id: 13, name: 'Лендинг до 2 товаров', price: 10000, icon: '🎯' },
-    { id: 14, name: 'Еще 2 товара', price: 5000, icon: '➕' },
-    { id: 15, name: 'Страница Договор оферты (лендинг)', price: 3000, icon: '📄' },
-    { id: 16, name: 'Страница Политика Конфиденциальности (лендинг)', price: 3000, icon: '🔒' },
-    { id: 18, name: 'Добавление блока Отзывы', price: 3000, icon: '⭐' },
+    { id: 1, name: 'Интернет-магазин (6 товаров)', price: 15000, icon: '🛍️' },
+    { id: 2, name: 'Дополнительные 6 товаров', price: 1500, icon: '🛒' },
+    { id: 3, name: 'Сайт Портфолио', price: 12500, icon: '🖼️' },
+    { id: 4, name: 'Страница Договор оферты', price: 1500, icon: '📄' },
+    { id: 5, name: 'Страница Политика Конфиденциальности', price: 1500, icon: '🔒' },
+    { id: 6, name: 'Сайт Визитка', price: 10000, icon: '🏢' },
+    { id: 8, name: 'Форма обратной связи (Formspree)', price: 1000, icon: '📧' },
+    { id: 9, name: 'Информационный сайт', price: 7500, icon: '📰' },
+    { id: 13, name: 'Лендинг до 2 товаров', price: 5000, icon: '🎯' },
+    { id: 14, name: 'Еще 2 товара', price: 2500, icon: '➕' },
+    { id: 18, name: 'Добавление блока Отзывы', price: 1500, icon: '⭐' },
     { id: 20, name: 'Всплывающий виджет для звонка', price: 1500, icon: '📞' },
-    { id: 21, name: 'Карта проезда', price: 2000, icon: '🗺️' },
-    { id: 22, name: 'Универсальный сайт', price: 60000, icon: '🌟' },
+    { id: 21, name: 'Карта проезда', price: 1000, icon: '🗺️' },
+    { id: 22, name: 'Универсальный сайт', price: 25000, icon: '🌟' },
     { id: 23, name: 'Бот-консультант с ИИ', price: 7500, icon: '🤖' },
     { id: 24, name: 'Автоматическая оплата (ЮKassa)', price: 2500, icon: '💳' },
     { id: 25, name: 'Интеграция с календарём', price: 2500, icon: '📅' },
@@ -2656,7 +2651,7 @@ window.addEventListener('click', function(e) {
 });
 
 // ============================================================
-//  ОПЛАТА ЧЕРЕЗ ЮKASSA + Google Таблица (исправленный порядок)
+//  ОПЛАТА ЧЕРЕЗ ЮKASSA + Google Таблица
 // ============================================================
 const orderForm = document.getElementById('orderForm');
 const submitBtn = document.getElementById('submitOrderBtn');
@@ -2695,11 +2690,9 @@ if (orderForm) {
 
         document.getElementById('orderDetails').value = orderText;
 
-        // ---- БЛОКИРУЕМ КНОПКУ ----
         submitBtn.disabled = true;
         submitBtn.textContent = '⏳ Создание платежа...';
 
-        // ---- 1. СНАЧАЛА СОЗДАЁМ ПЛАТЁЖ (ЮKassa) ----
         try {
             const workerUrl = 'https://yookassa.wisebor.workers.dev/';
             const items = cart.map(item => ({
@@ -2734,7 +2727,7 @@ if (orderForm) {
                 return;
             }
 
-            // ---- 2. ПЛАТЁЖ СОЗДАН — ОТПРАВЛЯЕМ ДАННЫЕ В ТАБЛИЦУ (АСИНХРОННО) ----
+            // Отправка в Google Таблицу
             const formData = new FormData(orderForm);
             fetch('https://script.google.com/macros/s/AKfycbwyAmrGH6eB8itSXoFVDJvnaX9nPDwysQoTLuWP5VvshEYXMB1h0bYCkUKT4tBTrM9pNg/exec', {
                 method: 'POST',
@@ -2745,7 +2738,6 @@ if (orderForm) {
             .then(tableData => console.log('✅ Ответ от Google Таблицы:', tableData))
             .catch(err => console.warn('⚠️ Ошибка отправки в таблицу:', err));
 
-            // ---- 3. ОЧИЩАЕМ КОРЗИНУ И ПЕРЕНАПРАВЛЯЕМ ----
             localStorage.removeItem('cart');
             cart = [];
             document.getElementById('userName').value = '';
@@ -2756,7 +2748,6 @@ if (orderForm) {
             renderCartItems();
             document.getElementById('cartModal').style.display = 'none';
 
-            // Перенаправляем на оплату
             window.location.href = data.paymentUrl;
 
         } catch (error) {
@@ -2769,7 +2760,7 @@ if (orderForm) {
 }
 
 // ============================================================
-//  ЗАПРЕТ КОПИРОВАНИЯ (исправленный)
+//  ЗАПРЕТ КОПИРОВАНИЯ
 // ============================================================
 document.addEventListener('selectstart', function(e) {
     if (!e.target || !e.target.closest) return;
@@ -2803,6 +2794,7 @@ document.addEventListener('contextmenu', function(e) {
 // ============================================================
 updateCartUI();
 </script>  
+
 <!-- Виджет AI-агента Borisov Store -->
 <style>
   #borisov-chat-window {
@@ -2821,7 +2813,6 @@ updateCartUI();
     font-family: 'Inter', -apple-system, sans-serif;
   }
 
-  /* Узкие экраны смартфонов (портретная ориентация) */
   @media (max-width: 480px) {
     #borisov-chat-window {
       width: calc(100vw - 24px);
@@ -2831,7 +2822,6 @@ updateCartUI();
     }
   }
 
-  /* Альбомная ориентация на смартфонах — мало высоты экрана */
   @media (orientation: landscape) and (max-height: 500px) {
     #borisov-chat-window {
       width: calc(100vw - 24px);
@@ -2913,7 +2903,6 @@ updateCartUI();
     const sendBtn = document.getElementById('borisov-chat-send');
     const messagesDiv = document.getElementById('borisov-chat-messages');
 
-    // Функция для получения постоянного user_id
     function getUserId() {
       let userId = localStorage.getItem('borisov_user_id');
       if (!userId) {
@@ -2937,7 +2926,6 @@ updateCartUI();
       const text = input.value.trim();
       if (!text) return;
 
-      // Показываем сообщение пользователя
       const userMsg = document.createElement('div');
       userMsg.style.cssText = 'background: #e1e8f0; border-radius: 14px; padding: 12px 16px; align-self: flex-end; max-width: 85%; font-size: 15px; line-height: 1.6; word-wrap: break-word; color: #1a1a1a;';
       userMsg.textContent = text;
@@ -2989,11 +2977,10 @@ updateCartUI();
   })();
 </script>
 
-  <!-- Виджет "Оставьте ваш номер" (с отправкой в Google Таблицу) -->
+<!-- Виджет "Оставьте ваш номер" -->
 <div id="callback-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 9999; justify-content: center; align-items: center;">
     <div id="callback-widget" style="background: #1f2937; padding: 32px 28px; border-radius: 24px; max-width: 420px; width: 92%; position: relative; box-shadow: 0 20px 60px rgba(0,0,0,0.5); color: #fff; text-align: center; animation: fadeIn 0.4s ease;">
         
-        <!-- Кнопка закрытия -->
         <button id="callback-close" style="position: absolute; top: 12px; right: 16px; background: none; border: none; color: #94a3b8; font-size: 26px; cursor: pointer; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#94a3b8'">✕</button>
         
         <h3 style="font-size: 1.6rem; color: #fff; margin-bottom: 8px;">Оставьте ваш номер</h3>
@@ -3017,7 +3004,6 @@ updateCartUI();
 
 <script>
 (function() {
-    // Проверяем, был ли уже показан виджет в этой сессии
     if (sessionStorage.getItem('callbackShown')) {
         return;
     }
@@ -3029,7 +3015,6 @@ updateCartUI();
     const successMsg = document.getElementById('callback-success');
     const errorMsg = document.getElementById('callback-error');
 
-    // Маска ввода телефона
     phoneInput.addEventListener('input', function(e) {
         let value = this.value.replace(/\D/g, '');
         let formatted = '';
@@ -3056,28 +3041,23 @@ updateCartUI();
         this.value = formatted;
     });
 
-    // Функция показа виджета
     function showWidget() {
         overlay.style.display = 'flex';
         sessionStorage.setItem('callbackShown', 'true');
     }
 
-    // Функция закрытия виджета
     function closeWidget() {
         overlay.style.display = 'none';
     }
 
-    // Закрытие по крестику
     closeBtn.addEventListener('click', closeWidget);
 
-    // Закрытие по клику на фон
     overlay.addEventListener('click', function(e) {
         if (e.target === overlay) {
             closeWidget();
         }
     });
 
-    // Отправка формы
     submitBtn.addEventListener('click', function() {
         const phone = phoneInput.value.trim();
         if (!phone || phone === '+7 (___) ___-__-__') {
@@ -3085,12 +3065,10 @@ updateCartUI();
             return;
         }
 
-        // Блокируем кнопку
         submitBtn.disabled = true;
         submitBtn.textContent = '⏳ Отправка...';
 
-        // Отправляем данные в Google Таблицу
-        const scriptUrl = 'https://script.google.com/macros/s/AKfycbxPP-rC_jL6x9D_QFuV8lj8ZJSH683of5xRjrb5Q12jZvT9n9S5jIoKGOs1CNe7Ln33PQ/exec'; // ЗАМЕНИТЕ НА РЕАЛЬНЫЙ URL
+        const scriptUrl = 'https://script.google.com/macros/s/AKfycbxPP-rC_jL6x9D_QFuV8lj8ZJSH683of5xRjrb5Q12jZvT9n9S5jIoKGOs1CNe7Ln33PQ/exec';
         const formData = new FormData();
         formData.append('phone', phone);
 
@@ -3121,7 +3099,6 @@ updateCartUI();
         });
     });
 
-    // Показываем виджет через 30 секунд
     setTimeout(showWidget, 30000);
 })();
 </script>  
