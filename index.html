@@ -2648,7 +2648,7 @@ if (orderForm) {
                 body: JSON.stringify({
                     amount: total,
                     description: 'Заказ с сайта borisov.store',
-                    returnUrl: 'https://borisov.store/',
+                    returnUrl: 'https://borisov.store/thank-you?orderId=' + data.paymentId,
                     email: email,
                     items: items
                 })
@@ -2675,6 +2675,19 @@ if (orderForm) {
             .then(tableData => console.log('✅ Ответ от Google Таблицы:', tableData))
             .catch(err => console.warn('⚠️ Ошибка отправки в таблицу:', err));
 
+            // ---- НОВЫЙ КОД: сохранение данных заказа ----
+localStorage.setItem('lastOrder', JSON.stringify({
+    paymentId: data.paymentId,
+    total: total,
+    products: cart.map(item => ({
+        id: item.id,
+        name: item.name,
+        price: item.price,
+        quantity: item.quantity
+    }))
+}));
+// ---- Конец сохранения ----
+
             localStorage.removeItem('cart');
             cart = [];
             document.getElementById('userName').value = '';
@@ -2683,55 +2696,7 @@ if (orderForm) {
             document.getElementById('agreeCheck').checked = false;
             updateCartUI();
             renderCartItems();
-            document.getElementById('cartModal').style.display = 'none';
-
-           // ---- Ecommerce для Яндекс.Метрики (с sendBeacon) ----
-window.dataLayer = window.dataLayer || [];
-window.dataLayer.push({
-    ecommerce: {
-        purchase: {
-            actionField: {
-                id: data.paymentId,
-                revenue: total,
-                tax: 0,
-                shipping: 0
-            },
-            products: cart.map(item => ({
-                id: item.id,
-                name: item.name,
-                price: item.price,
-                quantity: item.quantity
-            }))
-        }
-    }
-});
-
-// Дополнительная отправка через Beacon (гарантирует доставку)
-if (navigator.sendBeacon) {
-    const ecommerceData = {
-        ecommerce: {
-            purchase: {
-                actionField: {
-                    id: data.paymentId,
-                    revenue: total,
-                    tax: 0,
-                    shipping: 0
-                },
-                products: cart.map(item => ({
-                    id: item.id,
-                    name: item.name,
-                    price: item.price,
-                    quantity: item.quantity
-                }))
-            }
-        }
-    };
-    navigator.sendBeacon(
-        'https://mc.yandex.ru/watch/110222077',
-        new Blob([JSON.stringify(ecommerceData)], { type: 'application/json' })
-    );
-}
-// ---- Конец Ecommerce ----
+            document.getElementById('cartModal').style.display = 'none';  
 
             window.location.href = data.paymentUrl;
 
