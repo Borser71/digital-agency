@@ -2630,7 +2630,7 @@ if (orderForm) {
         submitBtn.disabled = true;
         submitBtn.textContent = '⏳ Создание платежа...';
 
-        try {
+       try {
     const workerUrl = 'https://yookassa.wisebor.workers.dev/';
     const items = cart.map(item => ({
         description: item.name,
@@ -2648,7 +2648,7 @@ if (orderForm) {
         body: JSON.stringify({
             amount: total,
             description: 'Заказ с сайта borisov.store',
-            returnUrl: 'https://borisov.store/thank-you', // больше нет data.paymentId
+            returnUrl: 'https://borisov.store/thank-you?orderId=' + data.paymentId, // теперь с параметром
             email: email,
             items: items
         })
@@ -2676,6 +2676,8 @@ if (orderForm) {
     .catch(err => console.warn('⚠️ Ошибка отправки в таблицу:', err));
 
     // ---- Сохранение данных заказа для страницы thank-you ----
+    console.log('💾 Сохранение заказа. cart.length:', cart.length);
+    console.log('💾 data.paymentId:', data.paymentId);
     localStorage.setItem('lastOrder', JSON.stringify({
         paymentId: data.paymentId,
         total: total,
