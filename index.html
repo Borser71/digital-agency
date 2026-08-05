@@ -2630,85 +2630,117 @@ if (orderForm) {
         submitBtn.disabled = true;
         submitBtn.textContent = '⏳ Создание платежа...';
 
-       try {
-    const workerUrl = 'https://yookassa.wisebor.workers.dev/';
-    const items = cart.map(item => ({
-        description: item.name,
-        amount: {
-            value: (item.price * item.quantity).toFixed(2),
-            currency: 'RUB'
-        },
-        quantity: item.quantity,
-        vat_code: 6
-    }));
+        try {
+            const workerUrl = 'https://yookassa.wisebor.workers.dev/';
+            const items = cart.map(item => ({
+                description: item.name,
+                amount: {
+                    value: (item.price * item.quantity).toFixed(2),
+                    currency: 'RUB'
+                },
+                quantity: item.quantity,
+                vat_code: 6
+            }));
 
-    const responseWorker = await fetch(workerUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            amount: total,
-            description: 'Заказ с сайта borisov.store',
-           returnUrl: 'https://borisov.store/thank-you',
-            email: email,
-            items: items
-        })
-    });
+            const responseWorker = await fetch(workerUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    amount: total,
+                    description: 'Заказ с сайта borisov.store',
+                    returnUrl: 'https://borisov.store/',
+                    email: email,
+                    items: items
+                })
+            });
 
-    const data = await responseWorker.json();
-    console.log('✅ Ответ от Worker (ЮKassa):', data);
+            const data = await responseWorker.json();
+            console.log('✅ Ответ от Worker (ЮKassa):', data);
 
-    if (!data.success || !data.paymentUrl) {
-        alert('Ошибка при создании платежа: ' + (data.error || 'Неизвестная ошибка'));
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Оформить заказ';
-        return;
+            if (!data.success || !data.paymentUrl) {
+                alert('Ошибка при создании платежа: ' + (data.error || 'Неизвестная ошибка'));
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Оформить заказ';
+                return;
+            }
+
+            // Отправка в Google Таблицу
+            const formData = new FormData(orderForm);
+            fetch('https://script.google.com/macros/s/AKfycbwyAmrGH6eB8itSXoFVDJvnaX9nPDwysQoTLuWP5VvshEYXMB1h0bYCkUKT4tBTrM9pNg/exec', {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            })
+            .then(response => response.json())
+            .then(tableData => console.log('✅ Ответ от Google Таблицы:', tableData))
+            .catch(err => console.warn('⚠️ Ошибка отправки в таблицу:', err));
+
+            localStorage.removeItem('cart');
+            cart = [];
+            document.getElementById('userName').value = '';
+            document.getElementById('userPhone').value = '';
+            document.getElementById('userEmail').value = '';
+            document.getElementById('agreeCheck').checked = false;
+            updateCartUI();
+            renderCartItems();
+            document.getElementById('cartModal').style.display = 'none';
+
+           // ---- Ecommerce для Яндекс.Метрики (с sendBeacon) ----
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({
+    ecommerce: {
+        purchase: {
+            actionField: {
+                id: data.paymentId,
+                revenue: total,
+                tax: 0,
+                shipping: 0
+            },
+            products: cart.map(item => ({
+                id: item.id,
+                name: item.name,
+                price: item.price,
+                quantity: item.quantity
+            }))
+        }
     }
+});
 
-    // ---- Отправка в Google Таблицу (асинхронно) ----
-    const formData = new FormData(orderForm);
-    fetch('https://script.google.com/macros/s/AKfycbwyAmrGH6eB8itSXoFVDJvnaX9nPDwysQoTLuWP5VvshEYXMB1h0bYCkUKT4tBTrM9pNg/exec', {
-        method: 'POST',
-        body: formData,
-        headers: { 'Accept': 'application/json' }
-    })
-    .then(response => response.json())
-    .then(tableData => console.log('✅ Ответ от Google Таблицы:', tableData))
-    .catch(err => console.warn('⚠️ Ошибка отправки в таблицу:', err));
-
-    // ---- Сохранение данных заказа для страницы thank-you ----
-    console.log('💾 Сохранение заказа. cart.length:', cart.length);
-    console.log('💾 data.paymentId:', data.paymentId);
-    localStorage.setItem('lastOrder', JSON.stringify({
-        paymentId: data.paymentId,
-        total: total,
-        products: cart.map(item => ({
-            id: item.id,
-            name: item.name,
-            price: item.price,
-            quantity: item.quantity
-        }))
-    }));
-
-    // ---- Очистка корзины и полей ----
-    localStorage.removeItem('cart');
-    cart = [];
-    document.getElementById('userName').value = '';
-    document.getElementById('userPhone').value = '';
-    document.getElementById('userEmail').value = '';
-    document.getElementById('agreeCheck').checked = false;
-    updateCartUI();
-    renderCartItems();
-    document.getElementById('cartModal').style.display = 'none';
-
-    // ---- Редирект на оплату ----
-    window.location.href = data.paymentUrl;
-
-} catch (error) {
-    alert('Ошибка соединения с платёжным сервисом. Попробуйте позже.');
-    console.error('❌ Ошибка Worker:', error);
-    submitBtn.disabled = false;
-    submitBtn.textContent = 'Оформить заказ';
+// Дополнительная отправка через Beacon (гарантирует доставку)
+if (navigator.sendBeacon) {
+    const ecommerceData = {
+        ecommerce: {
+            purchase: {
+                actionField: {
+                    id: data.paymentId,
+                    revenue: total,
+                    tax: 0,
+                    shipping: 0
+                },
+                products: cart.map(item => ({
+                    id: item.id,
+                    name: item.name,
+                    price: item.price,
+                    quantity: item.quantity
+                }))
+            }
+        }
+    };
+    navigator.sendBeacon(
+        'https://mc.yandex.ru/watch/110222077',
+        new Blob([JSON.stringify(ecommerceData)], { type: 'application/json' })
+    );
 }
+// ---- Конец Ecommerce ----
+
+            window.location.href = data.paymentUrl;
+
+        } catch (error) {
+            alert('Ошибка соединения с платёжным сервисом. Попробуйте позже.');
+            console.error('❌ Ошибка Worker:', error);
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Оформить заказ';
+        }
     });
 }
 
