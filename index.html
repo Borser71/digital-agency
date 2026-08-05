@@ -2648,7 +2648,7 @@ if (orderForm) {
         body: JSON.stringify({
             amount: total,
             description: 'Заказ с сайта borisov.store',
-            returnUrl: 'https://borisov.store/thank-you?orderId=' + data.paymentId, // теперь с параметром
+           returnUrl: 'https://borisov.store/thank-you',
             email: email,
             items: items
         })
