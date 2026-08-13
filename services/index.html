@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Дополнительные услуги | Borisov Store</title>
+    <title>Базовые и дополнительные услуги | Borisov Store</title>
 
     <!-- FAVICON -->
     <link rel="icon" type="image/x-icon" href="https://borisov.store/images/inter1.ico">
@@ -218,7 +218,106 @@
             color: #fff;
         }
 
-        /* Список дополнительных услуг */
+        /* ===== БАЗОВЫЕ УСЛУГИ ===== */
+        .basic-services {
+            margin: 30px 0 20px;
+        }
+
+        .basic-services h2 {
+            font-size: 1.8rem;
+            color: #3b82f6;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .basic-services-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        .basic-item {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            background: #1f2937;
+            padding: 16px 24px;
+            border-radius: 12px;
+            transition: background 0.3s ease;
+        }
+
+        .basic-item:hover {
+            background: #2d3b4f;
+        }
+
+        .basic-info {
+            flex: 2 1 300px;
+        }
+
+        .basic-name {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .basic-prices {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 4px;
+        }
+
+        .basic-full-price {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            text-decoration: line-through;
+            text-decoration-color: #ef4444;
+        }
+
+        .basic-half-price {
+            color: #3b82f6;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        .basic-action {
+            flex: 0 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .btn-add {
+            background: #3b82f6;
+            color: #fff;
+            padding: 10px 22px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 15px;
+            transition: background 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .btn-add:hover {
+            background: #2563eb;
+        }
+
+        /* ===== ДОПОЛНИТЕЛЬНЫЕ УСЛУГИ ===== */
+        .additional-services {
+            margin: 40px 0;
+        }
+
+        .additional-services h2 {
+            font-size: 1.8rem;
+            color: #3b82f6;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
         .services-list {
             display: flex;
             flex-direction: column;
@@ -279,7 +378,7 @@
             gap: 15px;
         }
 
-        .btn-add {
+        .service-action .btn-add {
             background: #3b82f6;
             color: #fff;
             padding: 10px 22px;
@@ -291,7 +390,7 @@
             white-space: nowrap;
         }
 
-        .btn-add:hover {
+        .service-action .btn-add:hover {
             background: #2563eb;
         }
 
@@ -326,7 +425,7 @@
             margin-top: 20px;
         }
 
-        /* ===== МОДАЛЬНОЕ ОКНО КОРЗИНЫ (без формы) ===== */
+        /* ===== МОДАЛЬНОЕ ОКНО КОРЗИНЫ С ФОРМОЙ ===== */
         .modal {
             display: none;
             position: fixed;
@@ -344,9 +443,9 @@
             background: #1f2937;
             padding: 25px 20px;
             border-radius: 20px;
-            max-width: 500px;
+            max-width: 550px;
             width: 92%;
-            max-height: 80vh;
+            max-height: 90vh;
             overflow-y: auto;
             position: relative;
             color: #fff;
@@ -408,6 +507,79 @@
             font-weight: bold;
             margin: 15px 0;
             text-align: right;
+        }
+
+        /* Стили для формы */
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 4px;
+            color: #cbd5e1;
+            font-size: 14px;
+        }
+
+        .form-group .required {
+            color: #ef4444;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 11px;
+            border: none;
+            border-radius: 8px;
+            background: #0f172a;
+            color: #fff;
+            font-size: 15px;
+            outline: none;
+            transition: 0.2s;
+        }
+
+        .form-group input:focus {
+            box-shadow: 0 0 0 2px #3b82f6;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 16px 0;
+            font-size: 14px;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #3b82f6;
+            cursor: pointer;
+        }
+
+        .checkbox-group label a {
+            color: #3b82f6;
+            text-decoration: none;
+        }
+
+        .checkbox-group label a:hover {
+            text-decoration: underline;
+        }
+
+        .btn-submit {
+            background: #3b82f6;
+            color: #fff;
+            border: none;
+            padding: 14px 24px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            background: #2563eb;
         }
 
         /* ===== ФУТЕР ===== */
@@ -582,6 +754,7 @@
                 gap: 10px;
             }
 
+            .basic-item,
             .service-item {
                 flex-direction: column;
                 align-items: stretch;
@@ -589,10 +762,12 @@
                 padding: 16px;
             }
 
+            .basic-prices,
             .service-prices {
                 gap: 12px;
             }
 
+            .basic-action,
             .service-action {
                 justify-content: flex-start;
             }
@@ -658,18 +833,22 @@
                 padding: 20px 16px;
             }
 
+            .basic-item,
             .service-item {
                 padding: 14px;
             }
 
+            .basic-name,
             .service-name {
                 font-size: 1rem;
             }
 
+            .basic-full-price,
             .service-full-price {
                 font-size: 0.85rem;
             }
 
+            .basic-half-price,
             .service-half-price {
                 font-size: 1rem;
             }
@@ -700,7 +879,7 @@
 
             <div class="nav-menu" id="navMenu">
                 <a href="https://borisov.store/#hero">Главная</a>
-                <a href="https://borisov.store/#services">Услуги</a>                
+                <a href="https://borisov.store/#services">Услуги</a>
                 <a href="https://borisov.store/#about">Преимущества</a>
                 <a href="https://borisov.store/#pricing">Цены</a>
                 <a href="https://borisov.store/services/">Опции</a>
@@ -718,8 +897,8 @@
 <!-- ===== ОСНОВНОЙ КОНТЕНТ ===== -->
 <section class="page-title">
     <div class="container">
-        <h1>Дополнительные услуги</h1>
-        <p>Что уже входит в каждый проект и что можно добавить</p>
+        <h1>Базовые и дополнительные услуги</h1>
+        <p>Что входит в каждый проект и что можно добавить</p>
     </div>
 </section>
 
@@ -740,24 +919,33 @@
         </ul>
     </div>
 
-    <!-- ===== СПИСОК ДОПОЛНИТЕЛЬНЫХ УСЛУГ ===== -->
-    <div class="services-list" id="servicesList">
-        <!-- Услуги будут вставлены через JavaScript -->
+    <!-- ===== БЛОК "БАЗОВЫЕ УСЛУГИ" ===== -->
+    <div class="basic-services">
+        <h2>Базовые услуги</h2>
+        <div class="basic-services-list" id="basicServicesList">
+            <!-- Список будет вставлен через JavaScript -->
+        </div>
     </div>
 
-    <!-- ===== БЕСПЛАТНЫЕ УСЛУГИ ===== -->
-    <div class="free-note">
-        Логотипы, контакты и готовые ссылки на оплату — устанавливаем бесплатно.
-    </div>
+    <!-- ===== БЛОК "ДОПОЛНИТЕЛЬНЫЕ УСЛУГИ" ===== -->
+    <div class="additional-services">
+        <h2>Дополнительные услуги</h2>
+        <div class="services-list" id="servicesList">
+            <!-- Список будет вставлен через JavaScript -->
+        </div>
 
-    <!-- ===== БЛОК С ИНДИВИДУАЛЬНЫМИ УСЛУГАМИ ===== -->
-    <div class="custom-services-note">
-        Если вам нужна услуга, которой нет на сайте, мы можем её разработать. Стоимость — <strong>от 2 000 ₽</strong>.<br>
-        Согласовать можно через раздел <a href="https://borisov.store/#contacts">«Контакты»</a> на сайте.
+        <div class="free-note">
+            Логотипы, контакты и готовые ссылки на оплату — устанавливаем бесплатно.
+        </div>
+
+        <div class="custom-services-note">
+            Если вам нужна услуга, которой нет на сайте, мы можем её разработать. Стоимость — <strong>от 2 000 ₽</strong>.<br>
+            Согласовать можно через раздел <a href="https://borisov.store/#contacts">«Контакты»</a> на сайте.
+        </div>
     </div>
 </section>
 
-<!-- ===== МОДАЛЬНОЕ ОКНО КОРЗИНЫ (ТОЛЬКО СПИСОК + ИТОГ) ===== -->
+<!-- ===== МОДАЛЬНОЕ ОКНО КОРЗИНЫ С ФОРМОЙ ===== -->
 <div class="modal" id="cartModal">
     <div class="modal-content">
         <span class="modal-close" id="closeModal">&times;</span>
@@ -766,6 +954,37 @@
             <p style="color: #94a3b8;">Корзина пуста</p>
         </div>
         <div class="cart-total" id="cartTotal">Итого: 0 ₽</div>
+
+        <form id="orderForm" action="https://script.google.com/macros/s/AKfycbwyAmrGH6eB8itSXoFVDJvnaX9nPDwysQoTLuWP5VvshEYXMB1h0bYCkUKT4tBTrM9pNg/exec" method="POST">
+            <div class="form-group">
+                <label for="userName">Имя <span class="required">*</span></label>
+                <input type="text" id="userName" name="name" placeholder="Введите ваше имя" required>
+            </div>
+            <div class="form-group">
+                <label for="userPhone">Телефон <span class="required">*</span></label>
+                <input type="tel" id="userPhone" name="phone" placeholder="+7 (___) ___-__-__" required>
+            </div>
+            <div class="form-group">
+                <label for="userEmail">Email <span class="required">*</span></label>
+                <input type="email" id="userEmail" name="email" placeholder="example@mail.ru" required>
+            </div>
+            <div class="form-group">
+                <label for="fileLink">Ссылка на файлы (Яндекс.Диск, Google Drive и т.д.)</label>
+                <input type="url" id="fileLink" name="fileLink" placeholder="https://disk.yandex.ru/...">
+                <div style="font-size:12px; color:#94a3b8; margin-top:4px;">Необязательное поле</div>
+            </div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="agreeCheck" name="agree" required>
+                <label for="agreeCheck">
+                    Я согласен на <a href="https://borisov.store/policy/" target="_blank">обработку персональных данных</a>
+                </label>
+            </div>
+
+            <input type="hidden" id="orderDetails" name="order" value="">
+
+            <button type="submit" class="btn-submit" id="submitOrderBtn">Оформить заказ</button>
+        </form>
     </div>
 </div>
 
@@ -828,7 +1047,7 @@ document.getElementById('menuToggle').addEventListener('click', function() {
 });
 
 // ============================================================
-//  ТОВАРЫ (единый массив, без дублей, цены 50%)
+//  МАССИВ ТОВАРОВ (полный, как у вас)
 // ============================================================
 const products = [
     { id: 1, name: 'Интернет-магазин (6 товаров)', price: 15000, icon: '🛍️' },
@@ -852,11 +1071,16 @@ const products = [
     { id: 27, name: 'AI-агент с ИИ', price: 12500, icon: '⚡' },
     { id: 28, name: 'Установка Яндекс-Метрики', price: 1500, icon: '📊' },
     { id: 29, name: 'Бот для сбора заявок', price: 5000, icon: '📨' },
-    { id: 99, name: 'Установка иконки favicon (подарок)', price: 0, icon: '🎁' },
+    { id: 99, name: 'Установка иконки favicon (подарок)', price: 0, icon: '🎁' }
 ];
 
 // ============================================================
-//  КОРЗИНА
+//  ПОРЯДОК ID ДЛЯ БАЗОВЫХ УСЛУГ (строгий порядок)
+// ============================================================
+const basicOrder = [13, 9, 6, 3, 1, 22, 29, 23, 27];
+
+// ============================================================
+//  КОРЗИНА (общая)
 // ============================================================
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
@@ -937,40 +1161,84 @@ window.addEventListener('click', function(e) {
 });
 
 // ============================================================
-//  ГЕНЕРАЦИЯ СПИСКА ДОПОЛНИТЕЛЬНЫХ УСЛУГ
+//  ОБРАБОТКА ФОРМЫ ЗАКАЗА
 // ============================================================
-(function renderServices() {
+document.getElementById('orderForm').addEventListener('submit', function(e) {
+    if (cart.length === 0) {
+        alert('Ваша корзина пуста. Добавьте услуги перед оформлением заказа.');
+        e.preventDefault();
+        return;
+    }
+
+    let orderText = '';
+    let total = 0;
+    cart.forEach(item => {
+        const itemTotal = item.price * item.quantity;
+        total += itemTotal;
+        orderText += `${item.name} × ${item.quantity} = ${itemTotal.toLocaleString()} ₽\n`;
+    });
+    orderText += `\nИтого: ${total.toLocaleString()} ₽`;
+
+    document.getElementById('orderDetails').value = orderText;
+});
+
+// ============================================================
+//  РЕНДЕРИНГ БАЗОВЫХ УСЛУГ (в строгом порядке, оригинальные названия)
+// ============================================================
+function renderBasicServices() {
+    const container = document.getElementById('basicServicesList');
+    if (!container) return;
+
+    let html = '';
+    basicOrder.forEach(id => {
+        const product = products.find(p => p.id === id);
+        if (!product) return;
+
+        const half = product.price; // это 50%
+        const full = half * 2;      // полная цена
+
+        html += `
+            <div class="basic-item">
+                <div class="basic-info">
+                    <div class="basic-name">${product.name}</div>
+                    <div class="basic-prices">
+                        <span class="basic-full-price">${full.toLocaleString()} ₽</span>
+                        <span class="basic-half-price">${half.toLocaleString()} ₽</span>
+                        <span style="font-size:0.9rem; color:#94a3b8;">(предоплата 50%)</span>
+                    </div>
+                </div>
+                <div class="basic-action">
+                    <button class="btn-add" onclick="addToCart({ id: ${product.id}, name: '${product.name}', price: ${half} })">Купить</button>
+                </div>
+            </div>
+        `;
+    });
+    container.innerHTML = html;
+}
+
+// ============================================================
+//  РЕНДЕРИНГ ДОПОЛНИТЕЛЬНЫХ УСЛУГ (все, кроме базовых, сортировка по цене)
+// ============================================================
+function renderAdditionalServices() {
     const container = document.getElementById('servicesList');
     if (!container) return;
 
-    const servicesData = [
-        { id: 99, name: 'Установка иконки favicon', fullPrice: 0, price50: 0 },
-        { id: 8, name: 'Форма обратной связи (Formspree)', fullPrice: 2000, price50: 1000 },
-        { id: 21, name: 'Карта проезда', fullPrice: 2000, price50: 1000 },
-        { id: 18, name: 'Добавление блока Отзывы', fullPrice: 3000, price50: 1500 },
-        { id: 4, name: 'Страница Договор оферты', fullPrice: 3000, price50: 1500 },
-        { id: 5, name: 'Страница Политика конфиденциальности', fullPrice: 3000, price50: 1500 },
-        { id: 20, name: 'Всплывающий виджет для звонка', fullPrice: 3000, price50: 1500 },
-        { id: 2, name: 'Еще 6 товаров (для интернет-магазина)', fullPrice: 3000, price50: 1500 },
-        { id: 28, name: 'Установка Яндекс-Метрики', fullPrice: 3000, price50: 1500 },
-        { id: 14, name: 'Еще 2 товара (для лендинга)', fullPrice: 5000, price50: 2500 },
-        { id: 24, name: 'Автоматическая оплата (ЮKassa)', fullPrice: 5000, price50: 2500 },
-        { id: 25, name: 'Интеграция с календарём', fullPrice: 5000, price50: 2500 },
-        { id: 26, name: 'Приём заказов (Google Таблица), без лимитов', fullPrice: 5000, price50: 2500 },
-    ];
+    const basicIds = basicOrder; // [13,9,6,3,1,22,29,23,27]
+    const additional = products.filter(p => !basicIds.includes(p.id));
 
-    servicesData.sort((a, b) => a.price50 - b.price50);
+    // Сортировка по возрастанию цены (price – это 50%)
+    additional.sort((a, b) => a.price - b.price);
 
     let html = '';
-    servicesData.forEach(service => {
-        const fullDisplay = service.fullPrice === 0 ? '0 ₽' : service.fullPrice.toLocaleString() + ' ₽';
-        const halfDisplay = service.price50 === 0 ? '0 ₽' : service.price50.toLocaleString() + ' ₽';
-        const priceAttr = service.price50;
-
+    additional.forEach(prod => {
+        const half = prod.price;
+        const full = half * 2;
+        const fullDisplay = full === 0 ? '0 ₽' : full.toLocaleString() + ' ₽';
+        const halfDisplay = half === 0 ? '0 ₽' : half.toLocaleString() + ' ₽';
         html += `
             <div class="service-item">
                 <div class="service-info">
-                    <div class="service-name">${service.name}</div>
+                    <div class="service-name">${prod.name}</div>
                     <div class="service-prices">
                         <span class="service-full-price">${fullDisplay}</span>
                         <span class="service-half-price">${halfDisplay}</span>
@@ -978,18 +1246,19 @@ window.addEventListener('click', function(e) {
                     </div>
                 </div>
                 <div class="service-action">
-                    <button class="btn-add" onclick="addToCart({ id: ${service.id}, name: '${service.name}', price: ${priceAttr} })">Купить</button>
+                    <button class="btn-add" onclick="addToCart({ id: ${prod.id}, name: '${prod.name}', price: ${half} })">Купить</button>
                 </div>
             </div>
         `;
     });
-
     container.innerHTML = html;
-})();
+}
 
 // ============================================================
 //  ИНИЦИАЛИЗАЦИЯ
 // ============================================================
+renderBasicServices();
+renderAdditionalServices();
 updateCartUI();
 </script>
 
