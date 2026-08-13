@@ -425,7 +425,7 @@
             margin-top: 20px;
         }
 
-        /* ===== МОДАЛЬНОЕ ОКНО КОРЗИНЫ С ФОРМОЙ ===== */
+        /* ===== МОДАЛЬНОЕ ОКНО КОРЗИНЫ (УПРОЩЁННАЯ ВЕРСИЯ) ===== */
         .modal {
             display: none;
             position: fixed;
@@ -443,9 +443,9 @@
             background: #1f2937;
             padding: 25px 20px;
             border-radius: 20px;
-            max-width: 550px;
+            max-width: 500px;
             width: 92%;
-            max-height: 90vh;
+            max-height: 80vh;
             overflow-y: auto;
             position: relative;
             color: #fff;
@@ -509,77 +509,23 @@
             text-align: right;
         }
 
-        /* Стили для формы */
-        .form-group {
-            margin-bottom: 16px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 4px;
-            color: #cbd5e1;
-            font-size: 14px;
-        }
-
-        .form-group .required {
-            color: #ef4444;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 11px;
-            border: none;
-            border-radius: 8px;
+        .order-note {
+            text-align: center;
+            margin-top: 15px;
+            padding: 12px;
             background: #0f172a;
-            color: #fff;
-            font-size: 15px;
-            outline: none;
-            transition: 0.2s;
+            border-radius: 10px;
+            border-left: 3px solid #3b82f6;
         }
 
-        .form-group input:focus {
-            box-shadow: 0 0 0 2px #3b82f6;
-        }
-
-        .checkbox-group {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin: 16px 0;
-            font-size: 14px;
-        }
-
-        .checkbox-group input[type="checkbox"] {
-            width: 18px;
-            height: 18px;
-            accent-color: #3b82f6;
-            cursor: pointer;
-        }
-
-        .checkbox-group label a {
+        .order-note a {
             color: #3b82f6;
             text-decoration: none;
-        }
-
-        .checkbox-group label a:hover {
-            text-decoration: underline;
-        }
-
-        .btn-submit {
-            background: #3b82f6;
-            color: #fff;
-            border: none;
-            padding: 14px 24px;
-            font-size: 18px;
             font-weight: bold;
-            border-radius: 10px;
-            cursor: pointer;
-            width: 100%;
-            transition: background 0.3s ease;
         }
 
-        .btn-submit:hover {
-            background: #2563eb;
+        .order-note a:hover {
+            text-decoration: underline;
         }
 
         /* ===== ФУТЕР ===== */
@@ -945,7 +891,7 @@
     </div>
 </section>
 
-<!-- ===== МОДАЛЬНОЕ ОКНО КОРЗИНЫ С ФОРМОЙ ===== -->
+<!-- ===== МОДАЛЬНОЕ ОКНО КОРЗИНЫ (УПРОЩЁННАЯ ВЕРСИЯ) ===== -->
 <div class="modal" id="cartModal">
     <div class="modal-content">
         <span class="modal-close" id="closeModal">&times;</span>
@@ -954,37 +900,9 @@
             <p style="color: #94a3b8;">Корзина пуста</p>
         </div>
         <div class="cart-total" id="cartTotal">Итого: 0 ₽</div>
-
-        <form id="orderForm" action="https://script.google.com/macros/s/AKfycbwyAmrGH6eB8itSXoFVDJvnaX9nPDwysQoTLuWP5VvshEYXMB1h0bYCkUKT4tBTrM9pNg/exec" method="POST">
-            <div class="form-group">
-                <label for="userName">Имя <span class="required">*</span></label>
-                <input type="text" id="userName" name="name" placeholder="Введите ваше имя" required>
-            </div>
-            <div class="form-group">
-                <label for="userPhone">Телефон <span class="required">*</span></label>
-                <input type="tel" id="userPhone" name="phone" placeholder="+7 (___) ___-__-__" required>
-            </div>
-            <div class="form-group">
-                <label for="userEmail">Email <span class="required">*</span></label>
-                <input type="email" id="userEmail" name="email" placeholder="example@mail.ru" required>
-            </div>
-            <div class="form-group">
-                <label for="fileLink">Ссылка на файлы (Яндекс.Диск, Google Drive и т.д.)</label>
-                <input type="url" id="fileLink" name="fileLink" placeholder="https://disk.yandex.ru/...">
-                <div style="font-size:12px; color:#94a3b8; margin-top:4px;">Необязательное поле</div>
-            </div>
-
-            <div class="checkbox-group">
-                <input type="checkbox" id="agreeCheck" name="agree" required>
-                <label for="agreeCheck">
-                    Я согласен на <a href="https://borisov.store/policy/" target="_blank">обработку персональных данных</a>
-                </label>
-            </div>
-
-            <input type="hidden" id="orderDetails" name="order" value="">
-
-            <button type="submit" class="btn-submit" id="submitOrderBtn">Оформить заказ</button>
-        </form>
+        <div class="order-note">
+            🔹 Оформление заказа — на <a href="https://borisov.store/#order" target="_blank">главной странице</a>.
+        </div>
     </div>
 </div>
 
@@ -1158,28 +1076,6 @@ window.addEventListener('click', function(e) {
     if (e.target === document.getElementById('cartModal')) {
         document.getElementById('cartModal').style.display = 'none';
     }
-});
-
-// ============================================================
-//  ОБРАБОТКА ФОРМЫ ЗАКАЗА
-// ============================================================
-document.getElementById('orderForm').addEventListener('submit', function(e) {
-    if (cart.length === 0) {
-        alert('Ваша корзина пуста. Добавьте услуги перед оформлением заказа.');
-        e.preventDefault();
-        return;
-    }
-
-    let orderText = '';
-    let total = 0;
-    cart.forEach(item => {
-        const itemTotal = item.price * item.quantity;
-        total += itemTotal;
-        orderText += `${item.name} × ${item.quantity} = ${itemTotal.toLocaleString()} ₽\n`;
-    });
-    orderText += `\nИтого: ${total.toLocaleString()} ₽`;
-
-    document.getElementById('orderDetails').value = orderText;
 });
 
 // ============================================================
