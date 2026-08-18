@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Спасибо за заказ | Borisov Store</title>
+    <title>Оплата криптовалютой | Borisov Store</title>
+
+    <!-- FAVICON -->
     <link rel="icon" type="image/x-icon" href="https://borisov.store/images/inter1.ico">
 
-    <!-- Яндекс.Метрика (обязательно, чтобы работал ym()) -->
+    <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
         (function(m,e,t,r,i,k,a){
             m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
@@ -15,69 +17,101 @@
             k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
         })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=110222077', 'ym');
 
-        ym(110222077, 'init', {
-            clickmap:true,
-            trackLinks:true,
-            accurateTrackBounce:true,
-            webvisor:true,
-            ecommerce:"dataLayer"
-        });
+        ym(110222077, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
     </script>
     <noscript><div><img src="https://mc.yandex.ru/watch/110222077" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
 
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
-        body { background: #0f172a; color: #fff; display: flex; justify-content: center; align-items: center; min-height: 100vh; text-align: center; padding: 20px; }
-        .container { max-width: 600px; padding: 40px; background: #1f2937; border-radius: 20px; box-shadow: 0 20px 35px rgba(0,0,0,0.5); }
-        h1 { font-size: 2.5rem; color: #3b82f6; margin-bottom: 20px; }
-        p { font-size: 1.1rem; color: #cbd5e1; margin-bottom: 10px; }
-        .order-id { font-weight: bold; color: #fff; }
-        .btn { display: inline-block; margin-top: 25px; padding: 12px 30px; background: #3b82f6; color: #fff; border-radius: 8px; text-decoration: none; transition: background 0.3s; }
-        .btn:hover { background: #2563eb; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #0f172a;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 700px;
+            width: 100%;
+            background: #1f2937;
+            padding: 50px 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 35px rgba(0,0,0,0.5);
+        }
+
+        h1 {
+            color: #3b82f6;
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        .payment-info {
+            font-size: 1.3rem;
+            line-height: 2;
+            color: #cbd5e1;
+            margin: 20px 0 30px;
+        }
+
+        .payment-info div {
+            margin: 10px 0;
+        }
+
+        .payment-info .address {
+            color: #fff;
+            font-weight: bold;
+            word-break: break-all;
+        }
+
+        .btn-home {
+            display: inline-block;
+            background: #3b82f6;
+            color: #fff;
+            text-decoration: none;
+            padding: 14px 40px;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            transition: background 0.3s ease;
+        }
+
+        .btn-home:hover {
+            background: #2563eb;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            .payment-info {
+                font-size: 1.1rem;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>✅ Спасибо за заказ!</h1>
-        <p>Ваш заказ успешно оплачен.</p>
-        <p>Номер заказа: <span class="order-id" id="orderId">—</span></p>
-        <p>Мы свяжемся с вами в ближайшее время.</p>
-        <a href="https://borisov.store/" class="btn">Вернуться на главную</a>
+        <h1>💳 Оплата криптовалютой</h1>
+
+        <div class="payment-info">
+            <div><strong>Оплата в USDT или USDC</strong></div>
+            <div class="address">Адрес: 0x9712aE4913fb7eeA0225c0C7392c40d8B2148a6A</div>
+            <div>Сети: Optimism, Arbitrum</div>
+        </div>
+
+        <a href="https://borisov.store/" class="btn-home">Вернуться на главную</a>
     </div>
-
-    <script>
-        // ---- Получаем номер заказа из URL ----
-        const urlParams = new URLSearchParams(window.location.search);
-        const orderId = urlParams.get('orderId');
-        if (orderId) {
-            document.getElementById('orderId').textContent = orderId;
-        }
-
-        // ---- Отправляем purchase в Яндекс.Метрику ----
-        try {
-            const orderData = JSON.parse(localStorage.getItem('lastOrder'));
-            if (orderData && orderData.products && orderData.products.length > 0) {
-                ym(110222077, 'ecommerce', 'purchase', {
-                    order_id: orderData.paymentId || orderId,
-                    revenue: orderData.total,
-                    products: orderData.products
-                });
-                // Очищаем после отправки
-                localStorage.removeItem('lastOrder');
-                localStorage.removeItem('cart');
-            } else {
-                // Если данных нет в localStorage, но есть orderId — отправляем хотя бы его
-                if (orderId) {
-                    ym(110222077, 'ecommerce', 'purchase', {
-                        order_id: orderId,
-                        revenue: 0,
-                        products: []
-                    });
-                }
-            }
-        } catch (e) {
-            console.warn('Ecommerce не отправлен:', e);
-        }
-    </script>
 </body>
 </html>
