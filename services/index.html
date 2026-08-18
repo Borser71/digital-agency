@@ -970,10 +970,10 @@
                 <input type="email" id="userEmail" name="email" placeholder="example@mail.ru" required>
             </div>
 
-            <!-- Поле для ссылки на файлы -->
+            <!-- Поле для ссылки на файлы / способ оплаты -->
             <div class="form-group">
-                <label for="fileLink">Ссылка на файлы (Яндекс.Диск, Google Drive и т.д.)</label>
-                <input type="url" id="fileLink" name="fileLink" placeholder="https://disk.yandex.ru/..." style="width:100%; padding:11px; border:none; border-radius:8px; background:#0f172a; color:#fff; font-size:15px;">
+                <label for="fileLink">Ссылка на файлы / Способ оплаты</label>
+                <input type="url" id="fileLink" name="fileLink" placeholder="https://disk.yandex.ru/... или укажите способ оплаты" style="width:100%; padding:11px; border:none; border-radius:8px; background:#0f172a; color:#fff; font-size:15px;">
                 <div style="font-size:12px; color:#94a3b8; margin-top:4px;">Необязательное поле</div>
             </div>
 
@@ -989,11 +989,10 @@
             <button type="submit" class="btn-submit" id="submitOrderBtn">Оформить заказ</button>
         </form>
 
-        <!-- БЛОК ИНФОРМАЦИИ ОБ ОПЛАТЕ (внутри модалки) -->
+        <!-- БЛОК С ИНФОРМАЦИЕЙ ОБ ОПЛАТЕ (НОВЫЙ ТЕКСТ) -->
         <div style="text-align:center; margin-top:20px; padding:14px 16px; background:#0f172a; border-radius:10px; border-left:4px solid #3b82f6;">
             <p style="margin:0; color:#cbd5e1; font-size:0.95rem; line-height:1.6;">
-                🔹 <strong style="color:#3b82f6;">Оплата криптовалютой</strong> доступна здесь.<br>
-                🔸 Оплата картой/СБП/ЮМани — на <a href="https://borisov.store/" style="color:#3b82f6; text-decoration:underline; font-weight:500;">главной странице</a>.
+                💳 <strong style="color:#3b82f6;">Оплата криптовалютой или Яндекс Сплит</strong> доступна здесь.
             </p>
         </div>
     </div>
@@ -1180,7 +1179,7 @@ window.addEventListener('click', function(e) {
 });
 
 // ============================================================
-//  РЕНДЕРИНГ БАЗОВЫХ УСЛУГ (в строгом порядке, оригинальные названия)
+//  РЕНДЕРИНГ БАЗОВЫХ УСЛУГ
 // ============================================================
 function renderBasicServices() {
     const container = document.getElementById('basicServicesList');
@@ -1214,16 +1213,14 @@ function renderBasicServices() {
 }
 
 // ============================================================
-//  РЕНДЕРИНГ ДОПОЛНИТЕЛЬНЫХ УСЛУГ (все, кроме базовых, сортировка по цене)
+//  РЕНДЕРИНГ ДОПОЛНИТЕЛЬНЫХ УСЛУГ
 // ============================================================
 function renderAdditionalServices() {
     const container = document.getElementById('servicesList');
     if (!container) return;
 
-    const basicIds = basicOrder; // [13,9,6,3,1,22,29,23,27]
+    const basicIds = basicOrder;
     const additional = products.filter(p => !basicIds.includes(p.id));
-
-    // Сортировка по возрастанию цены (price – это 50%)
     additional.sort((a, b) => a.price - b.price);
 
     let html = '';
@@ -1252,7 +1249,7 @@ function renderAdditionalServices() {
 }
 
 // ============================================================
-//  ОПЛАТА ЧЕРЕЗ HELEKET (криптовалюта) + ЗАПИСЬ В GOOGLE ТАБЛИЦУ
+//  ОФОРМЛЕНИЕ ЗАКАЗА (без автоматической оплаты)
 // ============================================================
 const orderForm = document.getElementById('orderForm');
 const submitBtn = document.getElementById('submitOrderBtn');
@@ -1282,7 +1279,6 @@ if (orderForm) {
         }
 
         const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-
         let orderText = 'Состав заказа:\n';
         cart.forEach(item => {
             orderText += '• ' + item.name + ' × ' + item.quantity + ' = ' + (item.price * item.quantity).toLocaleString() + ' ₽\n';
@@ -1291,58 +1287,101 @@ if (orderForm) {
         document.getElementById('orderDetails').value = orderText;
 
         submitBtn.disabled = true;
-        submitBtn.textContent = '⏳ Создание платежа...';
+        submitBtn.textContent = '⏳ Отправка...';
 
         try {
-            // 1. Отправляем данные в Google Таблицу
+            // Отправляем в Google Таблицу
             const formData = new FormData(orderForm);
-            await fetch('https://script.google.com/macros/s/AKfycbwyAmrGH6eB8itSXoFVDJvnaX9nPDwysQoTLuWP5VvshEYXMB1h0bYCkUKT4tBTrM9pNg/exec', {
+            const response = await fetch('https://script.google.com/macros/s/AKfycbwyAmrGH6eB8itSXoFVDJvnaX9nPDwysQoTLuWP5VvshEYXMB1h0bYCkUKT4tBTrM9pNg/exec', {
                 method: 'POST',
                 body: formData,
                 headers: { 'Accept': 'application/json' }
-            })
-            .then(response => response.json())
-            .then(tableData => console.log('✅ Ответ от Google Таблицы:', tableData))
-            .catch(err => console.warn('⚠️ Ошибка отправки в таблицу:', err));
-
-            // 2. Создаём платёж в Heleket
-            const workerUrl = 'https://heleket.wisebor.workers.dev/create-payment';
-            const responseWorker = await fetch(workerUrl, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    rubAmount: total,
-                    orderId: Date.now().toString(),
-                    email: email
-                })
             });
+            const data = await response.json();
+            console.log('✅ Заказ отправлен в Google Таблицу:', data);
 
-            const data = await responseWorker.json();
-
-            if (!data.success || !data.paymentUrl) {
-                alert('Ошибка при создании платежа: ' + (data.error || 'Неизвестная ошибка'));
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Оформить заказ';
-                return;
-            }
-
-            // 3. Очищаем корзину
+            // Очищаем корзину
             localStorage.removeItem('cart');
             cart = [];
             updateCartUI();
             renderCartItems();
             document.getElementById('cartModal').style.display = 'none';
 
-            // 4. Перенаправляем на оплату
-            window.location.href = data.paymentUrl;
+            // Показываем сообщение
+            showPaymentMessage();
+
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Оформить заказ';
 
         } catch (error) {
-            alert('Ошибка соединения с платёжным сервисом. Попробуйте позже.');
+            alert('Ошибка при отправке заказа. Попробуйте ещё раз.');
             console.error('❌ Ошибка:', error);
             submitBtn.disabled = false;
             submitBtn.textContent = 'Оформить заказ';
         }
     });
+}
+
+// ============================================================
+//  ФУНКЦИЯ ДЛЯ ПОКАЗА СООБЩЕНИЯ ОБ ОПЛАТЕ
+// ============================================================
+function showPaymentMessage() {
+    const overlay = document.createElement('div');
+    overlay.id = 'paymentMessageOverlay';
+    overlay.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.7);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+    `;
+
+    const messageBox = document.createElement('div');
+    messageBox.style.cssText = `
+        background: #1f2937;
+        padding: 30px 25px;
+        border-radius: 20px;
+        max-width: 450px;
+        width: 90%;
+        text-align: center;
+        color: #fff;
+        border-left: 4px solid #3b82f6;
+    `;
+    messageBox.innerHTML = `
+        <h2 style="color: #3b82f6; font-size: 1.6rem; margin-bottom: 15px;">✅ Заказ принят!</h2>
+        <p style="font-size: 1.1rem; line-height: 1.6; color: #cbd5e1;">
+            Ссылка на оплату <strong style="color: #fff;">придёт к вам на email</strong> в течение <strong style="color: #3b82f6;">2 часов</strong>.
+        </p>
+        <p style="font-size: 0.9rem; color: #94a3b8; margin-top: 15px;">
+            Мы проверим заказ и пришлём все детали.
+        </p>
+        <button onclick="this.closest('#paymentMessageOverlay').remove()" style="
+            margin-top: 20px;
+            background: #3b82f6;
+            color: #fff;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        " onmouseover="this.style.background='#2563eb'" onmouseout="this.style.background='#3b82f6'">
+            Закрыть
+        </button>
+    `;
+
+    overlay.appendChild(messageBox);
+    document.body.appendChild(overlay);
+
+    setTimeout(() => {
+        const existingOverlay = document.getElementById('paymentMessageOverlay');
+        if (existingOverlay) existingOverlay.remove();
+    }, 15000);
 }
 
 // ============================================================
