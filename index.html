@@ -3196,14 +3196,13 @@ updateCartUI();
             btn.style.cssText = 'background:#3b82f6;color:#fff;border:none;border-radius:6px;padding:4px 12px;cursor:pointer;font-size:13px;margin-left:8px;';
             btn.onclick = (e) => {
                 e.stopPropagation();
-                navigator.clipboard.writeText(inn).then(() => alert('✅ ИНН скопирован!')).catch(() => {
+                navigator.clipboard.writeText(inn).catch(() => {
                     const ta = document.createElement('textarea');
                     ta.value = inn;
                     document.body.appendChild(ta);
                     ta.select();
                     document.execCommand('copy');
                     document.body.removeChild(ta);
-                    alert('✅ ИНН скопирован!');
                 });
             };
             el.appendChild(btn);
@@ -3220,6 +3219,7 @@ updateCartUI();
         }))).observe(container, { childList: true, subtree: true });
     }
 })();
-</script>   
+</script>
+  
 </body>
 </html>
