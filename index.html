@@ -3185,5 +3185,41 @@ updateCartUI();
 })();
 </script>  
 
+ <script>
+(function() {
+    const inn = '665200001260';
+    function addBtn(el) {
+        if (el.innerText.includes(inn) && !el.querySelector('.copy-inn')) {
+            const btn = document.createElement('button');
+            btn.className = 'copy-inn';
+            btn.textContent = '📋 Копировать ИНН';
+            btn.style.cssText = 'background:#3b82f6;color:#fff;border:none;border-radius:6px;padding:4px 12px;cursor:pointer;font-size:13px;margin-left:8px;';
+            btn.onclick = (e) => {
+                e.stopPropagation();
+                navigator.clipboard.writeText(inn).then(() => alert('✅ ИНН скопирован!')).catch(() => {
+                    const ta = document.createElement('textarea');
+                    ta.value = inn;
+                    document.body.appendChild(ta);
+                    ta.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(ta);
+                    alert('✅ ИНН скопирован!');
+                });
+            };
+            el.appendChild(btn);
+        }
+    }
+    const container = document.getElementById('borisov-chat-messages');
+    if (container) {
+        container.querySelectorAll('div').forEach(addBtn);
+        new MutationObserver(m => m.forEach(r => r.addedNodes.forEach(n => {
+            if (n.nodeType === 1) {
+                if (n.matches('div')) addBtn(n);
+                n.querySelectorAll('div').forEach(addBtn);
+            }
+        }))).observe(container, { childList: true, subtree: true });
+    }
+})();
+</script>   
 </body>
 </html>
