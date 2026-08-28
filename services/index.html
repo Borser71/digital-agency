@@ -218,7 +218,7 @@
             color: #fff;
         }
 
-        /* ===== БАЗОВЫЕ УСЛУГИ ===== */
+        /* ===== БАЗОВЫЕ УСЛУГИ (ГРУППИРОВКА) ===== */
         .basic-services {
             margin: 30px 0 20px;
         }
@@ -230,11 +230,22 @@
             text-align: center;
         }
 
+        .basic-group {
+            margin-bottom: 30px;
+        }
+
+        .basic-group h3 {
+            font-size: 1.3rem;
+            color: #fff;
+            margin-bottom: 12px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #334155;
+        }
+
         .basic-services-list {
             display: flex;
             flex-direction: column;
             gap: 12px;
-            margin-bottom: 30px;
         }
 
         .basic-item {
@@ -914,20 +925,21 @@
             <li><strong>4. Портфолио</strong> — Готовая страница с демонстрацией проектов («Портфолио»), а также блоки «Обо мне» и «Контакты». Форма обратной связи для приема заказов (интеграция с Formspree, до 50 заказов бесплатно).</li>
             <li><strong>5. Интернет-магазин</strong> — Готовая страница с каталогом до 6 товаров и фильтром поиска, страница Договор оферты, страница Политика конфиденциальности, автоматическая оплата (ЮKassa), приём заказов (Google Таблица).</li>
             <li><strong>6. Универсальный</strong> — Готовая страница с блоками: «Портфолио», «Преимущества», «Цены», «Контакты». Страница Договор оферты, страница Политика конфиденциальности, автоматическая оплата (ЮKassa), приём заказов (Google Таблица).</li>
-            <li><strong>7. Бот для сбора контактов (ТГ)</strong> — Автоматический Telegram-бот без ИИ, который принимает контакты от клиентов, записывает их в Google Таблицу и отправляет вам на почту.</li>
-            <li><strong>8. Бот-консультант с ИИ (ТГ)</strong> — Telegram-бот, который отвечает на вопросы клиента (база знаний).</li>
-            <li><strong>9. AI-агент</strong> — Умный агент-помощник с ИИ, который автоматически ведёт клиента по воронке продаж. Реализован как виджет на сайте.</li>
+            <li><strong>7. Бот для сбора контактов (ТГ)</strong> — Автоматический Telegram-бот без ИИ, который принимает контакты от клиентов, записывает их в Google Таблицу и отправляет вам в чат бота.</li>
+            <li><strong>8. Сбор контактов и бот-консультант (ТГ)</strong> — Telegram-бот, который собирает контакты и консультирует клиентов, отвечая на их вопросы. Работает с ИИ.</li>
+            <li><strong>9. Бот: сбор контактов, консультант, оплата (ТГ)</strong> — Полнофункциональный Telegram-бот, который собирает контакты, консультирует клиентов и проводит оплату через ЮKassa. Работает с ИИ.</li>
             <li><strong>10. Бот для сбора контактов (MAX)</strong> — Бот в мессенджере MAX, который собирает контакты от клиентов, записывает их в Google Таблицу и отправляет их вам на почту. Без ИИ.</li>
             <li><strong>11. Сбор контактов и бот-консультант (MAX)</strong> — Бот в MAX, который собирает контакты и одновременно консультирует клиентов, отвечая на их вопросы. Работает с ИИ.</li>
             <li><strong>12. Бот: сбор контактов, консультант, оплата (MAX)</strong> — Полнофункциональный бот в MAX, который собирает контакты, консультирует клиентов, отправляет вам заказ на почту и проводит оплату через ЮKassa. Работает с ИИ.</li>
+            <li><strong>13. AI-агент</strong> — Умный агент-помощник с ИИ, который автоматически ведёт клиента по воронке продаж. Реализован как виджет на сайте.</li>
         </ul>
     </div>
 
-    <!-- ===== БЛОК "БАЗОВЫЕ УСЛУГИ" ===== -->
+    <!-- ===== БЛОК "БАЗОВЫЕ УСЛУГИ" (ГРУППИРОВКА) ===== -->
     <div class="basic-services">
         <h2>Базовые услуги</h2>
-        <div class="basic-services-list" id="basicServicesList">
-            <!-- Список будет вставлен через JavaScript -->
+        <div id="basicServicesContainer">
+            <!-- Группы будут вставлены через JavaScript -->
         </div>
     </div>
 
@@ -1071,41 +1083,68 @@ document.getElementById('servicesLink').addEventListener('click', function(e) {
 //  МАССИВ ТОВАРОВ (обновлён с (ТГ) и (MAX))
 // ============================================================
 const products = [
-    { id: 1, name: 'Интернет-магазин (6 товаров)', price: 12000, icon: '🛍️' },
-    { id: 2, name: 'Еще 6 товаров (для интернет-магазина)', price: 1200, icon: '🛒' },
-    { id: 3, name: 'Сайт Портфолио', price: 10000, icon: '🖼️' },
-    { id: 4, name: 'Страница Договор оферты', price: 1200, icon: '📄' },
-    { id: 5, name: 'Страница Политика Конфиденциальности', price: 1200, icon: '🔒' },
-    { id: 6, name: 'Сайт Визитка', price: 8000, icon: '🏢' },
-    { id: 8, name: 'Форма обратной связи (Formspree)', price: 800, icon: '📧' },
-    { id: 9, name: 'Информационный сайт', price: 6000, icon: '📰' },
+    // ===== БАЗОВЫЕ УСЛУГИ (САЙТЫ) =====
     { id: 13, name: 'Лендинг до 2 товаров', price: 4000, icon: '🎯' },
+    { id: 9,  name: 'Информационный сайт', price: 6000, icon: '📰' },
+    { id: 6,  name: 'Сайт Визитка', price: 8000, icon: '🏢' },
+    { id: 3,  name: 'Сайт Портфолио', price: 10000, icon: '🖼️' },
+    { id: 1,  name: 'Интернет-магазин (6 товаров)', price: 12000, icon: '🛍️' },
+    { id: 22, name: 'Универсальный сайт', price: 20000, icon: '🌟' },
+
+    // ===== TELEGRAM-БОТЫ (ТГ) =====
+    { id: 29, name: 'Бот для сбора контактов (ТГ)', price: 4000, icon: '📨' },
+    { id: 30, name: 'Сбор контактов и бот-консультант (ТГ)', price: 6000, icon: '🤖' },
+    { id: 31, name: 'Бот: сбор контактов, консультант, оплата (ТГ)', price: 10000, icon: '💳' },
+
+    // ===== MAX-БОТЫ =====
+    { id: 101, name: 'Бот для сбора контактов (MAX)', price: 5000, icon: '📨' },
+    { id: 102, name: 'Сбор контактов и бот-консультант (MAX)', price: 10000, icon: '🤖' },
+    { id: 103, name: 'Бот: сбор контактов, консультант, оплата (MAX)', price: 15000, icon: '💳' },
+
+    // ===== AI-АГЕНТ =====
+    { id: 27, name: 'AI-агент с ИИ', price: 10000, icon: '⚡' },
+
+    // ===== ДОПОЛНИТЕЛЬНЫЕ УСЛУГИ =====
+    { id: 2,  name: 'Еще 6 товаров (для интернет-магазина)', price: 1200, icon: '🛒' },
+    { id: 4,  name: 'Страница Договор оферты', price: 1200, icon: '📄' },
+    { id: 5,  name: 'Страница Политика Конфиденциальности', price: 1200, icon: '🔒' },
+    { id: 8,  name: 'Форма обратной связи (Formspree)', price: 800, icon: '📧' },
     { id: 14, name: 'Еще 2 товара (для лендинга)', price: 2000, icon: '➕' },
     { id: 18, name: 'Добавление блока Отзывы', price: 1200, icon: '⭐' },
     { id: 20, name: 'Всплывающий виджет для звонка', price: 1200, icon: '📞' },
     { id: 21, name: 'Карта проезда', price: 800, icon: '🗺️' },
-    { id: 22, name: 'Универсальный сайт', price: 20000, icon: '🌟' },
-    { id: 23, name: 'Бот-консультант с ИИ (ТГ)', price: 6000, icon: '🤖' },
     { id: 24, name: 'Автоматическая оплата (ЮKassa)', price: 2000, icon: '💳' },
     { id: 25, name: 'Интеграция с календарём', price: 2000, icon: '📅' },
     { id: 26, name: 'Приём заказов (Google Таблица)', price: 2000, icon: '📊' },
-    { id: 27, name: 'AI-агент с ИИ', price: 10000, icon: '⚡' },
     { id: 28, name: 'Установка Яндекс-Метрики', price: 1200, icon: '📊' },
-    { id: 29, name: 'Бот для сбора контактов (ТГ)', price: 4000, icon: '📨' },
     { id: 99, name: 'Установка иконки favicon (подарок)', price: 0, icon: '🎁' },
-    // MAX-боты
-    { id: 101, name: 'Бот для сбора контактов (MAX)', price: 5000, icon: '📨' },
-    { id: 102, name: 'Сбор контактов и бот-консультант (MAX)', price: 10000, icon: '🤖' },
-    { id: 103, name: 'Бот: сбор контактов, консультант, оплата (MAX)', price: 15000, icon: '💳' },
-     // Новая услуга
-    { id: 30, name: 'Автоматическая оплата криптовалютой', price: 2500, icon: '💳' }
+    { id: 104, name: 'Автоматическая оплата криптовалютой', price: 2500, icon: '💳' }
 ];
-    
 
 // ============================================================
-//  ПОРЯДОК ID ДЛЯ БАЗОВЫХ УСЛУГ (12 позиций)
+//  КАТЕГОРИИ ДЛЯ БАЗОВЫХ УСЛУГ (группировка и сортировка)
 // ============================================================
-const basicOrder = [13, 9, 6, 3, 1, 22, 29, 23, 27, 101, 102, 103];
+const basicGroups = [
+    {
+        name: 'Сайты',
+        ids: [13, 9, 6, 3, 1, 22]
+    },
+    {
+        name: 'Telegram-боты',
+        ids: [29, 30, 31]
+    },
+    {
+        name: 'MAX-боты',
+        ids: [101, 102, 103]
+    },
+    {
+        name: 'AI-агент',
+        ids: [27]
+    }
+];
+
+// Получаем все ID базовых услуг для фильтрации дополнительных
+const basicIds = basicGroups.flatMap(group => group.ids);
 
 // ============================================================
 //  КОРЗИНА (общая)
@@ -1189,48 +1228,61 @@ window.addEventListener('click', function(e) {
 });
 
 // ============================================================
-//  РЕНДЕРИНГ БАЗОВЫХ УСЛУГ
+//  РЕНДЕРИНГ БАЗОВЫХ УСЛУГ (ГРУППИРОВКА И СОРТИРОВКА ПО ЦЕНЕ)
 // ============================================================
 function renderBasicServices() {
-    const container = document.getElementById('basicServicesList');
+    const container = document.getElementById('basicServicesContainer');
     if (!container) return;
 
     let html = '';
-    basicOrder.forEach(id => {
-        const product = products.find(p => p.id === id);
-        if (!product) return;
+    basicGroups.forEach(group => {
+        // Получаем товары из группы и сортируем по цене (от меньшей к большей)
+        const items = group.ids
+            .map(id => products.find(p => p.id === id))
+            .filter(p => p !== undefined)
+            .sort((a, b) => a.price - b.price);
 
-        const half = product.price; // это 50%
-        const full = half * 2;      // полная цена
+        if (items.length === 0) return;
 
-        html += `
-            <div class="basic-item">
-                <div class="basic-info">
-                    <div class="basic-name">${product.name}</div>
-                    <div class="basic-prices">
-                        <span class="basic-full-price">${full.toLocaleString()} ₽</span>
-                        <span class="basic-half-price">${half.toLocaleString()} ₽</span>
-                        <span style="font-size:0.9rem; color:#94a3b8;">(предоплата 50%)</span>
+        html += `<div class="basic-group">`;
+        html += `<h3>${group.name}</h3>`;
+        html += `<div class="basic-services-list">`;
+
+        items.forEach(product => {
+            const half = product.price; // это 50%
+            const full = half * 2;      // полная цена
+            html += `
+                <div class="basic-item">
+                    <div class="basic-info">
+                        <div class="basic-name">${product.name}</div>
+                        <div class="basic-prices">
+                            <span class="basic-full-price">${full.toLocaleString()} ₽</span>
+                            <span class="basic-half-price">${half.toLocaleString()} ₽</span>
+                            <span style="font-size:0.9rem; color:#94a3b8;">(предоплата 50%)</span>
+                        </div>
+                    </div>
+                    <div class="basic-action">
+                        <button class="btn-add" onclick="addToCart({ id: ${product.id}, name: '${product.name}', price: ${half} })">Купить</button>
                     </div>
                 </div>
-                <div class="basic-action">
-                    <button class="btn-add" onclick="addToCart({ id: ${product.id}, name: '${product.name}', price: ${half} })">Купить</button>
-                </div>
-            </div>
-        `;
+            `;
+        });
+
+        html += `</div></div>`;
     });
+
     container.innerHTML = html;
 }
 
 // ============================================================
-//  РЕНДЕРИНГ ДОПОЛНИТЕЛЬНЫХ УСЛУГ
+//  РЕНДЕРИНГ ДОПОЛНИТЕЛЬНЫХ УСЛУГ (все, кроме базовых, сортировка по цене)
 // ============================================================
 function renderAdditionalServices() {
     const container = document.getElementById('servicesList');
     if (!container) return;
 
-    const basicIds = basicOrder;
     const additional = products.filter(p => !basicIds.includes(p.id));
+    // Сортировка по возрастанию цены (price – это 50%)
     additional.sort((a, b) => a.price - b.price);
 
     let html = '';
