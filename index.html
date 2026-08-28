@@ -1503,7 +1503,7 @@ footer {
             <div class="type-card">
                 <div class="type-icon-badge"><i class="ti ti-message-2-bolt"></i></div>
                 <h4>Telegram-бот</h4>
-                <p>Чат-бот с искусственным интеллектом, который 24/7 отвечает на вопросы клиентов. Базовый функционал - консультант. При необходимости вы можете подключить дополнительные модули: приём заказов, интеграцию с календарём и автоматические платежи. Стоимость эксплуатации: 2-4 $ в месяц.</p>
+                <p>Экономичный чат-бот с искусственным интеллектом, который консультирует клиентов 24/7, собирает их контакты и отправляет на оплату через ЮKassa. Все заявки и контакты записываются в Google Таблицу и эта информация дублируется в чате бота для вашего контроля.</p>
                 <button class="show-btn" onclick="window.open('https://t.me/Test12398bs_bot', '_blank');">Показать</button>
             </div>
 
@@ -1663,7 +1663,7 @@ footer {
                     <li>✓ Бот-консультант</li>
                     <li>✓ Бесплатный хостинг</li>
                     <li>✓ Круглосуточная работа</li>
-                    <li>✓ Дополнительные опции</li>
+                    <li>✓ Расходы 2-4 $ в месяц</li>
                 </ul>
                 <button class="price-btn" onclick="openBotLeadModal()">Заказать</button>
             </div>
@@ -2193,14 +2193,14 @@ footer {
 </div>
 
 <!-- ======================================================== -->
-<!-- 7. TELEGRAM-БОТ (новое модальное окно с двумя продуктами ТГ) -->
+<!-- 7. TELEGRAM-БОТ (новое модальное окно с тремя продуктами ТГ) -->
 <!-- ======================================================== -->
 <div class="modal" id="botLeadModal">
     <div class="modal-content">
         <span class="modal-close" id="closeBotLeadModal">&times;</span>
         <h2><span class="modal-icon-badge"><i class="ti ti-message-2-bolt"></i></span> Выберите услугу для Telegram-бота</h2>
         
-        <!-- Бот для сбора заявок (ТГ) – бывший ID 29 -->
+        <!-- 1. Бот для сбора контактов (ТГ) – ID 29 -->
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #334155;">
             <div>
                 <strong>Бот для сбора контактов (ТГ)</strong>
@@ -2212,16 +2212,28 @@ footer {
             <button class="btn-add" onclick="addToCart({ id: 29, name: 'Бот для сбора контактов (ТГ)', price: 4000 })">Купить</button>
         </div>
 
-        <!-- Бот-консультант с ИИ (ТГ) – бывший ID 23 -->
+        <!-- 2. Сбор контактов и бот-консультант (ТГ) – ID 30 -->
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #334155;">
             <div>
-                <strong>Бот-консультант с ИИ (ТГ)</strong>
+                <strong>Сбор контактов и бот-консультант (ТГ)</strong>
                 <div style="color: #94a3b8; font-size: 14px;">
                     <span style="text-decoration: line-through; text-decoration-color: #ef4444; color: #3b82f6; margin-right: 8px;">12 000 ₽</span>
                     <span style="color: #3b82f6; font-weight: bold;">6 000 ₽</span>
                 </div>
             </div>
-            <button class="btn-add" onclick="addToCart({ id: 23, name: 'Бот-консультант с ИИ (ТГ)', price: 6000 })">Купить</button>
+            <button class="btn-add" onclick="addToCart({ id: 30, name: 'Сбор контактов и бот-консультант (ТГ)', price: 6000 })">Купить</button>
+        </div>
+
+        <!-- 3. Бот: сбор контактов, консультант, оплата (ТГ) – ID 31 -->
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #334155;">
+            <div>
+                <strong>Бот: сбор контактов, консультант, оплата (ТГ)</strong>
+                <div style="color: #94a3b8; font-size: 14px;">
+                    <span style="text-decoration: line-through; text-decoration-color: #ef4444; color: #3b82f6; margin-right: 8px;">20 000 ₽</span>
+                    <span style="color: #3b82f6; font-weight: bold;">10 000 ₽</span>
+                </div>
+            </div>
+            <button class="btn-add" onclick="addToCart({ id: 31, name: 'Бот: сбор контактов, консультант, оплата (ТГ)', price: 10000 })">Купить</button>
         </div>
 
         <div style="margin-top: 18px; text-align: center;">
@@ -2531,34 +2543,42 @@ document.getElementById('menuToggle').addEventListener('click', function() {
 //  ТОВАРЫ (обновлённые ID и названия)
 // ============================================================
 const products = [
-    // ID 1-22 без изменений (кроме 23 и 29)
-    { id: 1, name: 'Интернет-магазин (6 товаров)', price: 12000, icon: '🛍️' },
-    { id: 2, name: 'Еще 6 товаров (для интернет-магазина)', price: 1200, icon: '🛒' },
-    { id: 3, name: 'Сайт Портфолио', price: 10000, icon: '🖼️' },
-    { id: 4, name: 'Страница Договор оферты', price: 1200, icon: '📄' },
-    { id: 5, name: 'Страница Политика Конфиденциальности', price: 1200, icon: '🔒' },
-    { id: 6, name: 'Сайт Визитка', price: 8000, icon: '🏢' },
-    { id: 8, name: 'Форма обратной связи (Formspree)', price: 800, icon: '📧' },
-    { id: 9, name: 'Информационный сайт', price: 6000, icon: '📰' },
+    // ===== БАЗОВЫЕ УСЛУГИ (САЙТЫ) =====
     { id: 13, name: 'Лендинг до 2 товаров', price: 4000, icon: '🎯' },
+    { id: 9,  name: 'Информационный сайт', price: 6000, icon: '📰' },
+    { id: 6,  name: 'Сайт Визитка', price: 8000, icon: '🏢' },
+    { id: 3,  name: 'Сайт Портфолио', price: 10000, icon: '🖼️' },
+    { id: 1,  name: 'Интернет-магазин (6 товаров)', price: 12000, icon: '🛍️' },
+    { id: 22, name: 'Универсальный сайт', price: 20000, icon: '🌟' },
+
+    // ===== TELEGRAM-БОТЫ (ТГ) =====
+    { id: 29, name: 'Бот для сбора контактов (ТГ)', price: 4000, icon: '📨' },
+    { id: 30, name: 'Сбор контактов и бот-консультант (ТГ)', price: 6000, icon: '🤖' },
+    { id: 31, name: 'Бот: сбор контактов, консультант, оплата (ТГ)', price: 10000, icon: '💳' },
+
+    // ===== MAX-БОТЫ =====
+    { id: 101, name: 'Бот для сбора контактов (MAX)', price: 15000, icon: '📨' },
+    { id: 102, name: 'Сбор контактов и бот-консультант (MAX)', price: 22500, icon: '🤖' },
+    { id: 103, name: 'Бот: сбор контактов, консультант, оплата (MAX)', price: 30000, icon: '💳' },
+
+    // ===== AI-АГЕНТ =====
+    { id: 27, name: 'AI-агент с ИИ', price: 10000, icon: '⚡' },
+
+    // ===== ДОПОЛНИТЕЛЬНЫЕ УСЛУГИ =====
+    { id: 2,  name: 'Еще 6 товаров (для интернет-магазина)', price: 1200, icon: '🛒' },
+    { id: 4,  name: 'Страница Договор оферты', price: 1200, icon: '📄' },
+    { id: 5,  name: 'Страница Политика Конфиденциальности', price: 1200, icon: '🔒' },
+    { id: 8,  name: 'Форма обратной связи (Formspree)', price: 800, icon: '📧' },
     { id: 14, name: 'Еще 2 товара (для лендинга)', price: 2000, icon: '➕' },
     { id: 18, name: 'Добавление блока Отзывы', price: 1200, icon: '⭐' },
     { id: 20, name: 'Всплывающий виджет для звонка', price: 1200, icon: '📞' },
     { id: 21, name: 'Карта проезда', price: 800, icon: '🗺️' },
-    { id: 22, name: 'Универсальный сайт', price: 20000, icon: '🌟' },
-    // ID 23 и 29 переименованы с (ТГ)
-    { id: 23, name: 'Бот-консультант с ИИ (ТГ)', price: 6000, icon: '🤖' },
     { id: 24, name: 'Автоматическая оплата (ЮKassa)', price: 2000, icon: '💳' },
     { id: 25, name: 'Интеграция с календарём', price: 2000, icon: '📅' },
     { id: 26, name: 'Приём заказов (Google Таблица)', price: 2000, icon: '📊' },
-    { id: 27, name: 'AI-агент с ИИ', price: 10000, icon: '⚡' },
     { id: 28, name: 'Установка Яндекс-Метрики', price: 1200, icon: '📊' },
-    { id: 29, name: 'Бот для сбора контактов (ТГ)', price: 4000, icon: '📨' },
     { id: 99, name: 'Установка иконки favicon (подарок)', price: 0, icon: '🎁' },
-    // Новые ID для MAX-бота
-    { id: 101, name: 'Бот для сбора контактов (MAX)', price: 5000, icon: '📨' },
-    { id: 102, name: 'Сбор контактов и бот-консультант (MAX)', price: 10000, icon: '🤖' },
-    { id: 103, name: 'Бот: сбор контактов, консультант, оплата (MAX)', price: 15000, icon: '💳' }
+    { id: 104, name: 'Автоматическая оплата криптовалютой', price: 2500, icon: '💳' }
 ];
 
 // ============================================================
