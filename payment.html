@@ -9,7 +9,6 @@
     <link rel="icon" type="image/x-icon" href="https://borisov.store/images/inter1.ico">
 
     <!-- Yandex.Metrika counter -->
-    <script async="" src="https://mc.yandex.ru/metrika/tag.js?id=110222077"></script>
     <script type="text/javascript">
         (function(m,e,t,r,i,k,a){
             m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
@@ -74,6 +73,88 @@
             word-break: break-all;
         }
 
+        /* ===== КАЛЕНДАРЬ ===== */
+        .calendar-block {
+            margin: 30px 0;
+            padding: 25px 20px;
+            background: #0f172a;
+            border-radius: 15px;
+            border-left: 4px solid #3b82f6;
+            text-align: left;
+        }
+
+        .calendar-block h2 {
+            color: #3b82f6;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .calendar-block label {
+            display: block;
+            margin-bottom: 6px;
+            color: #cbd5e1;
+            font-size: 15px;
+        }
+
+        .calendar-block select,
+        .calendar-block input {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: #1f2937;
+            color: #fff;
+            font-size: 15px;
+            margin-bottom: 16px;
+            outline: none;
+        }
+
+        .calendar-block select:focus,
+        .calendar-block input:focus {
+            box-shadow: 0 0 0 2px #3b82f6;
+        }
+
+        .calendar-block button {
+            width: 100%;
+            padding: 14px;
+            background: #3b82f6;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .calendar-block button:hover {
+            background: #2563eb;
+        }
+
+        .calendar-block button:disabled {
+            background: #475569;
+            cursor: not-allowed;
+        }
+
+        .calendar-message {
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 15px;
+            text-align: center;
+        }
+
+        .calendar-message.success {
+            background: #064e3b;
+            color: #6ee7b7;
+        }
+
+        .calendar-message.error {
+            background: #7f1d1d;
+            color: #fca5a5;
+        }
+
         .btn-home {
             display: inline-block;
             background: #3b82f6;
@@ -83,6 +164,7 @@
             border-radius: 10px;
             font-size: 1.1rem;
             transition: background 0.3s ease;
+            margin-top: 10px;
         }
 
         .btn-home:hover {
@@ -112,12 +194,117 @@
             <div>Сети: Optimism, Arbitrum</div>
         </div>
 
-        <!-- НОВЫЙ БЛОК С КАРТИНКОЙ -->
-        <div style="text-align: center; margin: 20px 0;">
-            <img src="https://borisov.store/images/8.png" alt="Оплата" style="max-width: 100%; height: auto;">
+        <!-- ===== БЛОК КАЛЕНДАРЯ ===== -->
+        <div class="calendar-block">
+            <h2>📅 Выберите дату начала работы</h2>
+
+            <label for="dateSelect">Свободные даты:</label>
+            <select id="dateSelect">
+                <option value="">Загрузка...</option>
+            </select>
+
+            <label for="emailInput">Ваш email:</label>
+            <input type="email" id="emailInput" placeholder="example@mail.ru">
+
+            <button id="submitBtn">Записаться</button>
+
+            <div id="calendarMessage"></div>
         </div>
 
         <a href="https://borisov.store/" class="btn-home">Вернуться на главную</a>
     </div>
+
+    <script>
+        // URL вашего Apps Script
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzj0pogdJ8DRzWsxqua-sAFFV6JylONsixFlyfEVp6WMJx67KHbICs7YrwVcCTkZdeelA/exec';
+
+        const dateSelect = document.getElementById('dateSelect');
+        const emailInput = document.getElementById('emailInput');
+        const submitBtn = document.getElementById('submitBtn');
+        const messageDiv = document.getElementById('calendarMessage');
+
+        // ===== Загрузка свободных дат =====
+        fetch(SCRIPT_URL + '?action=getDates')
+            .then(response => response.json())
+            .then(data => {
+                dateSelect.innerHTML = '';
+                if (data.dates && data.dates.length > 0) {
+                    data.dates.forEach(date => {
+                        const option = document.createElement('option');
+                        option.value = date;
+                        option.textContent = formatDate(date);
+                        dateSelect.appendChild(option);
+                    });
+                } else {
+                    const option = document.createElement('option');
+                    option.value = '';
+                    option.textContent = 'Нет свободных дат';
+                    dateSelect.appendChild(option);
+                }
+            })
+            .catch(error => {
+                dateSelect.innerHTML = '<option value="">Ошибка загрузки</option>';
+                console.error('Ошибка:', error);
+            });
+
+        // ===== Форматирование даты =====
+        function formatDate(dateStr) {
+            const months = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня',
+                            'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+            const parts = dateStr.split('-');
+            const day = parseInt(parts[2], 10);
+            const month = months[parseInt(parts[1], 10) - 1];
+            const year = parts[0];
+            return day + ' ' + month + ' ' + year;
+        }
+
+        // ===== Отправка записи =====
+        submitBtn.addEventListener('click', function() {
+            const date = dateSelect.value;
+            const email = emailInput.value.trim();
+
+            messageDiv.className = '';
+            messageDiv.textContent = '';
+
+            if (!date) {
+                messageDiv.className = 'calendar-message error';
+                messageDiv.textContent = 'Выберите дату';
+                return;
+            }
+
+            if (!email || !email.includes('@')) {
+                messageDiv.className = 'calendar-message error';
+                messageDiv.textContent = 'Введите корректный email';
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = '⏳ Отправка...';
+
+            fetch(SCRIPT_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email: email, date: date })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.result === 'success') {
+                    messageDiv.className = 'calendar-message success';
+                    messageDiv.textContent = '✅ Вы записаны на ' + formatDate(date) + '! Проверьте почту.';
+                    emailInput.value = '';
+                    // Обновляем список дат
+                    setTimeout(() => location.reload(), 3000);
+                } else {
+                    throw new Error(data.message || 'Ошибка');
+                }
+            })
+            .catch(error => {
+                messageDiv.className = 'calendar-message error';
+                messageDiv.textContent = '❌ Ошибка: ' + error.message;
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Записаться';
+            });
+        });
+    </script>
 </body>
 </html>
