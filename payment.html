@@ -281,10 +281,13 @@
             submitBtn.disabled = true;
             submitBtn.textContent = '⏳ Отправка...';
 
+            const formData = new FormData();
+            formData.append('email', email);
+            formData.append('date', date);
+
             fetch(SCRIPT_URL, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email: email, date: date })
+                body: formData
             })
             .then(response => response.json())
             .then(data => {
@@ -292,7 +295,6 @@
                     messageDiv.className = 'calendar-message success';
                     messageDiv.textContent = '✅ Вы записаны на ' + formatDate(date) + '! Проверьте почту.';
                     emailInput.value = '';
-                    // Обновляем список дат
                     setTimeout(() => location.reload(), 3000);
                 } else {
                     throw new Error(data.message || 'Ошибка');
