@@ -46,6 +46,102 @@ body{
     margin:auto;
 }
 
+/* ===== БЛОК ЗАПИСИ В КАЛЕНДАРЬ ===== */
+.calendar-section {
+    padding: 60px 0;
+    background: #111827;
+    text-align: center;
+}
+
+.calendar-section h2 {
+    font-size: 2rem;
+    color: #fff;
+    margin-bottom: 35px;
+}
+
+.calendar-box {
+    max-width: 500px;
+    margin: 0 auto;
+    background: #1f2937;
+    padding: 30px 25px;
+    border-radius: 20px;
+    border-left: 4px solid #3b82f6;
+    text-align: left;
+}
+
+.calendar-hint {
+    color: #cbd5e1;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.calendar-box label {
+    display: block;
+    margin-bottom: 6px;
+    color: #cbd5e1;
+    font-size: 15px;
+}
+
+.calendar-box select,
+.calendar-box input {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: #0f172a;
+    color: #fff;
+    font-size: 15px;
+    margin-bottom: 16px;
+    outline: none;
+}
+
+.calendar-box select:focus,
+.calendar-box input:focus {
+    box-shadow: 0 0 0 2px #3b82f6;
+}
+
+.calendar-btn {
+    width: 100%;
+    padding: 14px;
+    background: #3b82f6;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.calendar-btn:hover {
+    background: #2563eb;
+}
+
+.calendar-btn:disabled {
+    background: #475569;
+    cursor: not-allowed;
+}
+
+.calendar-message {
+    margin-top: 15px;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 15px;
+    text-align: center;
+}
+
+.calendar-message.success {
+    background: #064e3b;
+    color: #6ee7b7;
+}
+
+.calendar-message.error {
+    background: #7f1d1d;
+    color: #fca5a5;
+}    
+    
 /* ===== ФИКСИРОВАННАЯ ШАПКА ===== */
 header{
     position: fixed;
@@ -1698,6 +1794,34 @@ footer {
     </div>
 </section>
 
+<!-- ===== БЛОК ЗАПИСИ В КАЛЕНДАРЬ ===== -->
+<section class="calendar-section" id="calendar">
+    <div class="container">
+        <h2>
+            Запись в календарь
+            <span style="color:#3B82F6;">(после оплаты 50%)</span>
+        </h2>
+
+        <div class="calendar-box">
+            <p class="calendar-hint">
+                Посмотреть свободные даты можно уже сейчас. Запись открывается после внесения предоплаты.
+            </p>
+
+            <label for="dateSelect">Свободные даты:</label>
+            <select id="dateSelect">
+                <option value="">Загрузка...</option>
+            </select>
+
+            <label for="emailInput">Ваш email:</label>
+            <input type="email" id="emailInput" placeholder="example@mail.ru">
+
+            <button id="submitBtn" class="calendar-btn">Записаться</button>
+
+            <div id="calendarMessage"></div>
+        </div>
+    </div>
+</section>
+    
 <!-- ===== КОНТАКТЫ ===== -->
 <section class="contacts" id="contacts">
     <div class="container">
@@ -3182,6 +3306,101 @@ updateCartUI();
     }
 })();
 </script>
-  
+<script>
+(function() {
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyZmvlYOKffD3GkkthSXAfM7wpX6VldTNjUcW4bKDmyIznq0NB2-U2XTT73iTPD4CekDg/exec';
+
+    const dateSelect = document.getElementById('dateSelect');
+    const emailInput = document.getElementById('emailInput');
+    const submitBtn = document.getElementById('submitBtn');
+    const messageDiv = document.getElementById('calendarMessage');
+
+    // Загрузка свободных дат
+    fetch(SCRIPT_URL + '?action=getDates')
+        .then(response => response.json())
+        .then(data => {
+            dateSelect.innerHTML = '';
+            if (data.dates && data.dates.length > 0) {
+                data.dates.forEach(date => {
+                    const option = document.createElement('option');
+                    option.value = date;
+                    option.textContent = formatDate(date);
+                    dateSelect.appendChild(option);
+                });
+            } else {
+                const option = document.createElement('option');
+                option.value = '';
+                option.textContent = 'Нет свободных дат';
+                dateSelect.appendChild(option);
+            }
+        })
+        .catch(error => {
+            dateSelect.innerHTML = '<option value="">Ошибка загрузки</option>';
+            console.error('Ошибка:', error);
+        });
+
+    // Форматирование даты
+    function formatDate(dateStr) {
+        const months = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня',
+                        'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+        const parts = dateStr.split('-');
+        const day = parseInt(parts[2], 10);
+        const month = months[parseInt(parts[1], 10) - 1];
+        const year = parts[0];
+        return day + ' ' + month + ' ' + year;
+    }
+
+    // Отправка записи
+    submitBtn.addEventListener('click', function() {
+        const date = dateSelect.value;
+        const email = emailInput.value.trim();
+
+        messageDiv.className = '';
+        messageDiv.textContent = '';
+
+        if (!date) {
+            messageDiv.className = 'calendar-message error';
+            messageDiv.textContent = 'Выберите дату';
+            return;
+        }
+
+        if (!email || !email.includes('@')) {
+            messageDiv.className = 'calendar-message error';
+            messageDiv.textContent = 'Введите корректный email';
+            return;
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = '⏳ Отправка...';
+
+        const formData = new FormData();
+        formData.append('email', email);
+        formData.append('date', date);
+
+        fetch(SCRIPT_URL, {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.result === 'success') {
+                const days = data.days || formatDate(date);
+                messageDiv.className = 'calendar-message success';
+                messageDiv.textContent = '✅ Вы записаны! Рабочие дни: ' + days + '. Проверьте почту.';
+                emailInput.value = '';
+                setTimeout(() => location.reload(), 3000);
+            } else {
+                throw new Error(data.message || 'Ошибка');
+            }
+        })
+        .catch(error => {
+            messageDiv.className = 'calendar-message error';
+            messageDiv.textContent = '❌ Ошибка: ' + error.message;
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Записаться';
+        });
+    });
+})();
+</script>  
 </body>
 </html>
